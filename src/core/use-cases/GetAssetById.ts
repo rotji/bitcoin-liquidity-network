@@ -1,6 +1,6 @@
 // Use case for retrieving asset by ID
-import { AssetRegistry } from '../ports/AssetRegistry';
-import { Asset } from '../value-objects/Asset';
+import { AssetRegistry } from "../ports/AssetRegistry";
+import { Asset } from "../value-objects/Asset";
 
 export class GetAssetById {
   constructor(private assetRegistry: AssetRegistry) {}

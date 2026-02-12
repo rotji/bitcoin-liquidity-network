@@ -178,13 +178,13 @@ Perfect. Here’s a **visual roadmap / Gantt-style view** of the **Bitcoin Liqui
 
 ✅ This roadmap shows **full project progression** from **basic → complex**, covering:
 
-* Frontend
-* Backend
-* Database
-* Clarity smart contracts
-* Off-chain indexers & routers
-* UX/UI
-* Production deployment & incentives
+- Frontend
+- Backend
+- Database
+- Clarity smart contracts
+- Off-chain indexers & routers
+- UX/UI
+- Production deployment & incentives
 
 ---
 

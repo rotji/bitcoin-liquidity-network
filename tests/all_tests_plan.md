@@ -5,6 +5,7 @@ This document lists all the tests needed for the current stack-agnostic foundati
 ---
 
 ## 1. Core Entities & Value Objects
+
 - [ ] Asset: creation, validation, enable/disable
 - [ ] Pool: creation, property updates
 - [ ] Protocol: creation, status changes
@@ -12,6 +13,7 @@ This document lists all the tests needed for the current stack-agnostic foundati
 - [ ] User: creation, reputation score updates
 
 ## 2. Use Cases (Business Logic)
+
 - [ ] IndexLiquidity: indexes pools, calculates price/depth
 - [ ] RouteSwap: finds best pool for swap
 - [ ] BuildTransaction: builds correct payloads
@@ -26,6 +28,7 @@ This document lists all the tests needed for the current stack-agnostic foundati
 - [ ] User management: create, update, delete, list, find by id
 
 ## 3. Ports/Interfaces
+
 - [ ] DEXAdapter: correct interface, mock implementations
 - [ ] AssetRegistry: correct interface, mock implementations
 - [ ] ProtocolRegistry: correct interface, mock implementations
@@ -34,14 +37,17 @@ This document lists all the tests needed for the current stack-agnostic foundati
 - [ ] Reputation: correct interface, mock implementations
 
 ## 4. Adapters (when implemented)
+
 - [ ] Database adapters: CRUD, error handling
 - [ ] External service adapters: API integration, error handling
 
 ## 5. Backend API (when implemented)
+
 - [ ] API endpoints: request/response, validation, error handling
 - [ ] Integration: endpoints call correct use cases
 
 ## 6. Integration & End-to-End (later phases)
+
 - [ ] Full workflow: index liquidity → route swap → build transaction
 - [ ] User flows: create user → update reputation → publish intent
 - [ ] Error and edge cases: invalid input, missing data, adapter failures
@@ -49,6 +55,7 @@ This document lists all the tests needed for the current stack-agnostic foundati
 ---
 
 ## How to Use This Plan
+
 - Check off each test as you implement and pass it.
 - Add new tests as features and requirements evolve.
 - Use this as a living checklist for robust, professional coverage.

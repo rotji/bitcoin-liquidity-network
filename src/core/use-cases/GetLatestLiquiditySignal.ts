@@ -1,6 +1,6 @@
 // Use case for retrieving latest liquidity signal
-import { LiquiditySignal } from '../ports/LiquiditySignal';
-import { LiquiditySnapshot } from '../entities/LiquiditySnapshot';
+import { LiquiditySignal } from "../ports/LiquiditySignal";
+import { LiquiditySnapshot } from "../entities/LiquiditySnapshot";
 
 export class GetLatestLiquiditySignal {
   constructor(private liquiditySignal: LiquiditySignal) {}

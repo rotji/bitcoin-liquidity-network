@@ -1,5 +1,5 @@
 // Use case for retrieving pool price and depth
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";
 
 export class GetPoolPriceDepth {
   constructor(private pool: Pool) {}

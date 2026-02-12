@@ -8,6 +8,6 @@ export class Pool {
     public reserveA: number,
     public reserveB: number,
     public fee: number,
-    public lastUpdated: Date
+    public lastUpdated: Date,
   ) {}
 }

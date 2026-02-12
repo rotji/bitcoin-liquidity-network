@@ -9,6 +9,7 @@
 - **When requirements change:** Update pipeline steps to match new workflows or compliance needs.
 
 **Tip:** Treat CI/CD as a living system—improve and adapt it as your project and team evolve.
+
 # CI/CD Guide
 
 ## What is CI/CD?

@@ -1,5 +1,5 @@
 // Use case for retrieving routing intents
-import { RoutingIntent } from '../ports/RoutingIntent';
+import { RoutingIntent } from "../ports/RoutingIntent";
 
 export class GetRoutingIntents {
   constructor(private routingIntent: RoutingIntent) {}

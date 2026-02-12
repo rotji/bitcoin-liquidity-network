@@ -1,6 +1,6 @@
 // Use case for retrieving protocol by ID
-import { ProtocolRegistry } from '../ports/ProtocolRegistry';
-import { Protocol } from '../entities/Protocol';
+import { ProtocolRegistry } from "../ports/ProtocolRegistry";
+import { Protocol } from "../entities/Protocol";
 
 export class GetProtocolById {
   constructor(private protocolRegistry: ProtocolRegistry) {}

@@ -1,5 +1,5 @@
 // Use case for setting user reputation score
-import { User } from '../entities/User';
+import { User } from "../entities/User";
 
 export class SetUserReputationScore {
   constructor(private user: User) {}

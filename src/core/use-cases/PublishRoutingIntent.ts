@@ -1,5 +1,5 @@
 // Use case for publishing routing intents
-import { RoutingIntent } from '../ports/RoutingIntent';
+import { RoutingIntent } from "../ports/RoutingIntent";
 
 export class PublishRoutingIntent {
   constructor(private routingIntent: RoutingIntent) {}

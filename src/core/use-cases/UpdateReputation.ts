@@ -1,5 +1,5 @@
 // Use case for updating user reputation
-import { Reputation } from '../ports/Reputation';
+import { Reputation } from "../ports/Reputation";
 
 export class UpdateReputation {
   constructor(private reputation: Reputation) {}

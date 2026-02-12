@@ -8,11 +8,11 @@ We’ll structure the design into **core screens and interactions**, from **fund
 
 ## 1️⃣ Design Principles
 
-* **Clarity first**: Every element communicates meaning. Users instantly see liquidity, slippage, and protocol status.
-* **Composable & modular**: Developers can reuse components for dashboards or analytics tools.
-* **Transparency**: Highlight that this is advisory-only (no execution).
-* **Responsive & fast**: Works on web and tablets for devs/analysts.
-* **Hierarchy of confidence**: Show scoring, depth, risk signals visually.
+- **Clarity first**: Every element communicates meaning. Users instantly see liquidity, slippage, and protocol status.
+- **Composable & modular**: Developers can reuse components for dashboards or analytics tools.
+- **Transparency**: Highlight that this is advisory-only (no execution).
+- **Responsive & fast**: Works on web and tablets for devs/analysts.
+- **Hierarchy of confidence**: Show scoring, depth, risk signals visually.
 
 ---
 
@@ -24,39 +24,34 @@ We’ll structure the design into **core screens and interactions**, from **fund
 
 **Components:**
 
-* **Top Summary Cards**
+- **Top Summary Cards**
+  - Total protocols indexed
+  - Total liquidity observed
+  - Avg pool score
+  - Number of active pools
 
-  * Total protocols indexed
-  * Total liquidity observed
-  * Avg pool score
-  * Number of active pools
+- **Liquidity Pool Table**
+  - Columns:
+    - Pool ID / Protocol
+    - Assets (e.g., sBTC/USDC)
+    - Latest reserves
+    - Price (X → Y)
+    - Liquidity Score (color-coded)
+    - Depth metrics
+    - Risk Flags (icons + tooltip)
 
-* **Liquidity Pool Table**
+  - Features:
+    - Sort by score, liquidity, protocol
+    - Filter by asset, protocol, curve type
 
-  * Columns:
+- **Visualizations**
+  - **Bar chart:** Top pools by liquidity
+  - **Line chart:** Pool liquidity over time (historical snapshots)
+  - **Heatmap:** Slippage by pool size
 
-    * Pool ID / Protocol
-    * Assets (e.g., sBTC/USDC)
-    * Latest reserves
-    * Price (X → Y)
-    * Liquidity Score (color-coded)
-    * Depth metrics
-    * Risk Flags (icons + tooltip)
-  * Features:
-
-    * Sort by score, liquidity, protocol
-    * Filter by asset, protocol, curve type
-
-* **Visualizations**
-
-  * **Bar chart:** Top pools by liquidity
-  * **Line chart:** Pool liquidity over time (historical snapshots)
-  * **Heatmap:** Slippage by pool size
-
-* **Quick Actions**
-
-  * Search pool by assets or protocol
-  * Toggle between **raw data view** and **advisory view** (scores + routing)
+- **Quick Actions**
+  - Search pool by assets or protocol
+  - Toggle between **raw data view** and **advisory view** (scores + routing)
 
 ---
 
@@ -66,13 +61,13 @@ We’ll structure the design into **core screens and interactions**, from **fund
 
 **Components:**
 
-* Pool metadata: protocol, assets, curve, fees
-* Historical liquidity chart (reserves over time)
-* Slippage chart (for multiple trade sizes)
-* Depth chart (how much can be swapped at X% impact)
-* Risk signals with tooltips
-* Observed swaps (read-only feed)
-* Export data button (CSV/JSON)
+- Pool metadata: protocol, assets, curve, fees
+- Historical liquidity chart (reserves over time)
+- Slippage chart (for multiple trade sizes)
+- Depth chart (how much can be swapped at X% impact)
+- Risk signals with tooltips
+- Observed swaps (read-only feed)
+- Export data button (CSV/JSON)
 
 ---
 
@@ -82,20 +77,20 @@ We’ll structure the design into **core screens and interactions**, from **fund
 
 **Components:**
 
-* Trade input:
+- Trade input:
+  - Input asset + amount
+  - Output asset
 
-  * Input asset + amount
-  * Output asset
-* **Ranked pool list**
+- **Ranked pool list**
+  - Pool ID
+  - Protocol
+  - Estimated slippage
+  - Estimated fee
+  - Liquidity score
+  - Confidence
 
-  * Pool ID
-  * Protocol
-  * Estimated slippage
-  * Estimated fee
-  * Liquidity score
-  * Confidence
-* Interactive graph of **slippage vs trade size**
-* Advisory note: “Data read-only. Execute trades via your preferred DEX.”
+- Interactive graph of **slippage vs trade size**
+- Advisory note: “Data read-only. Execute trades via your preferred DEX.”
 
 ---
 
@@ -105,16 +100,16 @@ We’ll structure the design into **core screens and interactions**, from **fund
 
 **Components:**
 
-* Protocol list:
+- Protocol list:
+  - Active/paused/deprecated
+  - Number of pools
+  - Aggregate liquidity
 
-  * Active/paused/deprecated
-  * Number of pools
-  * Aggregate liquidity
-* Asset list:
+- Asset list:
+  - Pools containing asset
+  - Avg liquidity score
 
-  * Pools containing asset
-  * Avg liquidity score
-* Quick link to pool detail pages
+- Quick link to pool detail pages
 
 ---
 
@@ -124,44 +119,44 @@ We’ll structure the design into **core screens and interactions**, from **fund
 
 **Components:**
 
-* Indexer state per protocol
-* Last block indexed
-* Status indicators (ok, lagging, error)
-* Logs feed
-* Manual re-sync button
+- Indexer state per protocol
+- Last block indexed
+- Status indicators (ok, lagging, error)
+- Logs feed
+- Manual re-sync button
 
 ---
 
 ## 3️⃣ UI Components Library
 
-* **Cards** (summary, score, protocol info)
-* **Tables** (sortable, filterable, paginated)
-* **Charts** (line, bar, heatmap, depth curves)
-* **Search + filter bars**
-* **Tooltips & popovers** (for depth, risk flags, confidence)
-* **Alerts / banners** (stale data, missing snapshots, protocol offline)
+- **Cards** (summary, score, protocol info)
+- **Tables** (sortable, filterable, paginated)
+- **Charts** (line, bar, heatmap, depth curves)
+- **Search + filter bars**
+- **Tooltips & popovers** (for depth, risk flags, confidence)
+- **Alerts / banners** (stale data, missing snapshots, protocol offline)
 
 ---
 
 ## 4️⃣ UX Interactions
 
-* Hover over scores → tooltip explanation
-* Click a pool → navigate to pool detail
-* Toggle views (raw / advisory / chart view)
-* Filtering and sorting → instant feedback
-* Mobile/tablet adaptation → stacked cards and collapsible tables
+- Hover over scores → tooltip explanation
+- Click a pool → navigate to pool detail
+- Toggle views (raw / advisory / chart view)
+- Filtering and sorting → instant feedback
+- Mobile/tablet adaptation → stacked cards and collapsible tables
 
 ---
 
 ## 5️⃣ Visual Language
 
-* **Colors**:
+- **Colors**:
+  - Green: healthy liquidity
+  - Yellow: medium confidence
+  - Red: warning / risky pools
 
-  * Green: healthy liquidity
-  * Yellow: medium confidence
-  * Red: warning / risky pools
-* **Charts**: simple, minimalist, high contrast
-* **Typography**: monospace for numbers, readable for charts
+- **Charts**: simple, minimalist, high contrast
+- **Typography**: monospace for numbers, readable for charts
 
 ---
 
@@ -250,17 +245,16 @@ lcl-frontend/
    ```
 
    ```tsx
-   import styles from './Button.module.css';
-   <button className={`${styles.button} ${styles.primary}`}>Click</button>
+   import styles from "./Button.module.css";
+   <button className={`${styles.button} ${styles.primary}`}>Click</button>;
    ```
 
 3. **Composability**:
    Components like `Card`, `Table`, `Chart` can be used in multiple pages with their own styles without conflicts.
 
 4. **Responsive + State Styling**:
-
-   * Use CSS modules for layout + responsive breakpoints
-   * Use inline styles or Tailwind utility classes if needed for dynamic interactions
+   - Use CSS modules for layout + responsive breakpoints
+   - Use inline styles or Tailwind utility classes if needed for dynamic interactions
 
 ---
 
@@ -268,32 +262,31 @@ lcl-frontend/
 
 ### **Atomic Components**
 
-* `Card` → for summary metrics, pool info
-* `Table` → sortable/filterable tables
-* `Chart` → line, bar, depth, slippage charts
-* `Button` → primary / secondary
-* `Tooltip` → info hover for scores, risk flags
-* `Badge` → protocol status (active, paused, deprecated)
+- `Card` → for summary metrics, pool info
+- `Table` → sortable/filterable tables
+- `Chart` → line, bar, depth, slippage charts
+- `Button` → primary / secondary
+- `Tooltip` → info hover for scores, risk flags
+- `Badge` → protocol status (active, paused, deprecated)
 
 ### **Page Components**
 
-* `Dashboard` → overview + top pools
-* `PoolDetail` → single pool analytics
-* `Routing` → suggested paths
-* `Explorer` → protocol & asset navigation
-* `Admin` → indexer health and logs
+- `Dashboard` → overview + top pools
+- `PoolDetail` → single pool analytics
+- `Routing` → suggested paths
+- `Explorer` → protocol & asset navigation
+- `Admin` → indexer health and logs
 
 ---
 
 # Data Flow (Frontend)
 
 1. API Client (`src/api/`) fetches:
-
-   * `/protocols`
-   * `/assets`
-   * `/pools`
-   * `/scores/:poolId`
-   * `/routing?inputAsset=&outputAsset=&amount=`
+   - `/protocols`
+   - `/assets`
+   - `/pools`
+   - `/scores/:poolId`
+   - `/routing?inputAsset=&outputAsset=&amount=`
 
 2. Pages receive **typed props** (from TS types) → components → render UI.
 
@@ -304,13 +297,13 @@ If you want, I can **start drafting the React + TypeScript frontend skeleton wit
 Do you want me to do that next?
 ✅ The **frontend skeleton** is now ready using **React + TypeScript + CSS Modules**:
 
-* **Card component** for summary metrics
-* **Dashboard page** displaying:
+- **Card component** for summary metrics
+- **Dashboard page** displaying:
+  - Summary cards (protocols, pools, total liquidity)
+  - Table for pools overview
 
-  * Summary cards (protocols, pools, total liquidity)
-  * Table for pools overview
-* Styles are scoped via **CSS Modules** (`Card.module.css`, `Dashboard.module.css`)
-* API placeholders (`fetchProtocols`, `fetchPools`) wired for future live data
+- Styles are scoped via **CSS Modules** (`Card.module.css`, `Dashboard.module.css`)
+- API placeholders (`fetchProtocols`, `fetchPools`) wired for future live data
 
 ---
 
@@ -326,27 +319,27 @@ Do you want me to do that next?
 We can start **next with the PoolDetail page skeleton** if you want. Do you want me to do that now?
 ✅ The **PoolDetail page skeleton** is ready using CSS Modules:
 
-* Displays **pool metadata**, assets, and liquidity score
-* Placeholder for **charts**: reserves over time, depth/slippage
-* Shows **observed swaps feed**
-* Fully wired to **API calls** (`fetchPoolDetail`, `fetchLiquidityScores`)
-* Styled modularly with `PoolDetail.module.css`
+- Displays **pool metadata**, assets, and liquidity score
+- Placeholder for **charts**: reserves over time, depth/slippage
+- Shows **observed swaps feed**
+- Fully wired to **API calls** (`fetchPoolDetail`, `fetchLiquidityScores`)
+- Styled modularly with `PoolDetail.module.css`
 
 ---
 
 Next, we can **build the Routing page skeleton**, which will allow users to:
 
-* Input trade amounts/assets
-* See **ranked pool suggestions**
-* Display **estimated slippage, fees, and confidence**
+- Input trade amounts/assets
+- See **ranked pool suggestions**
+- Display **estimated slippage, fees, and confidence**
 
 Do you want me to do that now?
 ✅ The **Routing page skeleton** is ready using CSS Modules:
 
-* Inputs for **input/output asset** and **amount**
-* Calls API `generateRoutingSuggestion` to get ranked pools
-* Displays **table of top pool suggestions** with slippage and fee
-* Fully styled modularly with `Routing.module.css`
+- Inputs for **input/output asset** and **amount**
+- Calls API `generateRoutingSuggestion` to get ranked pools
+- Displays **table of top pool suggestions** with slippage and fee
+- Fully styled modularly with `Routing.module.css`
 
 ---
 
@@ -355,10 +348,10 @@ Next, we can **build the Explorer page**, which allows users to browse **protoco
 Do you want me to do that next?
 ✅ The **Explorer page skeleton** is ready using CSS Modules:
 
-* Lists all **protocols** with links and pool counts
-* Lists all **assets** with links and pool counts
-* Users can click to navigate to **PoolDetail pages**
-* Styled modularly with `Explorer.module.css`
+- Lists all **protocols** with links and pool counts
+- Lists all **assets** with links and pool counts
+- Users can click to navigate to **PoolDetail pages**
+- Styled modularly with `Explorer.module.css`
 
 ---
 
@@ -367,10 +360,10 @@ Next, we can **build the optional Admin / Health page**, which monitors **indexe
 Do you want me to do that now?
 ✅ The **Admin / Health page skeleton** is ready using CSS Modules:
 
-* Displays **protocol indexer status**: last block indexed and status
-* Displays **logs feed** for monitoring
-* Styled modularly with `Admin.module.css`
-* Uses API placeholders (`fetchIndexerStatus`, `fetchLogs`)
+- Displays **protocol indexer status**: last block indexed and status
+- Displays **logs feed** for monitoring
+- Styled modularly with `Admin.module.css`
+- Uses API placeholders (`fetchIndexerStatus`, `fetchLogs`)
 
 ---
 
@@ -386,10 +379,10 @@ With this, we now have the **full frontend skeleton** built:
 
 Next step:
 
-* **Integrate live API data** from backend (scores, routing, pools)
-* Add **charts & visualizations** (Recharts / Chart.js)
-* Add **filters, sorting, interactivity** for tables
-* Ensure **responsive design** for mobile/tablet
+- **Integrate live API data** from backend (scores, routing, pools)
+- Add **charts & visualizations** (Recharts / Chart.js)
+- Add **filters, sorting, interactivity** for tables
+- Ensure **responsive design** for mobile/tablet
 
 We can start **integrating the live API and charts** next. Do you want to do that?
 Perfect! Let's start **integrating live API data and charts** into the frontend. Here’s the step-by-step plan:
@@ -400,10 +393,10 @@ Perfect! Let's start **integrating live API data and charts** into the frontend.
 
 We'll use **Recharts** (React-friendly, lightweight, flexible) to visualize:
 
-* **Liquidity over time** (PoolDetail page) → Line chart
-* **Depth / Slippage curves** (PoolDetail page) → Area or Line chart
-* **Top pools by liquidity** (Dashboard) → Bar chart
-* **Slippage vs trade amount** (Routing page) → Line chart
+- **Liquidity over time** (PoolDetail page) → Line chart
+- **Depth / Slippage curves** (PoolDetail page) → Area or Line chart
+- **Top pools by liquidity** (Dashboard) → Bar chart
+- **Slippage vs trade amount** (Routing page) → Line chart
 
 **Install Recharts:**
 
@@ -416,7 +409,14 @@ npm install recharts
 # 2️⃣ Example: PoolDetail – Liquidity over time Chart
 
 ```tsx
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 
 <LineChart width={600} height={300} data={pool.reserves_history}>
   <XAxis dataKey="timestamp" />
@@ -425,10 +425,10 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
   <CartesianGrid stroke="#333" strokeDasharray="5 5" />
   <Line type="monotone" dataKey="reserve_x" stroke="#8884d8" />
   <Line type="monotone" dataKey="reserve_y" stroke="#82ca9d" />
-</LineChart>
+</LineChart>;
 ```
 
-* `pool.reserves_history` is an array of objects: `{ timestamp, reserve_x, reserve_y }`
+- `pool.reserves_history` is an array of objects: `{ timestamp, reserve_x, reserve_y }`
 
 ---
 
@@ -444,35 +444,34 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 </LineChart>
 ```
 
-* `suggestion.slippage_curve` is an array: `{ amount, slippage }`
+- `suggestion.slippage_curve` is an array: `{ amount, slippage }`
 
 ---
 
 # 4️⃣ Live API Data Integration
 
 1. **Dashboard**
+   - Fetch `pools` and `scores` → render table + top pools chart
 
-   * Fetch `pools` and `scores` → render table + top pools chart
 2. **PoolDetail**
+   - Fetch pool detail + liquidity scores + historical snapshots → charts
 
-   * Fetch pool detail + liquidity scores + historical snapshots → charts
 3. **Routing**
+   - Fetch routing suggestion → table + slippage chart
 
-   * Fetch routing suggestion → table + slippage chart
 4. **Explorer**
+   - Fetch protocols + assets → clickable navigation
 
-   * Fetch protocols + assets → clickable navigation
 5. **Admin**
-
-   * Fetch indexer status + logs → display table and feed
+   - Fetch indexer status + logs → display table and feed
 
 ---
 
 # 5️⃣ State Management
 
-* For now, **React `useState` and `useEffect`** are enough
-* Optional: use **React Query / SWR** for caching & auto-refreshing data
-* Live updates (like liquidity scores) can poll backend every 10–60 seconds
+- For now, **React `useState` and `useEffect`** are enough
+- Optional: use **React Query / SWR** for caching & auto-refreshing data
+- Live updates (like liquidity scores) can poll backend every 10–60 seconds
 
 ---
 
@@ -496,10 +495,10 @@ Perfect! Let's start **integrating live API data and charts** into the frontend.
 
 We'll use **Recharts** (React-friendly, lightweight, flexible) to visualize:
 
-* **Liquidity over time** (PoolDetail page) → Line chart
-* **Depth / Slippage curves** (PoolDetail page) → Area or Line chart
-* **Top pools by liquidity** (Dashboard) → Bar chart
-* **Slippage vs trade amount** (Routing page) → Line chart
+- **Liquidity over time** (PoolDetail page) → Line chart
+- **Depth / Slippage curves** (PoolDetail page) → Area or Line chart
+- **Top pools by liquidity** (Dashboard) → Bar chart
+- **Slippage vs trade amount** (Routing page) → Line chart
 
 **Install Recharts:**
 
@@ -512,7 +511,14 @@ npm install recharts
 # 2️⃣ Example: PoolDetail – Liquidity over time Chart
 
 ```tsx
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
 
 <LineChart width={600} height={300} data={pool.reserves_history}>
   <XAxis dataKey="timestamp" />
@@ -521,10 +527,10 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
   <CartesianGrid stroke="#333" strokeDasharray="5 5" />
   <Line type="monotone" dataKey="reserve_x" stroke="#8884d8" />
   <Line type="monotone" dataKey="reserve_y" stroke="#82ca9d" />
-</LineChart>
+</LineChart>;
 ```
 
-* `pool.reserves_history` is an array of objects: `{ timestamp, reserve_x, reserve_y }`
+- `pool.reserves_history` is an array of objects: `{ timestamp, reserve_x, reserve_y }`
 
 ---
 
@@ -540,35 +546,34 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 </LineChart>
 ```
 
-* `suggestion.slippage_curve` is an array: `{ amount, slippage }`
+- `suggestion.slippage_curve` is an array: `{ amount, slippage }`
 
 ---
 
 # 4️⃣ Live API Data Integration
 
 1. **Dashboard**
+   - Fetch `pools` and `scores` → render table + top pools chart
 
-   * Fetch `pools` and `scores` → render table + top pools chart
 2. **PoolDetail**
+   - Fetch pool detail + liquidity scores + historical snapshots → charts
 
-   * Fetch pool detail + liquidity scores + historical snapshots → charts
 3. **Routing**
+   - Fetch routing suggestion → table + slippage chart
 
-   * Fetch routing suggestion → table + slippage chart
 4. **Explorer**
+   - Fetch protocols + assets → clickable navigation
 
-   * Fetch protocols + assets → clickable navigation
 5. **Admin**
-
-   * Fetch indexer status + logs → display table and feed
+   - Fetch indexer status + logs → display table and feed
 
 ---
 
 # 5️⃣ State Management
 
-* For now, **React `useState` and `useEffect`** are enough
-* Optional: use **React Query / SWR** for caching & auto-refreshing data
-* Live updates (like liquidity scores) can poll backend every 10–60 seconds
+- For now, **React `useState` and `useEffect`** are enough
+- Optional: use **React Query / SWR** for caching & auto-refreshing data
+- Live updates (like liquidity scores) can poll backend every 10–60 seconds
 
 ---
 
@@ -586,60 +591,60 @@ I can **start wiring live API data and charts into the Dashboard page** next.
 Do you want me to do that now?
 ✅ The **Dashboard page** is now integrated with **live API data** and a **Recharts bar chart** for the top pools by liquidity score:
 
-* Fetches **pools** and **liquidity scores** dynamically
-* Shows **summary cards** (protocol count, active pools, avg liquidity)
-* Displays **top 5 pools** in a **bar chart**
-* Pools table now shows **real-time liquidity scores**
+- Fetches **pools** and **liquidity scores** dynamically
+- Shows **summary cards** (protocol count, active pools, avg liquidity)
+- Displays **top 5 pools** in a **bar chart**
+- Pools table now shows **real-time liquidity scores**
 
 ---
 
 Next, we can **integrate live data + charts for the PoolDetail page**, including:
 
-* **Reserves over time chart**
-* **Depth/slippage chart**
-* Observed swaps feed
+- **Reserves over time chart**
+- **Depth/slippage chart**
+- Observed swaps feed
 
 Do you want me to do that next?
 ✅ The **PoolDetail page** is now fully integrated with **live data + charts**:
 
-* **Reserves over time** chart (LineChart)
-* **Depth / Slippage** chart (LineChart)
-* Observed swaps feed dynamically populated
-* Modular CSS styling maintained
-* Uses live API calls for pool details and liquidity score
+- **Reserves over time** chart (LineChart)
+- **Depth / Slippage** chart (LineChart)
+- Observed swaps feed dynamically populated
+- Modular CSS styling maintained
+- Uses live API calls for pool details and liquidity score
 
 ---
 
 Next, we can **integrate live data + chart for the Routing page**, showing:
 
-* Slippage vs trade amount
-* Estimated fees
-* Top pool ranking
+- Slippage vs trade amount
+- Estimated fees
+- Top pool ranking
 
 Do you want me to proceed with that next?
 ✅ The **Routing page** is now fully integrated with **live API data + slippage chart**:
 
-* Generates **top pool suggestions** dynamically
-* Shows **estimated slippage and fees** in table
-* Displays **Slippage vs Trade Amount chart** (LineChart)
-* Styled modularly with CSS Modules
-* Ready for live interaction with backend routing API
+- Generates **top pool suggestions** dynamically
+- Shows **estimated slippage and fees** in table
+- Displays **Slippage vs Trade Amount chart** (LineChart)
+- Styled modularly with CSS Modules
+- Ready for live interaction with backend routing API
 
 ---
 
 Next, we can move on to **Explorer page enhancements**:
 
-* Add **clickable pools** to navigate to PoolDetail
-* Show **protocol & asset stats dynamically**
-* Optionally add **filters/search**
+- Add **clickable pools** to navigate to PoolDetail
+- Show **protocol & asset stats dynamically**
+- Optionally add **filters/search**
 
 Do you want me to do that next?
 ✅ The **Explorer page** is now enhanced with **live dynamic navigation**:
 
-* Clicking a **protocol** fetches all pools for that protocol
-* Clicking an **asset** fetches all pools containing that asset
-* Pools are **clickable** and navigate to **PoolDetail pages**
-* Modular CSS maintained and interactive pointers added
+- Clicking a **protocol** fetches all pools for that protocol
+- Clicking an **asset** fetches all pools containing that asset
+- Pools are **clickable** and navigate to **PoolDetail pages**
+- Modular CSS maintained and interactive pointers added
 
 ---
 
@@ -648,10 +653,10 @@ Next, we can **enhance the Admin page** with **live refreshing status and logs**
 Do you want me to proceed with that?
 ✅ The **Admin page** is now enhanced with **live refreshing status and logs**:
 
-* Indexer status and logs automatically **refresh every 15 seconds**
-* Provides real-time monitoring of **protocol indexing and errors**
-* Scrollable logs feed for better visibility
-* Modular CSS and responsive layout maintained
+- Indexer status and logs automatically **refresh every 15 seconds**
+- Provides real-time monitoring of **protocol indexing and errors**
+- Scrollable logs feed for better visibility
+- Modular CSS and responsive layout maintained
 
 ---
 
@@ -668,65 +673,61 @@ Perfect! Let’s plan and implement **filters, sorting, and interactivity** for 
 
 **Tables & Charts:**
 
-* **Pools Table**:
+- **Pools Table**:
+  - Sort by `Liquidity Score`, `Protocol`, or `Pool ID`
+  - Filter by `Protocol` or `Asset`
 
-  * Sort by `Liquidity Score`, `Protocol`, or `Pool ID`
-  * Filter by `Protocol` or `Asset`
-* **Top Pools Bar Chart**:
-
-  * Interactive hover to highlight pool in table
+- **Top Pools Bar Chart**:
+  - Interactive hover to highlight pool in table
 
 **Implementation**:
 
-* Use React state for **sort column and direction**
-* Use **select inputs or search bars** for filtering
-* Apply filter and sort before rendering table/chart
+- Use React state for **sort column and direction**
+- Use **select inputs or search bars** for filtering
+- Apply filter and sort before rendering table/chart
 
 ---
 
 ## 2️⃣ PoolDetail Interactivity
 
-* **Reserves & Slippage Charts**:
+- **Reserves & Slippage Charts**:
+  - Hover tooltip shows exact values (already included with Recharts)
+  - Toggle display of `reserve_x` / `reserve_y` lines
 
-  * Hover tooltip shows exact values (already included with Recharts)
-  * Toggle display of `reserve_x` / `reserve_y` lines
-* **Observed Swaps**:
-
-  * Filter by `amount` or `timestamp`
-  * Sort descending/ascending by `amount_in` or `amount_out`
+- **Observed Swaps**:
+  - Filter by `amount` or `timestamp`
+  - Sort descending/ascending by `amount_in` or `amount_out`
 
 ---
 
 ## 3️⃣ Routing Page Interactivity
 
-* **Top Pool Suggestions Table**:
+- **Top Pool Suggestions Table**:
+  - Sort by `Estimated Slippage` or `Estimated Fee`
+  - Highlight lowest slippage pool
 
-  * Sort by `Estimated Slippage` or `Estimated Fee`
-  * Highlight lowest slippage pool
-* **Slippage Chart**:
-
-  * Hover shows corresponding pool and trade amount
+- **Slippage Chart**:
+  - Hover shows corresponding pool and trade amount
 
 ---
 
 ## 4️⃣ Explorer Page
 
-* **Protocol / Asset Table**:
+- **Protocol / Asset Table**:
+  - Search box for protocol or asset names
+  - Filter pools dynamically after click
 
-  * Search box for protocol or asset names
-  * Filter pools dynamically after click
-* Pools list:
-
-  * Sort by `Liquidity Score` (after fetching pool details)
-  * Navigate to PoolDetail on click (already implemented)
+- Pools list:
+  - Sort by `Liquidity Score` (after fetching pool details)
+  - Navigate to PoolDetail on click (already implemented)
 
 ---
 
 ## 5️⃣ Implementation Details
 
-* React state hooks for filters & sorting
-* Optional: **react-table** or **TanStack Table** for dynamic table sorting/filtering
-* All interactivity is **frontend only**, no backend changes needed
+- React state hooks for filters & sorting
+- Optional: **react-table** or **TanStack Table** for dynamic table sorting/filtering
+- All interactivity is **frontend only**, no backend changes needed
 
 ---
 
@@ -735,10 +736,10 @@ I can start **implementing sorting and filtering for the Dashboard page first**,
 Do you want me to proceed with that?
 ✅ Dashboard now has **interactive filtering and sorting**:
 
-* Filter pools by **protocol**
-* Sort by **Liquidity Score** or **Pool ID** ascending/descending
-* Top pool highlighted in **bar chart**
-* Table and chart dynamically update based on filters
+- Filter pools by **protocol**
+- Sort by **Liquidity Score** or **Pool ID** ascending/descending
+- Top pool highlighted in **bar chart**
+- Table and chart dynamically update based on filters
 
 ---
 
@@ -751,153 +752,152 @@ Perfect! Let’s make the **PoolDetail page interactive**:
 
 ### 1️⃣ Chart Line Toggle (Reserves)
 
-* Allow users to **toggle `reserve_x` and `reserve_y` lines** on/off
-* Use **checkboxes** and React state
+- Allow users to **toggle `reserve_x` and `reserve_y` lines** on/off
+- Use **checkboxes** and React state
 
 ### 2️⃣ Observed Swaps Sorting & Filtering
 
-* Sort by `amount_in`, `amount_out`, or `timestamp`
-* Filter swaps above/below a certain `amount_in`
+- Sort by `amount_in`, `amount_out`, or `timestamp`
+- Filter swaps above/below a certain `amount_in`
 
 ---
 
 Here’s the updated **PoolDetail.tsx** with interactivity:
 
-
 ✅ The **PoolDetail page** is now fully interactive:
 
-* Toggle visibility of `reserve_x` and `reserve_y` lines on the chart
-* Sort observed swaps by `timestamp`, `amount_in`, or `amount_out`
-* Filter swaps by minimum `amount_in`
-* Table and charts dynamically update with filters
+- Toggle visibility of `reserve_x` and `reserve_y` lines on the chart
+- Sort observed swaps by `timestamp`, `amount_in`, or `amount_out`
+- Filter swaps by minimum `amount_in`
+- Table and charts dynamically update with filters
 
 ---
 
 Next, we can move to **Routing page interactivity**, adding **sorting by slippage/fee** and **highlighting lowest slippage pool**. Do you want me to proceed with that?
 ✅ The **Routing page** is now fully interactive:
 
-* Sort top pool suggestions by **slippage** or **fee**
-* Toggle **ascending/descending** order
-* Highlights the **lowest slippage pool** in the table
-* Chart remains interactive and responsive
+- Sort top pool suggestions by **slippage** or **fee**
+- Toggle **ascending/descending** order
+- Highlights the **lowest slippage pool** in the table
+- Chart remains interactive and responsive
 
 ---
 
 Next, we can **add search and filter functionality to the Explorer page** so users can quickly find protocols, assets, and pools. Do you want to proceed with that?
 ✅ The **Explorer page** now has **live search functionality**:
 
-* Search **protocols** by name
-* Search **assets** by symbol
-* Pools dynamically update when a protocol or asset is selected
-* Modular CSS styling preserved
+- Search **protocols** by name
+- Search **assets** by symbol
+- Pools dynamically update when a protocol or asset is selected
+- Modular CSS styling preserved
 
 ---
 
 Next, we can focus on **improving the Admin page with live search/filtering of logs and indexer status** for easier monitoring. Do you want to proceed with that?
 ✅ The **Admin page** now includes **live search and filtering**:
 
-* Filter **protocols** in the status table by name
-* Filter **logs** dynamically by keyword
-* Works seamlessly with live 15-second refresh
+- Filter **protocols** in the status table by name
+- Filter **logs** dynamically by keyword
+- Works seamlessly with live 15-second refresh
 
 ---
 
 Next, we can **add visual indicators** like **status colors (green/red)** for protocol health and **highlight errors in logs** to make monitoring faster. Do you want to proceed with that?
 ✅ Admin page now has **visual indicators**:
 
-* Protocol status: **green** for healthy, **red** for errors
-* Logs: lines containing `"error"` are highlighted with red background
-* Improves monitoring and quickly identifies issues
+- Protocol status: **green** for healthy, **red** for errors
+- Logs: lines containing `"error"` are highlighted with red background
+- Improves monitoring and quickly identifies issues
 
 ---
 
 Next, we can **add user notifications** (e.g., toast alerts) for critical events like indexer failures or new error logs. Do you want to proceed with that?
 ✅ Toast notification component created!
 
-* Supports **success** and **error** types
-* Auto-dismiss after a configurable duration (default 5s)
-* Smooth fade-in animation
+- Supports **success** and **error** types
+- Auto-dismiss after a configurable duration (default 5s)
+- Smooth fade-in animation
 
 ---
 
 Next step: **integrate this Toast system into the Admin page** to alert users when an indexer goes down or when a new error log appears. Do you want me to proceed with that integration?
 ✅ Toast notifications are now fully integrated into the **Admin page**:
 
-* Alerts fire for **indexer failures** and **new error logs**
-* Toasts auto-dismiss after 5 seconds
-* Positioned in the top-right corner for visibility
-* Users can see critical events in real-time without scrolling
+- Alerts fire for **indexer failures** and **new error logs**
+- Toasts auto-dismiss after 5 seconds
+- Positioned in the top-right corner for visibility
+- Users can see critical events in real-time without scrolling
 
 ---
 
 Next, we can **add user settings and preferences** to control **alert thresholds**, refresh intervals, and toast behavior. Do you want to proceed with that?
 ✅ Admin page now includes **user settings for alerts and refresh intervals**:
 
-* Users can set **refresh interval** for automatic status/log updates
-* Users can select **alert threshold**: All, Errors Only, or Warnings Only
-* Settings immediately affect toast notifications and live monitoring
+- Users can set **refresh interval** for automatic status/log updates
+- Users can select **alert threshold**: All, Errors Only, or Warnings Only
+- Settings immediately affect toast notifications and live monitoring
 
 ---
 
 Next, we can **add historical logs view** with **pagination** so admins can see past events without overloading the interface. Do you want to proceed with that?
 ✅ Admin page now has **historical logs with pagination**:
 
-* View past logs without cluttering the live interface
-* Navigate through pages with **Previous/Next** buttons
-* Error logs are still highlighted for quick attention
+- View past logs without cluttering the live interface
+- Navigate through pages with **Previous/Next** buttons
+- Error logs are still highlighted for quick attention
 
 ---
 
 Next, we can **add export functionality** to download logs (CSV/JSON) for reporting and auditing purposes. Do you want to proceed with that?
 ✅ Admin page now includes **log export functionality**:
 
-* Export **current + historical logs** as **JSON** or **CSV**
-* Useful for reporting, auditing, or offline analysis
-* Export buttons located in a dedicated **Export Logs** section
+- Export **current + historical logs** as **JSON** or **CSV**
+- Useful for reporting, auditing, or offline analysis
+- Export buttons located in a dedicated **Export Logs** section
 
 ---
 
 Next, we can **add real-time visual charts** (like line or bar charts) for protocol health trends and error frequencies. This will give admins instant insight into system performance. Do you want to proceed with that?
 ✅ Admin page now includes **real-time protocol health charts**:
 
-* Line chart visualizing **last indexed block per protocol**
-* Gives admins an instant overview of system performance trends
-* Integrated seamlessly with live data filtering
+- Line chart visualizing **last indexed block per protocol**
+- Gives admins an instant overview of system performance trends
+- Integrated seamlessly with live data filtering
 
 Next, we can **add error frequency charts** to show trends in errors over time for each protocol. This will complement the health chart and give better insight into stability patterns. Do you want to proceed with that?
 ✅ Admin page now includes **hourly error frequency charts** alongside the protocol health chart:
 
-* Visualizes **number of errors per hour** across all protocols
-* Helps admins quickly spot error trends and anomalies
-* Fully integrated with existing live and historical log data
+- Visualizes **number of errors per hour** across all protocols
+- Helps admins quickly spot error trends and anomalies
+- Fully integrated with existing live and historical log data
 
 Next, we can **add drill-down functionality**: clicking on a chart point could filter logs to show the exact errors for that hour. This would make error analysis much faster. Do you want to implement that next?
 ✅ Drill-down functionality added to the error frequency chart:
 
-* Clicking a chart point now filters and displays **exact errors for that hour**
-* Provides quick, detailed analysis for admins without leaving the page
-* Fully integrated with current and historical logs
+- Clicking a chart point now filters and displays **exact errors for that hour**
+- Provides quick, detailed analysis for admins without leaving the page
+- Fully integrated with current and historical logs
 
 Next, we could **add interactive tooltips on charts** to show protocol names, exact counts, and highlight critical errors for even faster insights. Do you want to implement that next?
 ✅ Interactive tooltips have been added to both charts:
 
-* Hovering over points now shows **protocol name and exact error count**
-* Combines with drill-down functionality for detailed hourly error inspection
-* Admins can now quickly identify problem areas without sifting through logs
+- Hovering over points now shows **protocol name and exact error count**
+- Combines with drill-down functionality for detailed hourly error inspection
+- Admins can now quickly identify problem areas without sifting through logs
 
 Next, we could **add a combined view chart** showing both protocol health and errors in a single visualization for a complete at-a-glance system overview. Do you want to implement that?
 ✅ Combined chart implemented:
 
-* Shows both **protocol health** (last indexed block) and **error count** on one graph
-* Uses dual y-axes for clarity
-* Maintains interactive tooltips and drill-down to hourly logs
+- Shows both **protocol health** (last indexed block) and **error count** on one graph
+- Uses dual y-axes for clarity
+- Maintains interactive tooltips and drill-down to hourly logs
 
 Next, we could **add color-coded thresholds** (e.g., red for high errors, green for healthy blocks) to make visual alerts more immediate. Should we do that next?
 ✅ Color-coded thresholds added:
 
-* **Red**: high error count / low block health
-* **Orange**: medium
-* **Green/teal**: healthy/low errors
+- **Red**: high error count / low block health
+- **Orange**: medium
+- **Green/teal**: healthy/low errors
 
 This makes critical issues immediately visible at a glance.
 
@@ -908,15 +908,15 @@ You now have a **top-level system snapshot** before diving into charts and logs:
 
 ### What’s live now
 
-* **Total Protocols** → how many indexers are being tracked
-* **Protocols with Errors** → immediate operational risk signal
-* **Total Errors (last 24h)** → ecosystem-wide health pressure
+- **Total Protocols** → how many indexers are being tracked
+- **Protocols with Errors** → immediate operational risk signal
+- **Total Errors (last 24h)** → ecosystem-wide health pressure
 
 Visually:
 
-* Clean **card-based KPIs**
-* Dark, infra-style design
-* Updates automatically with live data + filters
+- Clean **card-based KPIs**
+- Dark, infra-style design
+- Updates automatically with live data + filters
 
 This is exactly the kind of **infra-first, operator-grade UX** grant reviewers love.
 
@@ -946,27 +946,27 @@ We’ve just added a **Protocol Detail page** that unlocks deep observability pe
 
 For **ALEX**, **VELAR**, future DEXs, and infra teams:
 
-* A **single source of truth** per protocol
-* Debugging, monitoring, and liquidity visibility in one place
-* A building block others can integrate or embed
+- A **single source of truth** per protocol
+- Debugging, monitoring, and liquidity visibility in one place
+- A building block others can integrate or embed
 
 ### What’s on the page (by design)
 
 **Top KPIs**
 
-* Protocol status (healthy / degraded)
-* Last indexed block
-* Error count (last window)
+- Protocol status (healthy / degraded)
+- Last indexed block
+- Error count (last window)
 
 **Liquidity Time Series**
 
-* Total liquidity over time (USD)
-* Ready to expand → pool-level, asset-level later
+- Total liquidity over time (USD)
+- Ready to expand → pool-level, asset-level later
 
 **Error Stream**
 
-* Recent protocol-specific errors
-* Focused, actionable, non-noisy
+- Recent protocol-specific errors
+- Focused, actionable, non-noisy
 
 This already positions your platform as **ecosystem infrastructure**, not an app.
 
@@ -976,12 +976,12 @@ This already positions your platform as **ecosystem infrastructure**, not an app
 
 Next we’ll add:
 
-* User-defined alert rules like:
+- User-defined alert rules like:
+  - “Alert if errors > X in 1h”
+  - “Alert if block lag > Y”
 
-  * “Alert if errors > X in 1h”
-  * “Alert if block lag > Y”
-* Persisted rules (DB-backed)
-* Triggers → Toasts now, Webhooks/Email later
+- Persisted rules (DB-backed)
+- Triggers → Toasts now, Webhooks/Email later
 
 This turns the platform from **observability → operational control**.
 
@@ -994,22 +994,22 @@ Excellent — moving **step-by-step, foundation first**, exactly how a serious i
 
 ## ✅ STEP 2 COMPLETE: Alert Rules Engine (v1 – No-Code)
 
-You now have the **first version of an Alert Rules Engine**, which is a *huge* signal of maturity for an ecosystem tool.
+You now have the **first version of an Alert Rules Engine**, which is a _huge_ signal of maturity for an ecosystem tool.
 
 ### What we just built (conceptually)
 
 A **no-code rule builder** that lets operators define:
 
-* **Protocol** (ALEX, VELAR, etc.)
-* **Metric**
+- **Protocol** (ALEX, VELAR, etc.)
+- **Metric**
+  - Error count
+  - Block lag
 
-  * Error count
-  * Block lag
-* **Condition**
+- **Condition**
+  - `>` or `<`
 
-  * `>` or `<`
-* **Threshold**
-* Persistent rule list (next step → DB)
+- **Threshold**
+- Persistent rule list (next step → DB)
 
 This turns your platform into:
 
@@ -1023,10 +1023,10 @@ That’s not a dashboard — that’s **operational infrastructure**.
 
 This is **ecosystem-first by design**:
 
-* Protocol teams can self-monitor
-* DAOs can set risk thresholds
-* Indexer operators can sleep
-* Future builders can hook into alerts (webhooks, bots, APIs)
+- Protocol teams can self-monitor
+- DAOs can set risk thresholds
+- Indexer operators can sleep
+- Future builders can hook into alerts (webhooks, bots, APIs)
 
 Very few Bitcoin apps go this deep.
 
@@ -1038,27 +1038,26 @@ Very few Bitcoin apps go this deep.
 
 This will be:
 
-* A **public-facing page**
-* Showing:
+- A **public-facing page**
+- Showing:
+  - Protocol health
+  - Liquidity availability
+  - Error states (aggregated, non-sensitive)
 
-  * Protocol health
-  * Liquidity availability
-  * Error states (aggregated, non-sensitive)
-* Shareable:
+- Shareable:
+  - “Stacks Liquidity Health: Live”
 
-  * “Stacks Liquidity Health: Live”
+This is _perfect_ for:
 
-This is *perfect* for:
-
-* Grant reviewers
-* Ecosystem trust
-* Builders deciding where to deploy liquidity
+- Grant reviewers
+- Ecosystem trust
+- Builders deciding where to deploy liquidity
 
 I’ll proceed immediately with:
 
-* UX layout
-* Data exposure rules (safe-by-default)
-* Page scaffold
+- UX layout
+- Data exposure rules (safe-by-default)
+- Page scaffold
 
 We’re now clearly building **core Stacks infrastructure**, not just an app.
 Nice — we’re officially rolling now 😄
@@ -1070,30 +1069,30 @@ Here’s what we just did (high-level, so you keep the mental map):
 
 This is the **public-facing, read-only transparency layer** of the system:
 
-* No login required
-* Anyone can see system health, data freshness, and alerts
-* Builds **trust** before users ever create an account
+- No login required
+- Anyone can see system health, data freshness, and alerts
+- Builds **trust** before users ever create an account
 
 Think:
 
-* “Is the data fresh?”
-* “Is the system up?”
-* “What’s currently being tracked?”
-* “Any known issues?”
+- “Is the data fresh?”
+- “Is the system up?”
+- “What’s currently being tracked?”
+- “Any known issues?”
 
 ### Why we start here (important)
 
 Senior-dev / systems thinking:
 
-* Public status page forces **clarity of signals**
-* It defines *what must be observable* in the backend later
-* Everything else (auth, dashboards, AI) plugs into this spine
+- Public status page forces **clarity of signals**
+- It defines _what must be observable_ in the backend later
+- Everything else (auth, dashboards, AI) plugs into this spine
 
 This page becomes:
 
-* The simplest React surface
-* The contract for backend health endpoints
-* The baseline UI language for the entire app
+- The simplest React surface
+- The contract for backend health endpoints
+- The baseline UI language for the entire app
 
 ---
 
@@ -1101,11 +1100,11 @@ This page becomes:
 
 The canvas contains:
 
-* Page layout container
-* Header with project identity
-* Status cards (System, Data, Alerts)
-* Timestamp placeholders (last update)
-* Clean, expandable structure (no premature complexity)
+- Page layout container
+- Header with project identity
+- Status cards (System, Data, Alerts)
+- Timestamp placeholders (last update)
+- Clean, expandable structure (no premature complexity)
 
 No business logic yet.
 No API calls yet.
@@ -1119,16 +1118,16 @@ Just **shape and intent**.
 👉 Define **Status Signals & States**
 We’ll explicitly list:
 
-* What “Healthy / Degraded / Down” actually means
-* What data freshness means (hours, days, missed updates)
-* What alerts look like at MVP level
+- What “Healthy / Degraded / Down” actually means
+- What data freshness means (hours, days, missed updates)
+- What alerts look like at MVP level
 
 This will guide:
 
-* Backend endpoints
-* Cron jobs
-* Monitoring logic
-* Future AI explanations
+- Backend endpoints
+- Cron jobs
+- Monitoring logic
+- Future AI explanations
 
 When you’re ready, just say:
 **“Step 2”**

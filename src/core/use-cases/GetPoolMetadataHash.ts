@@ -1,5 +1,5 @@
 // Use case for retrieving pool metadata hash
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";
 
 export class GetPoolMetadataHash {
   constructor(private pool: Pool) {}

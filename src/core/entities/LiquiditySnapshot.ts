@@ -4,6 +4,6 @@ export class LiquiditySnapshot {
     public poolId: string,
     public blockHeight: number,
     public price: number,
-    public depth: number
+    public depth: number,
   ) {}
 }

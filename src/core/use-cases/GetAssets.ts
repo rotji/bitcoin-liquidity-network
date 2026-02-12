@@ -1,6 +1,6 @@
 // Use case for retrieving assets
-import { AssetRegistry } from '../ports/AssetRegistry';
-import { Asset } from '../value-objects/Asset';
+import { AssetRegistry } from "../ports/AssetRegistry";
+import { Asset } from "../value-objects/Asset";
 
 export class GetAssets {
   constructor(private assetRegistry: AssetRegistry) {}

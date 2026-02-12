@@ -1,6 +1,6 @@
 // Use case for retrieving pool reserves
-import { DEXAdapter } from '../ports/DEXAdapter';
-import { Pool } from '../entities/Pool';
+import { DEXAdapter } from "../ports/DEXAdapter";
+import { Pool } from "../entities/Pool";
 
 export class GetReserves {
   constructor(private dexAdapter: DEXAdapter) {}

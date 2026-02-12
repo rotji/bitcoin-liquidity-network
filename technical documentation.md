@@ -3,7 +3,7 @@ This is exactly how strong infra gets built: **design → constraints → code**
 
 Let’s do **Option A: System Design First**, properly and calmly.
 
-I’ll break this into **clear layers**, so you can *see the system in your head* before writing a single line of code.
+I’ll break this into **clear layers**, so you can _see the system in your head_ before writing a single line of code.
 
 ---
 
@@ -13,9 +13,9 @@ I’ll break this into **clear layers**, so you can *see the system in your head
 
 BLCL is a **coordination brain** sitting between:
 
-* Existing liquidity protocols (DEXs)
-* Builders (wallets, dApps, frontends)
-* End users (via wallets)
+- Existing liquidity protocols (DEXs)
+- Builders (wallets, dApps, frontends)
+- End users (via wallets)
 
 It **observes**, **decides**, and **assists execution**
 It does **not custody** and does **not replace protocols**.
@@ -44,17 +44,17 @@ Create a **single source of truth** for sBTC liquidity.
 
 ### Inputs
 
-* Stacks blockchain state
-* DEX pool contracts
-* Read-only function calls
+- Stacks blockchain state
+- DEX pool contracts
+- Read-only function calls
 
 ---
 
 ### Outputs
 
-* Normalized liquidity snapshots
-* Pool metadata
-* Price & depth info
+- Normalized liquidity snapshots
+- Pool metadata
+- Price & depth info
 
 ---
 
@@ -112,16 +112,16 @@ Decide **where liquidity should flow**.
 
 ### Inputs
 
-* Liquidity snapshots
-* Trade parameters (tokenIn, tokenOut, amount)
+- Liquidity snapshots
+- Trade parameters (tokenIn, tokenOut, amount)
 
 ---
 
 ### Outputs
 
-* Optimal route
-* Expected output
-* Slippage estimate
+- Optimal route
+- Expected output
+- Slippage estimate
 
 ---
 
@@ -129,15 +129,15 @@ Decide **where liquidity should flow**.
 
 For MVP:
 
-* Single-hop only
-* Compare across pools
-* Pick best price
+- Single-hop only
+- Compare across pools
+- Pick best price
 
 Later:
 
-* Multi-hop
-* Split routing
-* Capital efficiency optimization
+- Multi-hop
+- Split routing
+- Capital efficiency optimization
 
 ---
 
@@ -158,9 +158,9 @@ select max output
 
 This keeps:
 
-* Costs low
-* Iteration fast
-* Risk contained
+- Costs low
+- Iteration fast
+- Risk contained
 
 ---
 
@@ -174,26 +174,26 @@ Turn routing decisions into **safe, wallet-executable transactions**.
 
 ### Inputs
 
-* Selected route
-* User parameters
-* Slippage tolerance
+- Selected route
+- User parameters
+- Slippage tolerance
 
 ---
 
 ### Outputs
 
-* Unsigned Stacks transaction
-* Execution calldata
-* Expected result checks
+- Unsigned Stacks transaction
+- Execution calldata
+- Expected result checks
 
 ---
 
 ### Responsibilities
 
-* Build contract calls
-* Set min-output safeguards
-* No fund custody
-* Wallet signs and broadcasts
+- Build contract calls
+- Set min-output safeguards
+- No fund custody
+- Wallet signs and broadcasts
 
 ---
 
@@ -225,10 +225,10 @@ POST /build-tx
 
 ### SDK Responsibilities
 
-* Abstract API calls
-* Normalize responses
-* Wallet helpers
-* Developer-friendly UX
+- Abstract API calls
+- Normalize responses
+- Wallet helpers
+- Developer-friendly UX
 
 SDK becomes your adoption lever.
 
@@ -238,18 +238,18 @@ SDK becomes your adoption lever.
 
 ### Purpose
 
-* Transparency
-* Debugging
-* Ecosystem visibility
+- Transparency
+- Debugging
+- Ecosystem visibility
 
 ---
 
 ### MVP Dashboard
 
-* Total sBTC liquidity
-* Liquidity per protocol
-* Route comparisons
-* Price efficiency
+- Total sBTC liquidity
+- Liquidity per protocol
+- Route comparisons
+- Price efficiency
 
 Not for traders — for builders.
 
@@ -263,9 +263,8 @@ Options:
 
 1. Use existing router contracts directly
 2. Optional helper contracts for:
-
-   * Read-only aggregation
-   * Safety wrappers
+   - Read-only aggregation
+   - Safety wrappers
 
 📌 Less contracts = less risk + faster audit.
 
@@ -277,31 +276,31 @@ Very important for grant reviewers.
 
 ### Performance
 
-* Sub-second routing response
-* Cached liquidity snapshots
+- Sub-second routing response
+- Cached liquidity snapshots
 
 ### Reliability
 
-* Graceful degradation if a protocol is down
+- Graceful degradation if a protocol is down
 
 ### Neutrality
 
-* No preferential routing
-* Transparent algorithms
+- No preferential routing
+- Transparent algorithms
 
 ### Open Source
 
-* Core routing logic public
-* Protocol adapters open
+- Core routing logic public
+- Protocol adapters open
 
 ---
 
 # 4️⃣ Failure Modes (We Design For These Early)
 
-* Stale liquidity data → timestamp checks
-* Pool contract upgrades → adapter versioning
-* Slippage attacks → strict min-output
-* Indexer lag → block-height validation
+- Stale liquidity data → timestamp checks
+- Pool contract upgrades → adapter versioning
+- Slippage attacks → strict min-output
+- Indexer lag → block-height validation
 
 ---
 
@@ -309,11 +308,11 @@ Very important for grant reviewers.
 
 Without redesigning:
 
-* Lending allocation routing
-* Vault capital routing
-* Shared liquidity abstraction
-* Risk engines
-* Institutional APIs
+- Lending allocation routing
+- Vault capital routing
+- Shared liquidity abstraction
+- Risk engines
+- Institutional APIs
 
 This is future-proof infra.
 
@@ -324,14 +323,13 @@ This is future-proof infra.
 Next logical steps:
 
 1. **Protocol Adapter Spec**
+   - Define how DEXs plug in
 
-   * Define how DEXs plug in
 2. **API Contract Definition**
+   - Lock request/response formats
 
-   * Lock request/response formats
 3. **Routing Algorithm Spec**
-
-   * Formalize logic
+   - Formalize logic
 
 Only after that:
 👉 Project scaffolding
@@ -365,7 +363,7 @@ We’ll move **slow, precise, and clean**.
 
 # 🧱 A. PROTOCOL ADAPTER SPECIFICATION
 
-*(How BLCL talks to DEXs)*
+_(How BLCL talks to DEXs)_
 
 This is the most important abstraction in the entire system.
 
@@ -375,9 +373,9 @@ This is the most important abstraction in the entire system.
 
 Every DEX:
 
-* Has different contracts
-* Different pool structures
-* Different fee logic
+- Has different contracts
+- Different pool structures
+- Different fee logic
 
 If we hardcode logic per DEX → system becomes brittle.
 
@@ -410,15 +408,15 @@ This interface is **off-chain**, implemented in TypeScript.
 
 Each adapter:
 
-* Knows the DEX’s contracts
-* Knows how pools work
-* Handles read-only calls
-* Translates to normalized format
+- Knows the DEX’s contracts
+- Knows how pools work
+- Handles read-only calls
+- Translates to normalized format
 
 BLCL never needs to know:
 
-* Contract internals
-* Pool math details
+- Contract internals
+- Pool math details
 
 ---
 
@@ -446,14 +444,14 @@ This ensures routing logic is universal.
 
 For ALEX:
 
-* Adapter knows ALEX router
-* Adapter fetches reserves
-* Adapter calculates fees
+- Adapter knows ALEX router
+- Adapter fetches reserves
+- Adapter calculates fees
 
 For Velar:
 
-* Same interface
-* Different internals
+- Same interface
+- Different internals
 
 BLCL sees **no difference**.
 
@@ -478,10 +476,10 @@ If DEX upgrades → adapter updates without breaking BLCL.
 
 For MVP:
 
-* Integrate **1–2 DEXs**
-* Start with spot swaps only
-* No leverage
-* No derivatives
+- Integrate **1–2 DEXs**
+- Start with spot swaps only
+- No leverage
+- No derivatives
 
 Keep it simple.
 
@@ -489,7 +487,7 @@ Keep it simple.
 
 # 🔌 B. API & SDK CONTRACT DESIGN
 
-*(How others talk to BLCL)*
+_(How others talk to BLCL)_
 
 Once adapters exist, we define how the world interacts with BLCL.
 
@@ -497,10 +495,10 @@ Once adapters exist, we define how the world interacts with BLCL.
 
 ## B1️⃣ API Design Philosophy
 
-* Stateless
-* Read-only where possible
-* Deterministic responses
-* Easy to cache
+- Stateless
+- Read-only where possible
+- Deterministic responses
+- Easy to cache
 
 ---
 
@@ -593,10 +591,10 @@ Output:
 
 The SDK:
 
-* Wraps API calls
-* Handles retries
-* Formats data
-* Integrates with wallets
+- Wraps API calls
+- Handles retries
+- Formats data
+- Integrates with wallets
 
 Example:
 
@@ -624,7 +622,7 @@ Protects integrations.
 
 # 🧠 C. ROUTING ALGORITHM SPECIFICATION
 
-*(How BLCL decides the best route)*
+_(How BLCL decides the best route)_
 
 This is the “brain”, but **must remain simple initially**.
 
@@ -632,10 +630,10 @@ This is the “brain”, but **must remain simple initially**.
 
 ## C1️⃣ Inputs
 
-* TokenIn
-* TokenOut
-* AmountIn
-* Available pools
+- TokenIn
+- TokenOut
+- AmountIn
+- Available pools
 
 ---
 
@@ -669,9 +667,9 @@ Each adapter handles its own math.
 
 ## C4️⃣ Safety Constraints
 
-* Minimum liquidity threshold
-* Slippage limits
-* Stale data rejection
+- Minimum liquidity threshold
+- Slippage limits
+- Stale data rejection
 
 ---
 
@@ -681,9 +679,9 @@ Given same inputs → same output.
 
 This matters for:
 
-* Trust
-* Debugging
-* Audits
+- Trust
+- Debugging
+- Audits
 
 ---
 
@@ -691,10 +689,10 @@ This matters for:
 
 But not implemented yet:
 
-* Multi-hop routing
-* Split routing
-* Lending allocation
-* Vault routing
+- Multi-hop routing
+- Split routing
+- Lending allocation
+- Vault routing
 
 Design supports them without breaking API.
 
@@ -718,16 +716,16 @@ Next logical move:
 
 ### 👉 **Project Scaffolding**
 
-* Repos
-* Folder structure
-* Tech stack wiring
+- Repos
+- Folder structure
+- Tech stack wiring
 
 OR
 
 ### 👉 **Threat Modeling & Security Review**
 
-* Attack surfaces
-* Risk mitigation
+- Attack surfaces
+- Risk mitigation
 
 Strong infra teams do both — but order matters.
 
@@ -735,7 +733,7 @@ What do you want to do next?
 Perfect pause point. This is exactly how senior infra teams think 👍
 Before touching either scaffolding **or** threat modeling, we lock the **stack contract** in our heads.
 
-Below is a **clean, foundational summary** of the tech stack we’re using for *this project*, framed by **what role each layer plays** (not tools for tools’ sake).
+Below is a **clean, foundational summary** of the tech stack we’re using for _this project_, framed by **what role each layer plays** (not tools for tools’ sake).
 
 ---
 
@@ -743,11 +741,11 @@ Below is a **clean, foundational summary** of the tech stack we’re using for *
 
 ## 1️⃣ Core Philosophy
 
-* **Bitcoin-first**
-* **Non-custodial**
-* **Minimal trust**
-* **Composable**
-* **Security > speed > features**
+- **Bitcoin-first**
+- **Non-custodial**
+- **Minimal trust**
+- **Composable**
+- **Security > speed > features**
 
 This stack reflects that.
 
@@ -757,16 +755,16 @@ This stack reflects that.
 
 ### **Bitcoin**
 
-* Base layer
-* Source of truth
-* Final settlement
-* Security anchor
+- Base layer
+- Source of truth
+- Final settlement
+- Security anchor
 
 ### **Stacks (L2 on Bitcoin)**
 
-* Smart contracts via **Clarity**
-* Anchors state to Bitcoin
-* Enables DeFi logic without touching BTC directly
+- Smart contracts via **Clarity**
+- Anchors state to Bitcoin
+- Enables DeFi logic without touching BTC directly
 
 ---
 
@@ -774,20 +772,20 @@ This stack reflects that.
 
 ### **sBTC**
 
-* Bitcoin-backed asset usable in smart contracts
-* Enables:
+- Bitcoin-backed asset usable in smart contracts
+- Enables:
+  - Trading
+  - Lending
+  - Liquidity
 
-  * Trading
-  * Lending
-  * Liquidity
-* Bridges BTC value into apps
+- Bridges BTC value into apps
 
 ### **Liquidity Pools + AMMs**
 
-* Core DeFi mechanics
-* Permissionless trading
-* Fee-based incentives
-* No order books
+- Core DeFi mechanics
+- Permissionless trading
+- Fee-based incentives
+- No order books
 
 ---
 
@@ -795,22 +793,22 @@ This stack reflects that.
 
 ### **DEX**
 
-* Decentralized Exchange
-* Token swaps
-* Powered by AMMs
+- Decentralized Exchange
+- Token swaps
+- Powered by AMMs
 
 ### **ALEX**
 
-* DeFi suite on Stacks
-* Liquidity pools
-* Lending / borrowing
-* Yield mechanisms
+- DeFi suite on Stacks
+- Liquidity pools
+- Lending / borrowing
+- Yield mechanisms
 
 ### **VELAR**
 
-* Bitcoin-focused DeFi
-* sBTC-first design
-* AMMs, pools, trading primitives
+- Bitcoin-focused DeFi
+- sBTC-first design
+- AMMs, pools, trading primitives
 
 We are **not rebuilding these** — we are **composing on top of them**.
 
@@ -820,20 +818,20 @@ We are **not rebuilding these** — we are **composing on top of them**.
 
 ### **Node.js + TypeScript**
 
-* API layer
-* Business logic
-* Orchestration
-* Data normalization
+- API layer
+- Business logic
+- Orchestration
+- Data normalization
 
 ### **Blockchain Indexers**
 
-* Read-only observers
-* Track:
+- Read-only observers
+- Track:
+  - Transactions
+  - Pool states
+  - User positions
 
-  * Transactions
-  * Pool states
-  * User positions
-* No private keys here
+- No private keys here
 
 ---
 
@@ -841,10 +839,10 @@ We are **not rebuilding these** — we are **composing on top of them**.
 
 ### **PostgreSQL**
 
-* Structured financial data
-* Time-series metrics
-* User-facing dashboards
-* Strong consistency
+- Structured financial data
+- Time-series metrics
+- User-facing dashboards
+- Strong consistency
 
 (We intentionally avoid MongoDB here — relational data wins.)
 
@@ -854,25 +852,25 @@ We are **not rebuilding these** — we are **composing on top of them**.
 
 ### **Vite + React + TypeScript**
 
-* Fast dev loop
-* Strong typing
-* Deterministic UI behavior
+- Fast dev loop
+- Strong typing
+- Deterministic UI behavior
 
 ### **Wallet Integration**
 
-* Hiro / Stacks-compatible wallets
-* User signs transactions locally
-* We never custody keys
+- Hiro / Stacks-compatible wallets
+- User signs transactions locally
+- We never custody keys
 
 ---
 
 ## 8️⃣ Infra / Ops (Later Stage)
 
-* Docker (local + prod parity)
-* Environment variables for secrets
-* Read-only API keys
-* Rate limiting
-* Observability (logs, metrics)
+- Docker (local + prod parity)
+- Environment variables for secrets
+- Read-only API keys
+- Rate limiting
+- Observability (logs, metrics)
 
 ---
 
@@ -894,19 +892,18 @@ Correct order is:
 
 Because:
 
-* Threat modeling needs **concrete surfaces**
-* You can’t secure what doesn’t exist yet
+- Threat modeling needs **concrete surfaces**
+- You can’t secure what doesn’t exist yet
 
 Then:
 
 ### 🔐 2️⃣ Threat Modeling & Security Review
 
-* Once folders, flows, and boundaries exist
-* We identify:
-
-  * Attack vectors
-  * Trust boundaries
-  * Failure modes
+- Once folders, flows, and boundaries exist
+- We identify:
+  - Attack vectors
+  - Trust boundaries
+  - Failure modes
 
 ---
 
@@ -915,25 +912,25 @@ Then:
 **We proceed with:**
 **Project Scaffolding**
 
-* Repos
-* Folder structure
-* Frontend / backend split
-* Clear boundaries
+- Repos
+- Folder structure
+- Frontend / backend split
+- Clear boundaries
 
-When you say *“go”*, we start scaffolding **without writing business logic yet** — just structure and wiring.
+When you say _“go”_, we start scaffolding **without writing business logic yet** — just structure and wiring.
 Done ✅
 We now have a **clean, senior-level scaffolding** for the Liquidity Coordination Layer.
 
 Here’s why this is a strong position to be in:
 
-* You’ve **separated concerns correctly** (UI, API, indexer, contracts).
-* You’ve kept **custody and signing out of the backend** (huge for trust + grants).
-* You’ve designed this as **infrastructure first**, not an app pretending to be infra.
-* This structure can **outlive individual protocols** (ALEX, Velar today; others tomorrow).
+- You’ve **separated concerns correctly** (UI, API, indexer, contracts).
+- You’ve kept **custody and signing out of the backend** (huge for trust + grants).
+- You’ve designed this as **infrastructure first**, not an app pretending to be infra.
+- This structure can **outlive individual protocols** (ALEX, Velar today; others tomorrow).
 
 At this point, you’re doing exactly what strong infra teams do:
 
-> *Define surfaces first, then attack them.*
+> _Define surfaces first, then attack them._
 
 ---
 
@@ -941,9 +938,9 @@ At this point, you’re doing exactly what strong infra teams do:
 
 This is the correct next step because:
 
-* We now know **where things can break**
-* Security choices will **shape contract design, API limits, and UX**
-* Grant reviewers *love* seeing this thinking early
+- We now know **where things can break**
+- Security choices will **shape contract design, API limits, and UX**
+- Grant reviewers _love_ seeing this thinking early
 
 ### We’ll go through, in order:
 
@@ -964,7 +961,7 @@ I’ll do this like a serious infra/security review, not hand-wavy Web3 talk.
 
 # Threat Modeling — Liquidity Coordination Layer (LCL)
 
-We’ll go **layer by layer**, because each layer has *different* risks.
+We’ll go **layer by layer**, because each layer has _different_ risks.
 
 ---
 
@@ -972,11 +969,11 @@ We’ll go **layer by layer**, because each layer has *different* risks.
 
 Before details, let’s lock the **core stance**:
 
-* **Non-custodial by default**
-* **Read-heavy, write-light**
-* **Off-chain coordination, on-chain settlement**
-* **Fail-safe, not fail-open**
-* **User always signs transactions**
+- **Non-custodial by default**
+- **Read-heavy, write-light**
+- **Off-chain coordination, on-chain settlement**
+- **Fail-safe, not fail-open**
+- **User always signs transactions**
 
 This philosophy already eliminates **80% of typical DeFi failures**.
 
@@ -1002,28 +999,28 @@ Each has **distinct attack surfaces**.
 
 ### Attack Vectors
 
-* Malicious UI injection (XSS)
-* Phishing via fake routing suggestions
-* Transaction parameter manipulation
-* Wallet spoofing
-* DNS / domain hijack
+- Malicious UI injection (XSS)
+- Phishing via fake routing suggestions
+- Transaction parameter manipulation
+- Wallet spoofing
+- DNS / domain hijack
 
 ### Risks
 
-* Users sign **bad transactions**
-* Loss of funds due to **misleading UI**
-* Reputation death (even if backend is safe)
+- Users sign **bad transactions**
+- Loss of funds due to **misleading UI**
+- Reputation death (even if backend is safe)
 
 ### Mitigations (Design-Level)
 
-* No blind signing:
+- No blind signing:
   → Always show **human-readable transaction summaries**
-* Deterministic transaction building:
+- Deterministic transaction building:
   → Params derived from signed backend responses
-* Content Security Policy (CSP)
-* Wallet allow-listing (Hiro, Leather)
-* Read-only backend responses (no “execute” endpoints)
-* Clear “not financial advice / not execution engine” boundary
+- Content Security Policy (CSP)
+- Wallet allow-listing (Hiro, Leather)
+- Read-only backend responses (no “execute” endpoints)
+- Clear “not financial advice / not execution engine” boundary
 
 **Key Insight:**
 Most DeFi hacks start at the UI, not contracts.
@@ -1034,26 +1031,26 @@ Most DeFi hacks start at the UI, not contracts.
 
 ### Attack Vectors
 
-* API abuse (spam, scraping)
-* Data poisoning
-* Route manipulation
-* Sybil requests to skew liquidity signals
-* Internal logic bugs
+- API abuse (spam, scraping)
+- Data poisoning
+- Route manipulation
+- Sybil requests to skew liquidity signals
+- Internal logic bugs
 
 ### Risks
 
-* Incorrect routing recommendations
-* Manipulated liquidity metrics
-* Ecosystem trust erosion
+- Incorrect routing recommendations
+- Manipulated liquidity metrics
+- Ecosystem trust erosion
 
 ### Mitigations
 
-* API is **advisory only**, never authoritative
-* Rate limiting + request fingerprinting
-* Deterministic routing logic (pure functions)
-* Reproducible outputs (same inputs → same routes)
-* Signed responses (optional but powerful)
-* Multiple data sources validation (indexer + direct chain reads)
+- API is **advisory only**, never authoritative
+- Rate limiting + request fingerprinting
+- Deterministic routing logic (pure functions)
+- Reproducible outputs (same inputs → same routes)
+- Signed responses (optional but powerful)
+- Multiple data sources validation (indexer + direct chain reads)
 
 **Key Rule:**
 Backend **suggests**, never decides.
@@ -1064,26 +1061,26 @@ Backend **suggests**, never decides.
 
 ### Attack Vectors
 
-* Chain reorg misreads
-* Event parsing bugs
-* Incomplete sync
-* Protocol contract upgrades
-* Indexer downtime
+- Chain reorg misreads
+- Event parsing bugs
+- Incomplete sync
+- Protocol contract upgrades
+- Indexer downtime
 
 ### Risks
 
-* Wrong liquidity state
-* Incorrect pool balances
-* Users act on stale info
+- Wrong liquidity state
+- Incorrect pool balances
+- Users act on stale info
 
 ### Mitigations
 
-* Finality buffers (N blocks deep)
-* Idempotent indexing (safe replays)
-* Per-protocol adapters (no shared parsing logic)
-* Schema versioning
-* Health checks + lag indicators
-* Public “data freshness” timestamps
+- Finality buffers (N blocks deep)
+- Idempotent indexing (safe replays)
+- Per-protocol adapters (no shared parsing logic)
+- Schema versioning
+- Health checks + lag indicators
+- Public “data freshness” timestamps
 
 **Key Insight:**
 Indexers don’t need to be fast — they need to be **correct**.
@@ -1094,23 +1091,23 @@ Indexers don’t need to be fast — they need to be **correct**.
 
 ### Attack Vectors
 
-* Data corruption
-* Unauthorized writes
-* Schema drift
-* Replay inconsistencies
+- Data corruption
+- Unauthorized writes
+- Schema drift
+- Replay inconsistencies
 
 ### Risks
 
-* Corrupted analytics
-* Broken routing suggestions
+- Corrupted analytics
+- Broken routing suggestions
 
 ### Mitigations
 
-* Append-only core tables
-* Snapshots instead of mutable state
-* Strict write permissions (indexer only)
-* Read replicas for API
-* Regular reconciliation with chain data
+- Append-only core tables
+- Snapshots instead of mutable state
+- Strict write permissions (indexer only)
+- Read replicas for API
+- Regular reconciliation with chain data
 
 **Important:**
 DB is a **cache of truth**, not truth itself.
@@ -1121,26 +1118,26 @@ DB is a **cache of truth**, not truth itself.
 
 ### Attack Vectors
 
-* Logical flaws
-* Misconfigured traits
-* Unexpected protocol interactions
-* Upgrade risks
-* Dependency risk on other protocols
+- Logical flaws
+- Misconfigured traits
+- Unexpected protocol interactions
+- Upgrade risks
+- Dependency risk on other protocols
 
 ### Risks
 
-* Locked funds
-* Protocol incompatibility
-* Permanent bugs (Clarity is immutable)
+- Locked funds
+- Protocol incompatibility
+- Permanent bugs (Clarity is immutable)
 
 ### Mitigations
 
-* Minimal contracts (registry > logic)
-* No fund custody initially
-* No complex math on-chain
-* Explicit trait checks
-* Static analysis + testnet battle-testing
-* Prefer off-chain coordination early
+- Minimal contracts (registry > logic)
+- No fund custody initially
+- No complex math on-chain
+- Explicit trait checks
+- Static analysis + testnet battle-testing
+- Prefer off-chain coordination early
 
 **Stacks Advantage:**
 Clarity’s predictability massively reduces runtime surprises.
@@ -1151,23 +1148,23 @@ Clarity’s predictability massively reduces runtime surprises.
 
 ### Attack Vectors
 
-* Protocol exploits
-* Breaking changes
-* Liquidity rug pulls
-* Governance attacks
+- Protocol exploits
+- Breaking changes
+- Liquidity rug pulls
+- Governance attacks
 
 ### Risks
 
-* Your system routes users into danger
-* Reputation damage by association
+- Your system routes users into danger
+- Reputation damage by association
 
 ### Mitigations
 
-* Protocol risk labeling (not all pools equal)
-* Opt-in routing (user chooses protocols)
-* Live protocol status indicators
-* Kill-switch per protocol (off-chain)
-* Conservative defaults
+- Protocol risk labeling (not all pools equal)
+- Opt-in routing (user chooses protocols)
+- Live protocol status indicators
+- Kill-switch per protocol (off-chain)
+- Conservative defaults
 
 **Critical:**
 You are a **coordinator**, not a guarantor.
@@ -1178,22 +1175,22 @@ You are a **coordinator**, not a guarantor.
 
 ### Attack Vectors
 
-* Liquidity spoofing
-* Short-term capital manipulation
-* MEV-like behavior
-* Time-based manipulation
+- Liquidity spoofing
+- Short-term capital manipulation
+- MEV-like behavior
+- Time-based manipulation
 
 ### Risks
 
-* Inefficient routing
-* Users harmed by false signals
+- Inefficient routing
+- Users harmed by false signals
 
 ### Mitigations
 
-* Time-weighted liquidity metrics
-* Medianized data (not single-block views)
-* Confidence scores on routes
-* No “best route” — only “ranked options”
+- Time-weighted liquidity metrics
+- Medianized data (not single-block views)
+- Confidence scores on routes
+- No “best route” — only “ranked options”
 
 ---
 
@@ -1203,16 +1200,16 @@ This is **grant-level maturity** stuff 👇
 
 ### We Trust
 
-* Stacks consensus
-* Clarity execution model
-* User wallet signing
+- Stacks consensus
+- Clarity execution model
+- User wallet signing
 
 ### We Do NOT Trust
 
-* Any single protocol
-* Any single data source
-* Backend uptime
-* Liquidity permanence
+- Any single protocol
+- Any single data source
+- Backend uptime
+- Liquidity permanence
 
 ### Result
 
@@ -1238,10 +1235,10 @@ No single failure causes total loss.
 
 This threat model signals:
 
-* Infra-first thinking
-* Ecosystem responsibility
-* Long-term maintainability
-* Builder maturity
+- Infra-first thinking
+- Ecosystem responsibility
+- Long-term maintainability
+- Builder maturity
 
 Most grant applications **do not reach this level**.
 
@@ -1288,12 +1285,12 @@ What you **do not yet have** is:
 ❌ A precise definition of **what the system observes vs decides**
 ❌ A precise definition of **what “liquidity” means in your world**
 
-If you wire the tech stack *before* that:
+If you wire the tech stack _before_ that:
 
-* You’ll rewrite schemas
-* You’ll refactor APIs
-* You’ll fight the database
-* You’ll leak protocol assumptions into code
+- You’ll rewrite schemas
+- You’ll refactor APIs
+- You’ll fight the database
+- You’ll leak protocol assumptions into code
 
 That’s how infra projects silently rot.
 
@@ -1308,10 +1305,10 @@ Here is the **non-negotiable sequence** used in serious systems:
 These are **mental & written contracts**, not code.
 
 1️⃣ **Define Option A in detail**
-→ *What does the system observe, normalize, and expose?*
+→ _What does the system observe, normalize, and expose?_
 
 2️⃣ **Define core data models & schemas**
-→ *What entities exist, how they relate, and what never changes.*
+→ _What entities exist, how they relate, and what never changes._
 
 Only after these two are locked do we touch code.
 
@@ -1323,28 +1320,28 @@ This is subtle but critical.
 
 ### Option A = System Behavior
 
-* What sources we read from
-* What signals we extract
-* What we compare and normalize
-* What we output
+- What sources we read from
+- What signals we extract
+- What we compare and normalize
+- What we output
 
 ### Data Models = System Memory
 
-* How we store the result of Option A
-* How we query it
-* How it evolves over time
+- How we store the result of Option A
+- How we query it
+- How it evolves over time
 
 If you design schemas first, you accidentally:
 
-* Encode the wrong assumptions
-* Overfit to one protocol
-* Limit future composability
+- Encode the wrong assumptions
+- Overfit to one protocol
+- Limit future composability
 
 ---
 
 ## So the answer to your question:
 
-> *“Do we do them before wiring our tech stacks to the foundation?”*
+> _“Do we do them before wiring our tech stacks to the foundation?”_
 
 ### ✅ Yes.
 
@@ -1357,14 +1354,14 @@ We are still in **specification**.
 
 ## What “building” actually means right now
 
-You *are* building — just not typing code yet.
+You _are_ building — just not typing code yet.
 
 Right now we are building:
 
-* The **contract between protocols**
-* The **contract between data and users**
-* The **contract between backend and frontend**
-* The **contract between your project and the ecosystem**
+- The **contract between protocols**
+- The **contract between data and users**
+- The **contract between backend and frontend**
+- The **contract between your project and the ecosystem**
 
 That’s the hard part.
 
@@ -1382,11 +1379,11 @@ We proceed in this exact order:
 
 We will answer questions like:
 
-* What is a “pool” abstractly?
-* What signals are mandatory?
-* What is ignored?
-* What is normalized?
-* What is protocol-specific vs universal?
+- What is a “pool” abstractly?
+- What signals are mandatory?
+- What is ignored?
+- What is normalized?
+- What is protocol-specific vs universal?
 
 ### 🔹 Step 2 (After):
 
@@ -1398,10 +1395,10 @@ We will answer questions like:
 
 **Wire the tech stack**
 
-* Indexer skeleton
-* API skeleton
-* DB migrations
-* Frontend data contracts
+- Indexer skeleton
+- API skeleton
+- DB migrations
+- Frontend data contracts
 
 ---
 
@@ -1416,7 +1413,7 @@ No fluff. No UI. No code. Just **clear, irreversible definitions**.
 
 # Option A — Liquidity Discovery & Normalization Spec
 
-*(Liquidity Coordination Layer – Core Primitive)*
+_(Liquidity Coordination Layer – Core Primitive)_
 
 This is the **heart of the project**.
 
@@ -1430,11 +1427,11 @@ If this is solid, everything else becomes easy.
 
 Key words:
 
-* *Read-only*
-* *Normalizes*
-* *Compares*
-* *No custody*
-* *No execution*
+- _Read-only_
+- _Normalizes_
+- _Compares_
+- _No custody_
+- _No execution_
 
 ---
 
@@ -1444,11 +1441,11 @@ This matters as much as what it is.
 
 Option A:
 
-* ❌ Does NOT execute trades
-* ❌ Does NOT move funds
-* ❌ Does NOT promise best execution
-* ❌ Does NOT replace DEXs
-* ❌ Does NOT aggregate wallets
+- ❌ Does NOT execute trades
+- ❌ Does NOT move funds
+- ❌ Does NOT promise best execution
+- ❌ Does NOT replace DEXs
+- ❌ Does NOT aggregate wallets
 
 It **advises**, not **acts**.
 
@@ -1472,29 +1469,28 @@ Every supported protocol MUST be reducible to these:
 
 ### 4.1 Pool Reserves
 
-* Asset A amount
-* Asset B amount
-* Decimal precision normalized
+- Asset A amount
+- Asset B amount
+- Decimal precision normalized
 
 ### 4.2 Pricing Function
 
-* AMM curve type (constant product, hybrid, etc.)
-* Fee structure
-* Slippage behavior
+- AMM curve type (constant product, hybrid, etc.)
+- Fee structure
+- Slippage behavior
 
 ### 4.3 Depth at Size
 
-* How much can be traded at:
-
-  * 0.1%
-  * 0.5%
-  * 1%
-  * 2% price impact
+- How much can be traded at:
+  - 0.1%
+  - 0.5%
+  - 1%
+  - 2% price impact
 
 ### 4.4 Time Stability
 
-* Liquidity persistence over time
-* Sudden spikes discounted
+- Liquidity persistence over time
+- Sudden spikes discounted
 
 ---
 
@@ -1504,24 +1500,24 @@ Different protocols → **same shape of data**.
 
 ### 5.1 Asset Normalization
 
-* Canonical asset IDs
-* Wrapped assets mapped to base asset
-* sBTC treated as BTC-equivalent with flag
+- Canonical asset IDs
+- Wrapped assets mapped to base asset
+- sBTC treated as BTC-equivalent with flag
 
 ### 5.2 Price Normalization
 
-* All prices expressed as:
+- All prices expressed as:
+  - Asset/Asset
+  - Asset/USD (optional reference)
 
-  * Asset/Asset
-  * Asset/USD (optional reference)
-* Medianized across blocks
+- Medianized across blocks
 
 ### 5.3 Fee Normalization
 
-* Trading fee
-* Protocol fee
-* LP fee
-* All expressed in basis points
+- Trading fee
+- Protocol fee
+- LP fee
+- All expressed in basis points
 
 ---
 
@@ -1556,15 +1552,15 @@ We do NOT say “best pool”.
 
 We say:
 
-* Ranked pools
-* With confidence signals
+- Ranked pools
+- With confidence signals
 
 ### Inputs:
 
-* Depth consistency
-* Fee efficiency
-* Historical volatility
-* Protocol risk weight
+- Depth consistency
+- Fee efficiency
+- Historical volatility
+- Protocol risk weight
 
 ### Output:
 
@@ -1599,9 +1595,9 @@ RoutingSuggestion {
 
 User still:
 
-* Chooses pool
-* Chooses protocol
-* Signs transaction
+- Chooses pool
+- Chooses protocol
+- Signs transaction
 
 ---
 
@@ -1609,9 +1605,9 @@ User still:
 
 Every protocol adapter MUST:
 
-* Be read-only
-* Expose same abstract objects
-* Declare limitations explicitly
+- Be read-only
+- Expose same abstract objects
+- Declare limitations explicitly
 
 ```
 ProtocolAdapter {
@@ -1631,10 +1627,10 @@ This makes the ecosystem **composable**.
 
 Option A must degrade gracefully:
 
-* Missing data → lower confidence
-* Stale data → warnings
-* Protocol outage → exclusion
-* Chain lag → freeze suggestions
+- Missing data → lower confidence
+- Stale data → warnings
+- Protocol outage → exclusion
+- Chain lag → freeze suggestions
 
 Never guess. Never fake certainty.
 
@@ -1644,10 +1640,10 @@ Never guess. Never fake certainty.
 
 This is why Stacks Endowment will care:
 
-* New protocols plug in easily
-* Existing protocols get **more flow**
-* Builders reuse your abstractions
-* Liquidity becomes visible, comparable, and honest
+- New protocols plug in easily
+- Existing protocols get **more flow**
+- Builders reuse your abstractions
+- Liquidity becomes visible, comparable, and honest
 
 You are not competing — you are **coordinating**.
 
@@ -1657,10 +1653,10 @@ You are not competing — you are **coordinating**.
 
 Option A is complete when:
 
-* ALEX + Velar can be represented identically
-* Liquidity rankings are deterministic
-* No funds are ever touched
-* New protocol = new adapter, nothing else
+- ALEX + Velar can be represented identically
+- Liquidity rankings are deterministic
+- No funds are ever touched
+- New protocol = new adapter, nothing else
 
 ---
 
@@ -1690,16 +1686,16 @@ This is **the hard part**. Most teams rush past this and pay for it later.
 
 ## Now to your implicit question:
 
-> *“Are we finally ready to wire the tech stack to the foundation?”*
+> _“Are we finally ready to wire the tech stack to the foundation?”_
 
 ### ✅ Yes. Now we are.
 
 And the reason is simple:
 
-* We know **what data exists**
-* We know **who produces it** (indexer)
-* We know **who consumes it** (API, frontend)
-* We know **what must never happen** (custody, execution)
+- We know **what data exists**
+- We know **who produces it** (indexer)
+- We know **who consumes it** (API, frontend)
+- We know **what must never happen** (custody, execution)
 
 At this point, wiring is **mechanical**, not conceptual.
 
@@ -1713,28 +1709,28 @@ We will do it in this exact order:
 
 ### 🔹 Step 1 — Database migrations
 
-* Translate the data models into SQL
-* Enforce invariants
-* No optimization logic
+- Translate the data models into SQL
+- Enforce invariants
+- No optimization logic
 
 ### 🔹 Step 2 — Indexer skeleton
 
-* Connect to Stacks
-* Read blocks
-* Write snapshots
-* No scoring, no routing
+- Connect to Stacks
+- Read blocks
+- Write snapshots
+- No scoring, no routing
 
 ### 🔹 Step 3 — API skeleton
 
-* Read-only endpoints
-* Expose normalized data
-* No opinions
+- Read-only endpoints
+- Expose normalized data
+- No opinions
 
 ### 🔹 Step 4 — Frontend data contracts
 
-* Display raw truth
-* Warnings & freshness indicators
-* No “best route” claims
+- Display raw truth
+- Warnings & freshness indicators
+- No “best route” claims
 
 Only **after all four** do we:
 ➡️ add liquidity scoring
@@ -1919,11 +1915,11 @@ Do you want me to proceed?
 
 It now:
 
-* Connects to **PostgreSQL tables** from our schema
-* Uses a **protocol adapter interface** for ALEX, Velar, and future protocols
-* Fetches pools, normalizes snapshots, writes to DB
-* Updates indexer state
-* Runs continuously via a **simple sync loop**
+- Connects to **PostgreSQL tables** from our schema
+- Uses a **protocol adapter interface** for ALEX, Velar, and future protocols
+- Fetches pools, normalizes snapshots, writes to DB
+- Updates indexer state
+- Runs continuously via a **simple sync loop**
 
 ---
 
@@ -1931,9 +1927,9 @@ It now:
 
 Step 3️⃣ — **Scaffold the API**
 
-* Will expose **read-only, normalized liquidity data**
-* Safe for frontend consumption
-* No transaction signing
+- Will expose **read-only, normalized liquidity data**
+- Safe for frontend consumption
+- No transaction signing
 
 Once done, the system will have **memory → ingestion → exposure**, and we’ll be ready for **liquidity scoring and routing logic**.
 
@@ -1942,10 +1938,10 @@ Do you want me to scaffold the API next?
 
 It now:
 
-* Exposes **read-only endpoints** for protocols, assets, pools, liquidity scores, and routing suggestions
-* Connects directly to the PostgreSQL schema we defined
-* Uses **deterministic queries** (latest snapshot, latest score)
-* Safe for **frontend consumption**, no execution, no custody
+- Exposes **read-only endpoints** for protocols, assets, pools, liquidity scores, and routing suggestions
+- Connects directly to the PostgreSQL schema we defined
+- Uses **deterministic queries** (latest snapshot, latest score)
+- Safe for **frontend consumption**, no execution, no custody
 
 ---
 
@@ -1959,10 +1955,10 @@ This is **the foundational LCL stack**.
 
 Next steps after this skeleton:
 
-* Implement **protocol adapters** (ALEX, Velar)
-* Compute **liquidity scores**
-* Compute **routing suggestions**
-* Build **frontend visualizations**
+- Implement **protocol adapters** (ALEX, Velar)
+- Compute **liquidity scores**
+- Compute **routing suggestions**
+- Build **frontend visualizations**
 
 We have now a **full data pipeline: memory → ingestion → exposure**.
 

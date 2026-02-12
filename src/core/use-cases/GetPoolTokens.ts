@@ -1,5 +1,5 @@
 // Use case for retrieving pool tokens
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";
 
 export class GetPoolTokens {
   constructor(private pool: Pool) {}

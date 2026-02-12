@@ -1,6 +1,6 @@
 // Use case for committing liquidity signals
-import { LiquiditySignal } from '../ports/LiquiditySignal';
-import { LiquiditySnapshot } from '../entities/LiquiditySnapshot';
+import { LiquiditySignal } from "../ports/LiquiditySignal";
+import { LiquiditySnapshot } from "../entities/LiquiditySnapshot";
 
 export class CommitLiquiditySignal {
   constructor(private liquiditySignal: LiquiditySignal) {}

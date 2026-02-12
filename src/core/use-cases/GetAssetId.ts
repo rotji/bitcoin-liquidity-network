@@ -1,5 +1,5 @@
 // Use case for retrieving asset ID
-import { Asset } from '../value-objects/Asset';
+import { Asset } from "../value-objects/Asset";
 
 export class GetAssetId {
   constructor(private asset: Asset) {}

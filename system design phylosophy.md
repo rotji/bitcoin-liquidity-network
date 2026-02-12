@@ -27,18 +27,18 @@ If you follow these, **technology choices stop mattering**.
 
 Your application is **NOT**:
 
-* MongoDB
-* Firebase
-* Supabase
-* Express
-* React
+- MongoDB
+- Firebase
+- Supabase
+- Express
+- React
 
 Your application is:
 
-* **Rules**
-* **Invariants**
-* **Decisions**
-* **Constraints**
+- **Rules**
+- **Invariants**
+- **Decisions**
+- **Constraints**
 
 ### Rule
 
@@ -55,10 +55,10 @@ Domain Logic
 
 This layer:
 
-* Knows nothing about HTTP
-* Knows nothing about databases
-* Knows nothing about Firebase
-* Can run in memory
+- Knows nothing about HTTP
+- Knows nothing about databases
+- Knows nothing about Firebase
+- Can run in memory
 
 ---
 
@@ -71,15 +71,15 @@ This is the most important architectural idea you will ever learn.
 **What you want**
 
 ```ts
-UserRepository.save(user)
+UserRepository.save(user);
 ```
 
 **How it’s done**
 
-* MongoDB today
-* Postgres tomorrow
-* Firebase later
-* In-memory for tests
+- MongoDB today
+- Postgres tomorrow
+- Firebase later
+- In-memory for tests
 
 ### Pattern
 
@@ -99,9 +99,9 @@ Change adapters, not logic.
 
 Never let:
 
-* Frontend talk to databases
-* Frontend enforce rules
-* SDKs leak into UI
+- Frontend talk to databases
+- Frontend enforce rules
+- SDKs leak into UI
 
 ### Always
 
@@ -111,17 +111,17 @@ Frontend → API Boundary → Application Core
 
 That boundary:
 
-* Validates
-* Authenticates
-* Authorizes
-* Logs
-* Version-controls behavior
+- Validates
+- Authenticates
+- Authorizes
+- Logs
+- Version-controls behavior
 
 This makes:
 
-* Migration possible
-* Security enforceable
-* Testing easy
+- Migration possible
+- Security enforceable
+- Testing easy
 
 ---
 
@@ -149,9 +149,9 @@ You need **shape**, not complexity.
 
 This works for:
 
-* 1 developer
-* 1 user
-* 1 database
+- 1 developer
+- 1 user
+- 1 database
 
 And still works at scale.
 
@@ -167,10 +167,10 @@ Databases, auth, email, payments, queues — all external.
 
 Examples:
 
-* AuthService
-* PaymentGateway
-* NotificationService
-* StorageService
+- AuthService
+- PaymentGateway
+- NotificationService
+- StorageService
 
 Never call Stripe, Firebase, AWS directly from business logic.
 
@@ -180,23 +180,23 @@ Never call Stripe, Firebase, AWS directly from business logic.
 
 If you can:
 
-* Run your app without a database
-* Swap implementations in tests
-* Simulate failures
+- Run your app without a database
+- Swap implementations in tests
+- Simulate failures
 
 You can:
 
-* Migrate platforms
-* Scale teams
-* Sleep at night
+- Migrate platforms
+- Scale teams
+- Sleep at night
 
 ### Test example
 
 ```ts
-const repo = new InMemoryUserRepo()
-const usecase = new CreateUser(repo)
+const repo = new InMemoryUserRepo();
+const usecase = new CreateUser(repo);
 
-usecase.execute(data)
+usecase.execute(data);
 ```
 
 No infra needed.
@@ -207,16 +207,16 @@ No infra needed.
 
 Long-lived systems evolve like this:
 
-* Replace database
-* Replace auth
-* Replace transport (REST → GraphQL → gRPC)
-* Replace frontend framework
+- Replace database
+- Replace auth
+- Replace transport (REST → GraphQL → gRPC)
+- Replace frontend framework
 
 They **do not**:
 
-* Rewrite everything
-* Break contracts
-* Stop shipping
+- Rewrite everything
+- Break contracts
+- Stop shipping
 
 Architecture enables continuity.
 
@@ -250,9 +250,9 @@ This works for **any** web app.
 
 This is:
 
-* Clean Architecture
-* Hexagonal Architecture
-* Onion Architecture
+- Clean Architecture
+- Hexagonal Architecture
+- Onion Architecture
 
 Different names. Same truth.
 
@@ -262,24 +262,24 @@ Different names. Same truth.
 
 ### Week 1
 
-* Single repo
-* Single backend
-* Single database
-* No queues
-* No microservices
+- Single repo
+- Single backend
+- Single database
+- No queues
+- No microservices
 
 But:
 
-* Interfaces exist
-* Logic isolated
-* Infra replaceable
+- Interfaces exist
+- Logic isolated
+- Infra replaceable
 
 ### Week 12
 
-* Swap DB
-* Add cache
-* Add async jobs
-* Add new frontend
+- Swap DB
+- Add cache
+- Add async jobs
+- Add new frontend
 
 Zero architectural regret.
 
@@ -303,10 +303,10 @@ Zero architectural regret.
 
 If you want next, I can:
 
-* Give you a **minimal project template** that follows this philosophy
-* Walk through a **real example (auth, users, payments)** using this structure
-* Show how to **start naive and evolve safely**
-* Help you write this as a **personal engineering doctrine**
+- Give you a **minimal project template** that follows this philosophy
+- Walk through a **real example (auth, users, payments)** using this structure
+- Show how to **start naive and evolve safely**
+- Help you write this as a **personal engineering doctrine**
 
 Just tell me the next step.
 
@@ -315,9 +315,9 @@ What you’re asking for now is **exactly what senior engineers and founders do*
 
 Below is a **Personal Engineering Doctrine** you can apply to:
 
-* Existing prototypes (retrofit, not rewrite)
-* All future projects (from day one)
-* Any stack, any platform, any scale
+- Existing prototypes (retrofit, not rewrite)
+- All future projects (from day one)
+- Any stack, any platform, any scale
 
 This is written to be **timeless**, not trendy.
 
@@ -337,10 +337,10 @@ This is written to be **timeless**, not trendy.
 
 No project I build should depend on the long-term existence of:
 
-* A framework
-* A cloud provider
-* A database
-* A platform SDK
+- A framework
+- A cloud provider
+- A database
+- A platform SDK
 
 Everything external is **temporary**.
 
@@ -350,17 +350,17 @@ Everything external is **temporary**.
 
 All core rules of my system must:
 
-* Live in my code
-* Be readable without infrastructure
-* Run without the internet
-* Be testable without vendors
+- Live in my code
+- Be readable without infrastructure
+- Run without the internet
+- Be testable without vendors
 
 ### Therefore:
 
-* No business rules in frontend
-* No business rules in database triggers
-* No business rules in cloud functions
-* No business rules in security rules
+- No business rules in frontend
+- No business rules in database triggers
+- No business rules in cloud functions
+- No business rules in security rules
 
 **Business logic belongs only in the core.**
 
@@ -393,12 +393,12 @@ If I can swap a dependency without changing core logic, it is correctly designed
 
 ### This applies to:
 
-* Databases
-* Auth systems
-* Payment processors
-* Email & notifications
-* File storage
-* Analytics
+- Databases
+- Auth systems
+- Payment processors
+- Email & notifications
+- File storage
+- Analytics
 
 **Rule**
 
@@ -410,16 +410,16 @@ If I can swap a dependency without changing core logic, it is correctly designed
 
 The frontend:
 
-* Talks only to APIs
-* Never talks directly to databases
-* Never enforces security rules
-* Never imports backend SDKs
+- Talks only to APIs
+- Never talks directly to databases
+- Never enforces security rules
+- Never imports backend SDKs
 
 This ensures:
 
-* Security
-* Portability
-* Replaceability
+- Security
+- Portability
+- Replaceability
 
 ---
 
@@ -427,15 +427,15 @@ This ensures:
 
 I do not prematurely optimize:
 
-* Performance
-* Cost
-* Scale
+- Performance
+- Cost
+- Scale
 
 I **always** optimize for:
 
-* Clear boundaries
-* Simple contracts
-* Replaceable parts
+- Clear boundaries
+- Simple contracts
+- Replaceable parts
 
 A replaceable system can always be optimized later.
 A coupled system cannot.
@@ -446,10 +446,10 @@ A coupled system cannot.
 
 At any time, I should be able to:
 
-* Swap real DB for in-memory
-* Run logic in tests
-* Simulate failures
-* Validate rules locally
+- Swap real DB for in-memory
+- Run logic in tests
+- Simulate failures
+- Validate rules locally
 
 If this is impossible, the architecture is wrong.
 
@@ -459,15 +459,15 @@ If this is impossible, the architecture is wrong.
 
 I start with:
 
-* One service
-* One codebase
-* One database
+- One service
+- One codebase
+- One database
 
 But with:
 
-* Internal boundaries
-* Clear ownership
-* No assumptions of permanence
+- Internal boundaries
+- Clear ownership
+- No assumptions of permanence
 
 Microservices are an **evolution**, not a starting point.
 
@@ -477,15 +477,15 @@ Microservices are an **evolution**, not a starting point.
 
 I evolve systems by:
 
-* Replacing adapters
-* Migrating layers
-* Versioning contracts
+- Replacing adapters
+- Migrating layers
+- Versioning contracts
 
 I do **not**:
 
-* Rewrite systems
-* Break APIs casually
-* Restart architecture every year
+- Rewrite systems
+- Break APIs casually
+- Restart architecture every year
 
 ---
 
@@ -509,15 +509,15 @@ If a rewrite is cheaper than extraction, I rewrite **once**, not repeatedly.
 
 I treat architecture as:
 
-* Intellectual property
-* Competitive advantage
-* A compounding asset
+- Intellectual property
+- Competitive advantage
+- A compounding asset
 
 Good architecture:
 
-* Speeds future ideas
-* Reduces fear of change
-* Makes experimentation cheap
+- Speeds future ideas
+- Reduces fear of change
+- Makes experimentation cheap
 
 ---
 
@@ -525,18 +525,18 @@ Good architecture:
 
 ### ❌ I will NOT:
 
-* Import Firebase/Supabase SDKs in UI
-* Put business logic in controllers
-* Query databases directly from routes
-* Tie domain logic to HTTP
-* Let infrastructure define behavior
+- Import Firebase/Supabase SDKs in UI
+- Put business logic in controllers
+- Query databases directly from routes
+- Tie domain logic to HTTP
+- Let infrastructure define behavior
 
 ### ✅ I will ALWAYS:
 
-* Use interfaces for dependencies
-* Keep domain pure
-* Protect boundaries
-* Write at least minimal tests for core logic
+- Use interfaces for dependencies
+- Keep domain pure
+- Protect boundaries
+- Write at least minimal tests for core logic
 
 ---
 
@@ -544,16 +544,16 @@ Good architecture:
 
 ### For existing prototypes
 
-* Do **not** panic
-* Do **not** rewrite blindly
-* Audit → extract → refactor incrementally
+- Do **not** panic
+- Do **not** rewrite blindly
+- Audit → extract → refactor incrementally
 
 ### For new projects
 
-* Start with this doctrine
-* Scaffold with boundaries
-* Choose the simplest tools
-* Treat them as temporary
+- Start with this doctrine
+- Scaffold with boundaries
+- Choose the simplest tools
+- Treat them as temporary
 
 ---
 
@@ -564,10 +564,10 @@ Good architecture:
 
 If you want, next I can:
 
-* Turn this doctrine into a **project checklist**
-* Give you a **starter folder structure** that enforces this
-* Walk through **refactoring one of your prototypes**
-* Help you define **when a rewrite is justified vs refactor**
+- Turn this doctrine into a **project checklist**
+- Give you a **starter folder structure** that enforces this
+- Walk through **refactoring one of your prototypes**
+- Help you define **when a rewrite is justified vs refactor**
 
 Tell me the next step.
 
@@ -581,24 +581,24 @@ I’ll do **only** these three things, cleanly and concretely:
 
 This is designed so:
 
-* Existing prototypes can be audited against it
-* New projects start correctly by default
+- Existing prototypes can be audited against it
+- New projects start correctly by default
 
 ---
 
 # 1️⃣ PROJECT ARCHITECTURE CHECKLIST
 
-*(Use this for every project — old or new)*
+_(Use this for every project — old or new)_
 
 ## A. Core Ownership Checklist (Non-Negotiable)
 
 Before writing features, confirm:
 
-* [ ] Business rules exist **outside** controllers
-* [ ] Business rules do **not** import frameworks
-* [ ] Business rules do **not** import SDKs
-* [ ] Core logic runs without DB / network
-* [ ] Core logic is testable in isolation
+- [ ] Business rules exist **outside** controllers
+- [ ] Business rules do **not** import frameworks
+- [ ] Business rules do **not** import SDKs
+- [ ] Core logic runs without DB / network
+- [ ] Core logic is testable in isolation
 
 If **any** is false → architecture is already coupled.
 
@@ -608,17 +608,17 @@ If **any** is false → architecture is already coupled.
 
 ### Frontend
 
-* [ ] Calls backend only through APIs
-* [ ] Does not enforce permissions
-* [ ] Does not know DB structure
-* [ ] Does not import backend SDKs
+- [ ] Calls backend only through APIs
+- [ ] Does not enforce permissions
+- [ ] Does not know DB structure
+- [ ] Does not import backend SDKs
 
 ### Backend
 
-* [ ] Has a single API boundary
-* [ ] Validates all inputs
-* [ ] Enforces all permissions
-* [ ] Owns business decisions
+- [ ] Has a single API boundary
+- [ ] Validates all inputs
+- [ ] Enforces all permissions
+- [ ] Owns business decisions
 
 ---
 
@@ -630,12 +630,12 @@ For **every external thing**, ask:
 
 Apply to:
 
-* [ ] Database
-* [ ] Auth
-* [ ] Storage
-* [ ] Payments
-* [ ] Notifications
-* [ ] Analytics
+- [ ] Database
+- [ ] Auth
+- [ ] Storage
+- [ ] Payments
+- [ ] Notifications
+- [ ] Analytics
 
 If not → missing interface.
 
@@ -643,10 +643,10 @@ If not → missing interface.
 
 ## D. Evolution Checklist
 
-* [ ] Can replace DB without breaking API
-* [ ] Can add a second frontend
-* [ ] Can version API without rewriting logic
-* [ ] Can introduce async jobs later
+- [ ] Can replace DB without breaking API
+- [ ] Can add a second frontend
+- [ ] Can version API without rewriting logic
+- [ ] Can introduce async jobs later
 
 If “no”, architecture is fragile.
 
@@ -654,13 +654,13 @@ If “no”, architecture is fragile.
 
 # 2️⃣ STARTER FOLDER STRUCTURE
 
-*(Minimal, scalable, tool-agnostic)*
+_(Minimal, scalable, tool-agnostic)_
 
 This works for:
 
-* 1 developer
-* 1 prototype
-* 1 DB
+- 1 developer
+- 1 prototype
+- 1 DB
 
 And still works at scale.
 
@@ -743,7 +743,7 @@ No shortcuts. Ever.
 
 # 4️⃣ ENFORCEMENT RULES
 
-*(This is how you stop decay over time)*
+_(This is how you stop decay over time)_
 
 Architecture fails **not** because it’s bad,
 but because it’s **not enforced**.
@@ -754,10 +754,10 @@ but because it’s **not enforced**.
 
 ❌ Forbidden:
 
-* core importing adapters
-* core importing frameworks
-* frontend importing SDKs
-* controllers querying DB directly
+- core importing adapters
+- core importing frameworks
+- frontend importing SDKs
+- controllers querying DB directly
 
 If this happens → refactor immediately.
 
@@ -767,15 +767,15 @@ If this happens → refactor immediately.
 
 Controllers may:
 
-* Parse input
-* Call use cases
-* Format output
+- Parse input
+- Call use cases
+- Format output
 
 Controllers may NOT:
 
-* Make decisions
-* Apply rules
-* Contain workflows
+- Make decisions
+- Apply rules
+- Contain workflows
 
 If logic grows → move it.
 
@@ -785,9 +785,9 @@ If logic grows → move it.
 
 Adapters:
 
-* Implement interfaces
-* Do not define behavior
-* Do not contain business rules
+- Implement interfaces
+- Do not define behavior
+- Do not contain business rules
 
 If adapter contains “if business condition” → violation.
 
@@ -797,8 +797,8 @@ If adapter contains “if business condition” → violation.
 
 Before adding infrastructure:
 
-* Core logic must have tests
-* Logic must run in memory
+- Core logic must have tests
+- Logic must run in memory
 
 No test → no merge (even solo projects).
 
@@ -827,28 +827,28 @@ You need **directional correctness**.
 
 If you want next, I can:
 
-* Apply this **directly to one of your existing prototypes**
-* Create a **one-page audit template** you can reuse
-* Turn this into a **repo README doctrine**
-* Show a **before → after refactor example**
+- Apply this **directly to one of your existing prototypes**
+- Create a **one-page audit template** you can reuse
+- Turn this into a **repo README doctrine**
+- Show a **before → after refactor example**
 
 Say the next step and we continue.
 
 This is a **very strong question** — it’s the kind of question people ask **after** they’ve already shipped a few things and felt pain.
 
-I’ll answer this **briefly but deeply**, focusing on **non-obvious practices** senior engineers and consultants apply *early*, even when building very small systems.
+I’ll answer this **briefly but deeply**, focusing on **non-obvious practices** senior engineers and consultants apply _early_, even when building very small systems.
 
 No tools. No buzzwords. Just practices.
 
 ---
 
-# What Senior Engineers Do *Early* (Beyond Architecture)
+# What Senior Engineers Do _Early_ (Beyond Architecture)
 
 Architecture is only **one pillar**. These are the others.
 
 ---
 
-## 1️⃣ They Define *Boundaries of Change* Early
+## 1️⃣ They Define _Boundaries of Change_ Early
 
 Senior engineers ask:
 
@@ -858,12 +858,12 @@ Then they isolate those areas.
 
 ### Common volatile areas
 
-* Pricing & plans
-* Auth & permissions
-* Data model
-* Integrations
-* Business rules
-* UI flows
+- Pricing & plans
+- Auth & permissions
+- Data model
+- Integrations
+- Business rules
+- UI flows
 
 ### Practice
 
@@ -871,9 +871,9 @@ They design **around volatility**, not around features.
 
 **Example**
 
-* Pricing logic lives in one place
-* Permissions in one module
-* Integrations behind interfaces
+- Pricing logic lives in one place
+- Permissions in one module
+- Integrations behind interfaces
 
 This prevents **future ripple effects**.
 
@@ -883,15 +883,15 @@ This prevents **future ripple effects**.
 
 They care more about:
 
-* API contracts
-* Data contracts
-* Event formats
+- API contracts
+- Data contracts
+- Event formats
 
 Than about:
 
-* Code style
-* Performance
-* Micro-optimizations
+- Code style
+- Performance
+- Micro-optimizations
 
 ### Why
 
@@ -899,15 +899,15 @@ Than about:
 
 ### Practice
 
-* Explicit request/response shapes
-* Versioned APIs early (`/v1`)
-* Clear error formats
+- Explicit request/response shapes
+- Versioned APIs early (`/v1`)
+- Clear error formats
 
 This enables:
 
-* Multiple clients
-* Parallel development
-* Safe refactors
+- Multiple clients
+- Parallel development
+- Safe refactors
 
 ---
 
@@ -932,9 +932,9 @@ CreateUser failed – email already exists – requestId=abc
 
 This makes:
 
-* Debugging easier
-* Auditing possible
-* Analytics feasible later
+- Debugging easier
+- Auditing possible
+- Analytics feasible later
 
 They design logging early, minimally.
 
@@ -946,17 +946,17 @@ Senior engineers think about data **before users arrive**.
 
 ### They ask:
 
-* What is the source of truth?
-* What data must never be lost?
-* What can be eventually consistent?
-* What can be regenerated?
+- What is the source of truth?
+- What data must never be lost?
+- What can be eventually consistent?
+- What can be regenerated?
 
 ### Practice
 
-* Soft deletes
-* Auditable fields (`createdAt`, `updatedAt`)
-* Immutable IDs
-* No silent overwrites
+- Soft deletes
+- Auditable fields (`createdAt`, `updatedAt`)
+- Immutable IDs
+- No silent overwrites
 
 This avoids painful migrations later.
 
@@ -968,17 +968,17 @@ Even for tiny systems.
 
 ### They ask:
 
-* How do I deploy this?
-* How do I roll back?
-* How do I monitor it?
-* How do I know it’s broken?
+- How do I deploy this?
+- How do I roll back?
+- How do I monitor it?
+- How do I know it’s broken?
 
 ### Practice
 
-* Health checks
-* Basic metrics
-* Environment separation
-* Feature flags (simple)
+- Health checks
+- Basic metrics
+- Environment separation
+- Feature flags (simple)
 
 This makes scaling operationally boring later.
 
@@ -990,15 +990,15 @@ This is subtle.
 
 They do **not**:
 
-* Add queues early
-* Add microservices
-* Add complex patterns
+- Add queues early
+- Add microservices
+- Add complex patterns
 
 But they **do**:
 
-* Name things clearly
-* Separate responsibilities
-* Leave seams for growth
+- Name things clearly
+- Separate responsibilities
+- Leave seams for growth
 
 This is called **“soft architecture”**.
 
@@ -1010,15 +1010,15 @@ Not lots of tests — **the right tests**.
 
 ### Early tests focus on:
 
-* Core business rules
-* Critical edge cases
-* Invariants
+- Core business rules
+- Critical edge cases
+- Invariants
 
 They avoid:
 
-* UI snapshot tests early
-* Over-mocking
-* Testing frameworks
+- UI snapshot tests early
+- Over-mocking
+- Testing frameworks
 
 Tests become **safety nets**, not chores.
 
@@ -1039,9 +1039,9 @@ Exit plan: Migrate via adapters
 
 This prevents:
 
-* Re-litigating decisions
-* Tribal knowledge loss
-* Bad future guesses
+- Re-litigating decisions
+- Tribal knowledge loss
+- Bad future guesses
 
 ---
 
@@ -1049,16 +1049,16 @@ This prevents:
 
 They think about:
 
-* Future developers
-* Their own future self
-* Onboarding cost
+- Future developers
+- Their own future self
+- Onboarding cost
 
 ### Practice
 
-* Predictable structure
-* Boring conventions
-* Clear naming
-* Fewer “clever” tricks
+- Predictable structure
+- Boring conventions
+- Clear naming
+- Fewer “clever” tricks
 
 This scales teams, not just traffic.
 
@@ -1070,15 +1070,15 @@ This is the meta-skill.
 
 Optionality means:
 
-* You can say yes later
-* You can change direction
-* You can experiment cheaply
+- You can say yes later
+- You can change direction
+- You can experiment cheaply
 
 They avoid designs that:
 
-* Lock business models
-* Lock infra
-* Lock assumptions
+- Lock business models
+- Lock infra
+- Lock assumptions
 
 Optionality is **future leverage**.
 
@@ -1088,13 +1088,13 @@ Optionality is **future leverage**.
 
 They ensure:
 
-* Boundaries exist
-* Contracts are clear
-* Data is respected
-* Decisions are documented
-* Ops is considered
-* Tests protect rules
-* Change is localized
+- Boundaries exist
+- Contracts are clear
+- Data is respected
+- Decisions are documented
+- Ops is considered
+- Tests protect rules
+- Change is localized
 
 ---
 
@@ -1110,15 +1110,15 @@ Change scaling is solved with discipline.
 
 If you want next, I can:
 
-* Turn this into a **personal “senior engineer playbook”**
-* Show how these practices look in a **real small codebase**
-* Create a **prototype audit framework**
-* Help you design a **first-week build plan** that enforces all this
+- Turn this into a **personal “senior engineer playbook”**
+- Show how these practices look in a **real small codebase**
+- Create a **prototype audit framework**
+- Help you design a **first-week build plan** that enforces all this
 
 Just tell me the next step.
 
 Perfect.
-Below is a **Senior Engineer / Consultant Playbook** you can use **personally** across *all* projects — prototypes, startups, internal tools, long-term platforms.
+Below is a **Senior Engineer / Consultant Playbook** you can use **personally** across _all_ projects — prototypes, startups, internal tools, long-term platforms.
 
 This is written as a **working doctrine**, not theory.
 
@@ -1129,7 +1129,7 @@ This is written as a **working doctrine**, not theory.
 ### (How to Build Clean, Future-Proof Systems from Day 1)
 
 This playbook complements your **system design philosophy**.
-Architecture defines *shape*; this defines *discipline*.
+Architecture defines _shape_; this defines _discipline_.
 
 ---
 
@@ -1137,15 +1137,15 @@ Architecture defines *shape*; this defines *discipline*.
 
 Before writing features, answer **only these questions**:
 
-* What will change often?
-* What must never break?
-* What is uncertain today?
+- What will change often?
+- What must never break?
+- What is uncertain today?
 
 ### Typical answers
 
-* Will change: pricing, auth, UI flows, integrations
-* Must not break: data integrity, money, permissions
-* Uncertain: growth speed, business model, infra
+- Will change: pricing, auth, UI flows, integrations
+- Must not break: data integrity, money, permissions
+- Uncertain: growth speed, business model, infra
 
 ### Rule
 
@@ -1161,16 +1161,16 @@ Senior engineers care more about **contracts** than implementations.
 
 ### Contracts include:
 
-* API request/response shapes
-* Error formats
-* Auth expectations
-* Data ownership boundaries
+- API request/response shapes
+- Error formats
+- Auth expectations
+- Data ownership boundaries
 
 ### Practice
 
-* Define DTOs early
-* Version APIs (`v1`)
-* Never casually break contracts
+- Define DTOs early
+- Version APIs (`v1`)
+- Never casually break contracts
 
 > You can refactor code freely if contracts stay stable.
 
@@ -1182,10 +1182,10 @@ Data outlives code.
 
 ### Early decisions seniors make:
 
-* Immutable IDs
-* Explicit ownership of data
-* Soft deletes over hard deletes
-* Audit fields everywhere
+- Immutable IDs
+- Explicit ownership of data
+- Soft deletes over hard deletes
+- Audit fields everywhere
 
 ### Rule
 
@@ -1197,17 +1197,17 @@ Data outlives code.
 
 Even tiny systems need:
 
-* Health checks
-* Logs with context
-* Environment separation
-* Rollback awareness
+- Health checks
+- Logs with context
+- Environment separation
+- Rollback awareness
 
 ### Minimum viable ops
 
-* `GET /health`
-* Request IDs
-* Structured logs
-* Feature toggles (simple flags)
+- `GET /health`
+- Request IDs
+- Structured logs
+- Feature toggles (simple flags)
 
 This prevents chaos later.
 
@@ -1217,15 +1217,15 @@ This prevents chaos later.
 
 Senior engineers delay:
 
-* Performance tuning
-* Caching
-* Scaling infra
+- Performance tuning
+- Caching
+- Scaling infra
 
 They prioritize:
 
-* Clean seams
-* Replaceable adapters
-* Clear boundaries
+- Clean seams
+- Replaceable adapters
+- Clear boundaries
 
 > You can optimize later.
 > You cannot easily uncouple later.
@@ -1238,16 +1238,16 @@ Boring systems scale better than clever ones.
 
 ### Seniors avoid:
 
-* Fancy abstractions
-* Over-engineering
-* Framework tricks
-* Premature microservices
+- Fancy abstractions
+- Over-engineering
+- Framework tricks
+- Premature microservices
 
 ### Seniors prefer:
 
-* Explicit code
-* Predictable structure
-* Fewer magic layers
+- Explicit code
+- Predictable structure
+- Fewer magic layers
 
 Boring code is a feature.
 
@@ -1259,16 +1259,16 @@ They test **invariants**, not UI behavior.
 
 ### Early test focus:
 
-* Business rules
-* Edge cases
-* Permission logic
-* Money calculations
+- Business rules
+- Edge cases
+- Permission logic
+- Money calculations
 
 ### Avoid early:
 
-* UI snapshot tests
-* Over-mocking
-* Framework tests
+- UI snapshot tests
+- Over-mocking
+- Framework tests
 
 Tests protect decisions, not syntax.
 
@@ -1295,16 +1295,16 @@ This saves months of future confusion.
 
 Senior engineers assume:
 
-* Someone else will read this
-* Future you will forget context
-* Teams will grow
+- Someone else will read this
+- Future you will forget context
+- Teams will grow
 
 ### Practices
 
-* Clear naming
-* Predictable folders
-* Minimal cleverness
-* Obvious flows
+- Clear naming
+- Predictable folders
+- Minimal cleverness
+- Obvious flows
 
 Human scalability matters more than CPU scalability.
 
@@ -1316,15 +1316,15 @@ Optionality = ability to change direction cheaply.
 
 They avoid:
 
-* Vendor lock-in
-* Hard assumptions
-* One-way decisions
+- Vendor lock-in
+- Hard assumptions
+- One-way decisions
 
 They design for:
 
-* Experimentation
-* Reversal
-* Evolution
+- Experimentation
+- Reversal
+- Evolution
 
 > **Optionality is leverage.**
 
@@ -1332,15 +1332,15 @@ They design for:
 
 # The Consultant’s Early-Stage Mental Checklist
 
-Before shipping *anything*, they confirm:
+Before shipping _anything_, they confirm:
 
-* Boundaries exist
-* Contracts are stable
-* Core logic is isolated
-* Data is respected
-* Ops is considered
-* Decisions are written
-* Change is localized
+- Boundaries exist
+- Contracts are stable
+- Core logic is isolated
+- Data is respected
+- Ops is considered
+- Decisions are written
+- Change is localized
 
 If yes → ship.
 If no → fix first.
@@ -1361,10 +1361,10 @@ Change scaling is only possible with discipline.
 
 If you want, we can now:
 
-* Apply this playbook to **one of your existing prototypes**
-* Create a **1-page audit sheet** you can reuse forever
-* Turn this into a **personal README / doctrine**
-* Build a **Week-1 project plan** that enforces all this
+- Apply this playbook to **one of your existing prototypes**
+- Create a **1-page audit sheet** you can reuse forever
+- Turn this into a **personal README / doctrine**
+- Build a **Week-1 project plan** that enforces all this
 
 Tell me the next number.
 
@@ -1377,8 +1377,8 @@ Let me place everything **cleanly and precisely**.
 
 ## The Key Clarification (Very Important)
 
-> **Design philosophy and senior-dev thinking define *how we structure decisions*.
-> Frontend, DB, infra, CI/CD, security define *where those decisions are executed*.**
+> **Design philosophy and senior-dev thinking define _how we structure decisions_.
+> Frontend, DB, infra, CI/CD, security define _where those decisions are executed_.**
 
 They are **orthogonal**, not alternatives.
 
@@ -1392,18 +1392,18 @@ This is what we’ve been discussing.
 
 It answers:
 
-* Where does logic live?
-* What is replaceable?
-* What owns decisions?
-* How do parts talk to each other?
+- Where does logic live?
+- What is replaceable?
+- What owns decisions?
+- How do parts talk to each other?
 
 Examples:
 
-* Layered architecture
-* Boundaries
-* Interfaces
-* Contracts
-* Replaceability
+- Layered architecture
+- Boundaries
+- Interfaces
+- Contracts
+- Replaceability
 
 ---
 
@@ -1413,24 +1413,24 @@ This is what you listed.
 
 It answers:
 
-* Where does the code run?
-* How is it deployed?
-* How is it secured?
-* How is it backed up?
-* How is it monitored?
+- Where does the code run?
+- How is it deployed?
+- How is it secured?
+- How is it backed up?
+- How is it monitored?
 
 Examples:
 
-* Frontend
-* Server
-* Database
-* Networking
-* Infrastructure
-* CI/CD
-* Security
-* Containers
-* CDN
-* Backups
+- Frontend
+- Server
+- Database
+- Networking
+- Infrastructure
+- CI/CD
+- Security
+- Containers
+- CDN
+- Backups
 
 ---
 
@@ -1455,9 +1455,9 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Presentation & user interaction
 **Philosophy rule:**
 
-* No business logic
-* Talks only to APIs
-* Replaceable anytime
+- No business logic
+- Talks only to APIs
+- Replaceable anytime
 
 ✔ Fits as the **UI layer**
 
@@ -1468,9 +1468,9 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Boundary & orchestration
 **Philosophy rule:**
 
-* Owns decisions
-* Enforces rules
-* Stable contracts
+- Owns decisions
+- Enforces rules
+- Stable contracts
 
 ✔ Fits as the **API + Application layers**
 
@@ -1481,9 +1481,9 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Persistence
 **Philosophy rule:**
 
-* Replaceable
-* Accessed only via interfaces
-* Never defines behavior
+- Replaceable
+- Accessed only via interfaces
+- Never defines behavior
 
 ✔ Fits as an **infrastructure adapter**
 
@@ -1494,8 +1494,8 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Connectivity & routing
 **Philosophy rule:**
 
-* Invisible to business logic
-* No assumptions baked into code
+- Invisible to business logic
+- No assumptions baked into code
 
 ✔ Treated as **transparent plumbing**
 
@@ -1506,8 +1506,8 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Runtime environment
 **Philosophy rule:**
 
-* Treated as cattle, not pets
-* Fully replaceable
+- Treated as cattle, not pets
+- Fully replaceable
 
 ✔ Below the architecture, not part of it
 
@@ -1518,8 +1518,8 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Automation & safety
 **Philosophy rule:**
 
-* Enforces discipline
-* Does not define architecture
+- Enforces discipline
+- Does not define architecture
 
 ✔ Supports quality, not structure
 
@@ -1530,8 +1530,8 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Protection & trust
 **Philosophy rule:**
 
-* Enforced at boundaries
-* Centralized, not scattered
+- Enforced at boundaries
+- Centralized, not scattered
 
 ✔ Cross-cutting concern (applies everywhere)
 
@@ -1542,8 +1542,8 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Packaging & portability
 **Philosophy rule:**
 
-* Implementation detail
-* No logic depends on it
+- Implementation detail
+- No logic depends on it
 
 ✔ Optional execution wrapper
 
@@ -1554,7 +1554,7 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Distribution & performance
 **Philosophy rule:**
 
-* Optimization, not dependency
+- Optimization, not dependency
 
 ✔ Can be added or removed freely
 
@@ -1565,8 +1565,8 @@ Below is a **clear mapping** that senior engineers use implicitly.
 **Role:** Data safety
 **Philosophy rule:**
 
-* Data-first mindset
-* Independent of code
+- Data-first mindset
+- Independent of code
 
 ✔ Operational responsibility, not architecture
 
@@ -1614,11 +1614,11 @@ Senior thinking:
 
 ## Final Answer (Very Clear)
 
-* ❌ These are **not different structures**
-* ❌ They do **not compete**
-* ✅ Architecture defines **how the system is shaped**
-* ✅ Infra defines **how that shape runs**
-* ✅ Senior engineers **separate these consciously**
+- ❌ These are **not different structures**
+- ❌ They do **not compete**
+- ✅ Architecture defines **how the system is shaped**
+- ✅ Infra defines **how that shape runs**
+- ✅ Senior engineers **separate these consciously**
 
 Once you see this separation, confusion disappears.
 
@@ -1630,10 +1630,10 @@ Once you see this separation, confusion disappears.
 
 If you want next, I can:
 
-* Create a **team-friendly diagram**
-* Turn this into a **checklist mapping**
-* Show **what to think about in Week 1 vs Month 6**
-* Help you assign **ownership per layer** for the team
+- Create a **team-friendly diagram**
+- Turn this into a **checklist mapping**
+- Show **what to think about in Week 1 vs Month 6**
+- Help you assign **ownership per layer** for the team
 
 Just say the next step.
 
@@ -1643,35 +1643,35 @@ Excellent — I’ll do **all four**, cleanly and **without stack bias**, and I�
 
 # 1️⃣ Cloud-Agnostic Deployment Checklist
 
-*(This is what makes “deploy anywhere” real)*
+_(This is what makes “deploy anywhere” real)_
 
 Before claiming portability, **all must be true**:
 
 ### Code & Architecture
 
-* No cloud-specific SDKs in core or API
-* No hard-coded URLs, ports, or file paths
-* All external services accessed via adapters
-* One clear entry point (`main`, `server`, `app`)
+- No cloud-specific SDKs in core or API
+- No hard-coded URLs, ports, or file paths
+- All external services accessed via adapters
+- One clear entry point (`main`, `server`, `app`)
 
 ### Configuration
 
-* All config via environment variables
-* Separate configs for dev / staging / prod
-* Secrets never in source control
+- All config via environment variables
+- Separate configs for dev / staging / prod
+- Secrets never in source control
 
 ### Runtime
 
-* Explicit build command
-* Explicit start command
-* Health check endpoint (`/health`)
-* Graceful shutdown handling
+- Explicit build command
+- Explicit start command
+- Health check endpoint (`/health`)
+- Graceful shutdown handling
 
 ### Data & State
 
-* App is stateless
-* Sessions stored externally (DB, cache)
-* Uploads stored externally (object storage)
+- App is stateless
+- Sessions stored externally (DB, cache)
+- Uploads stored externally (object storage)
 
 If this checklist passes → **cloud becomes irrelevant**.
 
@@ -1679,7 +1679,7 @@ If this checklist passes → **cloud becomes irrelevant**.
 
 # 2️⃣ “Deploy Anywhere” Reference Flow
 
-*(Netlify, Vercel, Render, AWS, GCP, Azure all fit this)*
+_(Netlify, Vercel, Render, AWS, GCP, Azure all fit this)_
 
 This is the **universal deployment flow** senior teams design for:
 
@@ -1699,9 +1699,9 @@ External Services (DB, Auth, Storage)
 
 ### Why this works
 
-* The **artifact never changes**
-* Only **configuration changes**
-* Providers become interchangeable
+- The **artifact never changes**
+- Only **configuration changes**
+- Providers become interchangeable
 
 This is why migrations become **operational**, not architectural.
 
@@ -1709,11 +1709,11 @@ This is why migrations become **operational**, not architectural.
 
 # 3️⃣ CI/CD Once, Run Everywhere
 
-*(This is how seniors avoid CI chaos)*
+_(This is how seniors avoid CI chaos)_
 
 ### Principle
 
-> CI/CD validates *architecture assumptions*, not platforms.
+> CI/CD validates _architecture assumptions_, not platforms.
 
 ### Minimal portable CI pipeline
 
@@ -1727,16 +1727,16 @@ Only step **5** changes per provider.
 
 ### Why this matters
 
-* Same pipeline works for:
+- Same pipeline works for:
+  - Netlify
+  - Vercel
+  - Render
+  - AWS
+  - GCP
+  - Azure
 
-  * Netlify
-  * Vercel
-  * Render
-  * AWS
-  * GCP
-  * Azure
-* No vendor-locked pipelines
-* Easy migration
+- No vendor-locked pipelines
+- Easy migration
 
 CI enforces discipline; it does not define architecture.
 
@@ -1744,7 +1744,7 @@ CI enforces discipline; it does not define architecture.
 
 # 4️⃣ Serverless vs Containers vs VMs
 
-*(How seniors choose — very important)*
+_(How seniors choose — very important)_
 
 These are **execution models**, not architectures.
 
@@ -1754,20 +1754,20 @@ These are **execution models**, not architectures.
 
 **Good for:**
 
-* APIs
-* Event-driven tasks
-* Early products
+- APIs
+- Event-driven tasks
+- Early products
 
 **Requirements:**
 
-* Stateless logic
-* Fast cold starts
-* No long-running processes
+- Stateless logic
+- Fast cold starts
+- No long-running processes
 
 **Portability tip:**
 
-* Keep serverless logic thin
-* Core logic remains platform-agnostic
+- Keep serverless logic thin
+- Core logic remains platform-agnostic
 
 ---
 
@@ -1775,14 +1775,14 @@ These are **execution models**, not architectures.
 
 **Good for:**
 
-* Maximum portability
-* Predictable behavior
-* Multi-cloud freedom
+- Maximum portability
+- Predictable behavior
+- Multi-cloud freedom
 
 **Why seniors love them:**
 
-* Same container everywhere
-* Cloud differences disappear
+- Same container everywhere
+- Cloud differences disappear
 
 **Rule:**
 
@@ -1794,14 +1794,14 @@ These are **execution models**, not architectures.
 
 **Good for:**
 
-* Full control
-* Legacy systems
-* Special workloads
+- Full control
+- Legacy systems
+- Special workloads
 
 **Trade-off:**
 
-* More ops responsibility
-* Less abstraction
+- More ops responsibility
+- Less abstraction
 
 Still portable if architecture is clean.
 
@@ -1842,14 +1842,14 @@ If you keep this order, **deployment stops being scary**.
 
 ### What we can do next (optional)
 
-* Create a **team deployment standard document**
-* Design a **single CI template for all projects**
-* Map this onto **one of your real projects**
-* Create a **“cloud exit plan” template**
+- Create a **team deployment standard document**
+- Design a **single CI template for all projects**
+- Map this onto **one of your real projects**
+- Create a **“cloud exit plan” template**
 
 Just tell me the next step.
 
-Yes — **what you’ve been defining directly addresses that problem**, and it’s worth making the connection explicit so it’s clear *why* this matters.
+Yes — **what you’ve been defining directly addresses that problem**, and it’s worth making the connection explicit so it’s clear _why_ this matters.
 
 ---
 
@@ -1867,11 +1867,11 @@ But they do so **systematically**, not accidentally.
 
 “It works on my system” usually means:
 
-* Hidden dependencies
-* Undocumented assumptions
-* Environment-specific behavior
-* Logic mixed with infrastructure
-* No clear contracts or boundaries
+- Hidden dependencies
+- Undocumented assumptions
+- Environment-specific behavior
+- Logic mixed with infrastructure
+- No clear contracts or boundaries
 
 In other words: **architecture and operations are entangled**.
 
@@ -1881,9 +1881,9 @@ In other words: **architecture and operations are entangled**.
 
 ### 1️⃣ Clear boundaries remove hidden assumptions
 
-* Business logic is isolated
-* Infrastructure is behind interfaces
-* Frontend talks only to APIs
+- Business logic is isolated
+- Infrastructure is behind interfaces
+- Frontend talks only to APIs
 
 ➡ Different machines, same behavior.
 
@@ -1891,9 +1891,9 @@ In other words: **architecture and operations are entangled**.
 
 ### 2️⃣ Contracts define shared truth
 
-* Explicit API shapes
-* Defined inputs/outputs
-* Stable expectations
+- Explicit API shapes
+- Defined inputs/outputs
+- Stable expectations
 
 ➡ Everyone runs against the same contract, not personal setups.
 
@@ -1901,9 +1901,9 @@ In other words: **architecture and operations are entangled**.
 
 ### 3️⃣ Environment separation becomes natural
 
-* Config lives outside code
-* No hard-coded paths or secrets
-* Same code, different configs
+- Config lives outside code
+- No hard-coded paths or secrets
+- Same code, different configs
 
 ➡ Dev, staging, prod behave consistently.
 
@@ -1911,18 +1911,18 @@ In other words: **architecture and operations are entangled**.
 
 ### 4️⃣ Replaceable infrastructure eliminates local quirks
 
-* Databases, SDKs, services are adapters
-* In-memory or mocked versions exist
+- Databases, SDKs, services are adapters
+- In-memory or mocked versions exist
 
-➡ Code runs without needing *your* exact setup.
+➡ Code runs without needing _your_ exact setup.
 
 ---
 
 ### 5️⃣ Operational thinking catches issues early
 
-* Health checks
-* Logs with context
-* CI checks
+- Health checks
+- Logs with context
+- CI checks
 
 ➡ Problems surface before “it works for me” becomes a debate.
 
@@ -1936,8 +1936,8 @@ When a senior says:
 
 They mean:
 
-* Behavior is defined by **code and contracts**
-* Not by laptops, OS, or environment quirks
+- Behavior is defined by **code and contracts**
+- Not by laptops, OS, or environment quirks
 
 That’s exactly what you’re building toward.
 
@@ -1951,9 +1951,9 @@ That’s exactly what you’re building toward.
 
 If you want, next I can:
 
-* Show a **concrete checklist** to validate this per project
-* Map this to **CI/CD and local dev workflows**
-* Help you define a **“works everywhere” team standard**
+- Show a **concrete checklist** to validate this per project
+- Map this to **CI/CD and local dev workflows**
+- Help you define a **“works everywhere” team standard**
 
 Just tell me what you want to tackle next.
 
@@ -1970,8 +1970,8 @@ Let me break this down cleanly and precisely.
 
 ### **Architecture ≠ Operations**
 
-* **Architecture** = how the system is *structured*
-* **Operations** = how the system is *run*
+- **Architecture** = how the system is _structured_
+- **Operations** = how the system is _run_
 
 Junior teams mix these up. Senior teams separate them.
 
@@ -1983,27 +1983,27 @@ These are **architectural decisions**, not tools:
 
 ### 1️⃣ Clean Boundaries
 
-* UI ≠ API ≠ Domain Logic ≠ Infrastructure
-* No cloud logic inside business logic
-* External services accessed via interfaces/adapters
+- UI ≠ API ≠ Domain Logic ≠ Infrastructure
+- No cloud logic inside business logic
+- External services accessed via interfaces/adapters
 
 ### 2️⃣ Stateless Application
 
-* No memory-based state
-* No filesystem dependence
-* All state externalized
+- No memory-based state
+- No filesystem dependence
+- All state externalized
 
 ### 3️⃣ Configuration via Environment
 
-* Zero hardcoded secrets
-* Zero hardcoded URLs
-* Zero hardcoded provider logic
+- Zero hardcoded secrets
+- Zero hardcoded URLs
+- Zero hardcoded provider logic
 
 ### 4️⃣ Deterministic Build & Start
 
-* One build command
-* One start command
-* Predictable outputs
+- One build command
+- One start command
+- Predictable outputs
 
 ➡️ If you have **only these**, you are already future-proof.
 
@@ -2015,23 +2015,22 @@ These are **operational optimizations**, not requirements:
 
 ### ❌ CI/CD
 
-* Not needed with 0 users
-* Adds complexity early
-* Can be added later in hours if architecture is clean
+- Not needed with 0 users
+- Adds complexity early
+- Can be added later in hours if architecture is clean
 
 ### ❌ Docker
 
-* Not needed until:
-
-  * Team grows
-  * Environments diverge
-  * Deployment friction appears
+- Not needed until:
+  - Team grows
+  - Environments diverge
+  - Deployment friction appears
 
 ### ❌ Serverless
 
-* Choice of execution model
-* Can be decided later
-* Architecture determines feasibility, not early setup
+- Choice of execution model
+- Can be decided later
+- Architecture determines feasibility, not early setup
 
 ---
 
@@ -2049,7 +2048,7 @@ Once these invariants exist:
 | Externalized services     | Swapping Firebase / Mongo / Supabase |
 | Thin infrastructure layer | Cloud migration                      |
 
-You are not *preparing tools* — you are *preserving options*.
+You are not _preparing tools_ — you are _preserving options_.
 
 ---
 
@@ -2057,29 +2056,29 @@ You are not *preparing tools* — you are *preserving options*.
 
 ### Phase 1 — Prototype (NOW)
 
-* Local dev
-* Manual deploy
-* No Docker
-* No CI/CD
-* Focus on correctness & boundaries
+- Local dev
+- Manual deploy
+- No Docker
+- No CI/CD
+- Focus on correctness & boundaries
 
 ### Phase 2 — Validation
 
-* Add simple CI (tests + build)
-* Optional container
-* One deployment target
+- Add simple CI (tests + build)
+- Optional container
+- One deployment target
 
 ### Phase 3 — Growth
 
-* Full CI/CD
-* Containers or serverless
-* Multiple environments
+- Full CI/CD
+- Containers or serverless
+- Multiple environments
 
 ### Phase 4 — Scale
 
-* Infrastructure as code
-* Advanced observability
-* Multi-cloud optionality
+- Infrastructure as code
+- Advanced observability
+- Multi-cloud optionality
 
 **No rewrites at any phase.**
 
@@ -2087,7 +2086,7 @@ You are not *preparing tools* — you are *preserving options*.
 
 ## Key Sentence You Can Tell Your Team
 
-> *We are not delaying CI/CD or Docker because they’re unimportant; we are designing the system so that adding them later is trivial.*
+> _We are not delaying CI/CD or Docker because they’re unimportant; we are designing the system so that adding them later is trivial._
 
 That is **senior-level engineering discipline**.
 
@@ -2103,13 +2102,13 @@ That is **senior-level engineering discipline**.
 
 If you want, next we can:
 
-* Create a **“Day One Architecture Checklist” (1 page)**
-* Map this onto one of your existing prototypes
-* Define **exact signals** for when to add Docker or CI/CD
+- Create a **“Day One Architecture Checklist” (1 page)**
+- Map this onto one of your existing prototypes
+- Define **exact signals** for when to add Docker or CI/CD
 
 Just say which one.
 
-Perfect. Here is **#3 — the exact signals senior teams use to decide *when* to add Docker, CI/CD, serverless, or heavier infra**.
+Perfect. Here is **#3 — the exact signals senior teams use to decide _when_ to add Docker, CI/CD, serverless, or heavier infra**.
 This removes guesswork and avoids premature complexity.
 
 ---
@@ -2123,18 +2122,18 @@ Add it when **at least one** of these becomes true:
 
 ### Clear signals
 
-* More than **1 developer** is pushing code
-* You’ve had **“works on my machine”** issues
-* You are deploying **more than once per week**
-* Bugs reach production due to missed tests
-* You need a **repeatable release process**
+- More than **1 developer** is pushing code
+- You’ve had **“works on my machine”** issues
+- You are deploying **more than once per week**
+- Bugs reach production due to missed tests
+- You need a **repeatable release process**
 
 ### What CI/CD should do at this stage (minimal)
 
-* Install dependencies
-* Run tests
-* Build the app
-* Fail fast if something breaks
+- Install dependencies
+- Run tests
+- Build the app
+- Fail fast if something breaks
 
 > If CI is doing more than this early on, it’s over-engineered.
 
@@ -2146,17 +2145,17 @@ Docker is about **environment consistency**, not deployment hype.
 
 ### Add Docker when:
 
-* Dev machines differ (OS, Node versions, tooling)
-* Onboarding a new dev takes **> 30 minutes**
-* Bugs appear only in production
-* You want **guaranteed reproducibility**
-* You plan to deploy to multiple providers
+- Dev machines differ (OS, Node versions, tooling)
+- Onboarding a new dev takes **> 30 minutes**
+- Bugs appear only in production
+- You want **guaranteed reproducibility**
+- You plan to deploy to multiple providers
 
 ### Do NOT add Docker if:
 
-* Solo dev
-* Stable local + cloud parity
-* No environment-related bugs
+- Solo dev
+- Stable local + cloud parity
+- No environment-related bugs
 
 > Clean architecture makes Docker optional early, inevitable later.
 
@@ -2168,16 +2167,16 @@ Serverless is an **execution optimization**, not a foundation.
 
 ### Go serverless when:
 
-* Your app is **stateless**
-* Workloads are bursty or unpredictable
-* You want zero infra management
-* You pay more for idle servers than usage
+- Your app is **stateless**
+- Workloads are bursty or unpredictable
+- You want zero infra management
+- You pay more for idle servers than usage
 
 ### Avoid serverless if:
 
-* Long-running processes
-* Heavy in-memory state
-* Tight coupling between services
+- Long-running processes
+- Heavy in-memory state
+- Tight coupling between services
 
 > Architecture decides if serverless is possible — timing decides if it’s smart.
 
@@ -2189,18 +2188,18 @@ Serverless is an **execution optimization**, not a foundation.
 
 ### Add when:
 
-* Multiple services exist
-* Scaling is uneven across components
-* You need controlled rollouts
-* Infra costs matter
-* You want multi-cloud leverage
+- Multiple services exist
+- Scaling is uneven across components
+- You need controlled rollouts
+- Infra costs matter
+- You want multi-cloud leverage
 
 ### Never add just because:
 
-* “Big companies use it”
-* “We might need it someday”
+- “Big companies use it”
+- “We might need it someday”
 
-> Orchestration solves *coordination problems*, not ambition problems.
+> Orchestration solves _coordination problems_, not ambition problems.
 
 ---
 
@@ -2210,10 +2209,10 @@ Add this **last**, not first.
 
 ### Add when:
 
-* Infra changes are frequent
-* Manual setup causes mistakes
-* You need reproducibility across environments
-* Compliance or audits matter
+- Infra changes are frequent
+- Manual setup causes mistakes
+- You need reproducibility across environments
+- Compliance or audits matter
 
 ---
 
@@ -2228,7 +2227,7 @@ No friction = no tool.
 
 ## One-liner You Can Tell the Team
 
-> *We don’t start with CI/CD, Docker, or serverless — we start with architecture that allows them to be added the moment friction appears.*
+> _We don’t start with CI/CD, Docker, or serverless — we start with architecture that allows them to be added the moment friction appears._
 
 That sentence alone signals senior-level thinking.
 
@@ -2236,10 +2235,10 @@ That sentence alone signals senior-level thinking.
 
 If you want next, we can:
 
-* Turn this into a **one-page team policy**
-* Apply it to **one of your existing prototypes**
-* Create a **“tool adoption decision tree”**
-* Define **anti-patterns that force rewrites**
+- Turn this into a **one-page team policy**
+- Apply it to **one of your existing prototypes**
+- Create a **“tool adoption decision tree”**
+- Define **anti-patterns that force rewrites**
 
 Just say the next number.
 
@@ -2249,33 +2248,28 @@ Great — I’ll do **both #3 and #4**, clean, concrete, and directly usable by 
 
 # 3️⃣ Apply This to an Existing Prototype (Reality Check)
 
-This is how senior engineers **audit a prototype** to see if it already follows the philosophy — *without rewriting it*.
+This is how senior engineers **audit a prototype** to see if it already follows the philosophy — _without rewriting it_.
 
 ## Step 1: Ask Only These 5 Questions
 
 You don’t inspect tools. You inspect **structure**.
 
 1. **Is business logic isolated from infrastructure?**
-
-   * If you remove Firebase/Mongo/REST today, does your core logic survive?
+   - If you remove Firebase/Mongo/REST today, does your core logic survive?
 
 2. **Is the app stateless?**
-
-   * Restart server → nothing breaks?
-   * No critical data stored in memory or local files?
+   - Restart server → nothing breaks?
+   - No critical data stored in memory or local files?
 
 3. **Is configuration externalized?**
-
-   * Can you change DB, auth, API URLs via ENV only?
+   - Can you change DB, auth, API URLs via ENV only?
 
 4. **Is there a single clear entry point?**
-
-   * One backend start command
-   * One frontend build command
+   - One backend start command
+   - One frontend build command
 
 5. **Are external services accessed indirectly?**
-
-   * Through wrappers/adapters, not directly scattered in code
+   - Through wrappers/adapters, not directly scattered in code
 
 If you answer **YES to 3 or more**, your prototype is **salvageable without rewrite**.
 
@@ -2285,9 +2279,9 @@ If you answer **YES to 3 or more**, your prototype is **salvageable without rewr
 
 ### 🟢 Type A — Structurally Clean Prototype
 
-* Works locally
-* Minimal infra
-* Clear separation
+- Works locally
+- Minimal infra
+- Clear separation
 
 ✅ Action:
 **Keep building features. Add infra later.**
@@ -2296,16 +2290,16 @@ If you answer **YES to 3 or more**, your prototype is **salvageable without rewr
 
 ### 🟡 Type B — Mixed Concerns Prototype
 
-* Firebase logic mixed into business logic
-* Direct DB calls everywhere
-* Some hardcoded config
+- Firebase logic mixed into business logic
+- Direct DB calls everywhere
+- Some hardcoded config
 
 ⚠️ Action:
 **Refactor boundaries only**, not features.
 
-* Extract domain logic
-* Introduce service interfaces
-* Wrap external dependencies
+- Extract domain logic
+- Introduce service interfaces
+- Wrap external dependencies
 
 No rewrite. No pause in progress.
 
@@ -2313,16 +2307,16 @@ No rewrite. No pause in progress.
 
 ### 🔴 Type C — Tool-Centric Prototype
 
-* Firebase = backend
-* No API boundary
-* Logic inside UI or cloud functions
+- Firebase = backend
+- No API boundary
+- Logic inside UI or cloud functions
 
 🚨 Action:
 **Stabilize now before growth**
 
-* Introduce backend layer
-* Move logic out of tools
-* Freeze features briefly
+- Introduce backend layer
+- Move logic out of tools
+- Freeze features briefly
 
 This saves months later.
 
@@ -2358,9 +2352,9 @@ These are the **exact mistakes** that make systems impossible to scale or migrat
 
 🔴 Result:
 
-* Tool dictates structure
-* Migration = rewrite
-* Hiring becomes harder
+- Tool dictates structure
+- Migration = rewrite
+- Hiring becomes harder
 
 ✅ Correct framing:
 
@@ -2370,43 +2364,43 @@ These are the **exact mistakes** that make systems impossible to scale or migrat
 
 ## ❌ Anti-Pattern 2: Business Logic in the Frontend
 
-* Validation logic
-* Pricing rules
-* Permissions
+- Validation logic
+- Pricing rules
+- Permissions
 
 🔴 Result:
 
-* Impossible to test properly
-* Inconsistent behavior
-* Security holes
+- Impossible to test properly
+- Inconsistent behavior
+- Security holes
 
 ---
 
 ## ❌ Anti-Pattern 3: Hardcoded Infrastructure
 
-* URLs in code
-* Credentials in repo
-* Provider-specific logic everywhere
+- URLs in code
+- Credentials in repo
+- Provider-specific logic everywhere
 
 🔴 Result:
 
-* Every deploy is painful
-* CI/CD becomes fragile
-* Environment drift
+- Every deploy is painful
+- CI/CD becomes fragile
+- Environment drift
 
 ---
 
 ## ❌ Anti-Pattern 4: Adding Infra Before Friction
 
-* Docker with no env problems
-* Kubernetes for a single service
-* CI pipelines nobody understands
+- Docker with no env problems
+- Kubernetes for a single service
+- CI pipelines nobody understands
 
 🔴 Result:
 
-* Slower development
-* Fear of touching the system
-* False sense of “scalability”
+- Slower development
+- Fear of touching the system
+- False sense of “scalability”
 
 ---
 
@@ -2430,7 +2424,7 @@ Your goal is the opposite.
 
 ## Final Message You Can Tell the Team
 
-> *We are not optimizing for today’s deployment or tools. We are optimizing for the ability to change them without rewriting the system.*
+> _We are not optimizing for today’s deployment or tools. We are optimizing for the ability to change them without rewriting the system._
 
 That sentence aligns everyone — juniors and seniors.
 
@@ -2438,10 +2432,10 @@ That sentence aligns everyone — juniors and seniors.
 
 ### If you want next:
 
-* Turn this into a **1-page engineering doctrine**
-* Run a **real audit** on one of your prototypes
-* Create a **standard project skeleton**
-* Define **“exit plans” for Firebase, Supabase, Mongo, etc.**
+- Turn this into a **1-page engineering doctrine**
+- Run a **real audit** on one of your prototypes
+- Create a **standard project skeleton**
+- Define **“exit plans” for Firebase, Supabase, Mongo, etc.**
 
 Just tell me the next step.
 
@@ -2473,9 +2467,9 @@ You **design so they are possible**.
 
 ### Architectural rules
 
-* No DB queries in controllers/UI
-* All data access via repositories/interfaces
-* Domain logic never depends on query syntax
+- No DB queries in controllers/UI
+- All data access via repositories/interfaces
+- Domain logic never depends on query syntax
 
 ### Exit question (must be answerable)
 
@@ -2495,9 +2489,9 @@ You **design so they are possible**.
 
 ### Architectural rules
 
-* Auth wrapped behind an AuthService
-* App logic only sees `userId`, `roles`, `claims`
-* No direct dependency on provider SDKs
+- Auth wrapped behind an AuthService
+- App logic only sees `userId`, `roles`, `claims`
+- No direct dependency on provider SDKs
 
 ### Exit question
 
@@ -2516,10 +2510,10 @@ Frontend, backend, permissions, data model
 
 ### Architectural rules
 
-* Stateless services
-* ENV-based config
-* No filesystem dependency
-* One build + start command
+- Stateless services
+- ENV-based config
+- No filesystem dependency
+- One build + start command
 
 ### Exit question
 
@@ -2535,9 +2529,9 @@ If not → architecture is leaking infrastructure.
 
 ### Architectural rules
 
-* CI pipeline mirrors local commands
-* No logic inside CI scripts
-* CI only *orchestrates*, never *implements*
+- CI pipeline mirrors local commands
+- No logic inside CI scripts
+- CI only _orchestrates_, never _implements_
 
 ### Exit question
 
@@ -2554,9 +2548,9 @@ If not → architecture is leaking infrastructure.
 
 ### Architectural rules
 
-* Business logic outside UI
-* API contracts documented
-* UI is a consumer, not an owner
+- Business logic outside UI
+- API contracts documented
+- UI is a consumer, not an owner
 
 ### Exit question
 
@@ -2585,21 +2579,21 @@ If any row says **No**, that’s technical debt — not later, **now**.
 
 ❌ Exit plans do **not** mean:
 
-* “We plan to leave”
-* “We expect failure”
-* “We over-engineer”
+- “We plan to leave”
+- “We expect failure”
+- “We over-engineer”
 
 ✅ Exit plans mean:
 
-* We control our system
-* Tools serve us
-* Growth doesn’t trap us
+- We control our system
+- Tools serve us
+- Growth doesn’t trap us
 
 ---
 
 ## One Sentence You Can Tell the Team
 
-> *Every major dependency must have an exit path, even if we never use it.*
+> _Every major dependency must have an exit path, even if we never use it._
 
 That sentence alone filters senior vs junior thinking.
 
@@ -2614,10 +2608,10 @@ That sentence alone filters senior vs junior thinking.
 
 If you want next, we can:
 
-* Turn exit plans into a **mandatory project checklist**
-* Write a **“tool adoption contract”** for teams
-* Apply exit plans to one of your real prototypes
-* Merge exit plans + architecture into a **single doctrine doc**
+- Turn exit plans into a **mandatory project checklist**
+- Write a **“tool adoption contract”** for teams
+- Apply exit plans to one of your real prototypes
+- Merge exit plans + architecture into a **single doctrine doc**
 
 Just say the next step.
 
@@ -2630,7 +2624,7 @@ Here is **#4 — a single, unified Engineering Doctrine** that merges **architec
 
 **Portable, Replaceable, Scalable Web Systems**
 
-> This doctrine defines *how we design systems*, not which tools we use.
+> This doctrine defines _how we design systems_, not which tools we use.
 > Tools change. Architecture endures.
 
 ---
@@ -2649,30 +2643,29 @@ These are **design decisions**, not infra setup.
 
 ### 2.1 Separation of Concerns
 
-* UI ≠ API ≠ Domain Logic ≠ Infrastructure
-* Business logic never depends on:
-
-  * Cloud providers
-  * Databases
-  * Auth vendors
-  * Frameworks
+- UI ≠ API ≠ Domain Logic ≠ Infrastructure
+- Business logic never depends on:
+  - Cloud providers
+  - Databases
+  - Auth vendors
+  - Frameworks
 
 ### 2.2 Statelessness
 
-* No critical data stored in memory
-* No local filesystem reliance
-* Any instance can die without impact
+- No critical data stored in memory
+- No local filesystem reliance
+- Any instance can die without impact
 
 ### 2.3 Externalized Configuration
 
-* All config via environment variables
-* No hardcoded URLs, secrets, or provider logic
-* Same codebase runs everywhere
+- All config via environment variables
+- No hardcoded URLs, secrets, or provider logic
+- Same codebase runs everywhere
 
 ### 2.4 Explicit Boundaries
 
-* External services accessed through adapters/interfaces
-* Domain logic sees *capabilities*, not implementations
+- External services accessed through adapters/interfaces
+- Domain logic sees _capabilities_, not implementations
 
 ---
 
@@ -2682,10 +2675,10 @@ These are **design decisions**, not infra setup.
 
 Therefore:
 
-* CI/CD is optional early
-* Docker is optional early
-* Serverless is optional early
-* Cloud provider is irrelevant
+- CI/CD is optional early
+- Docker is optional early
+- Serverless is optional early
+- Cloud provider is irrelevant
 
 They can be added **at any time** without refactoring.
 
@@ -2697,8 +2690,8 @@ Every major dependency **must have an exit path**, even if never used.
 
 ### 4.1 Database Exit Plan
 
-* Data access via repositories
-* No query logic in business code
+- Data access via repositories
+- No query logic in business code
 
 **Exit test:**
 
@@ -2708,8 +2701,8 @@ Every major dependency **must have an exit path**, even if never used.
 
 ### 4.2 Auth Exit Plan
 
-* Auth wrapped behind `AuthService`
-* App logic consumes `userId`, `roles`, `claims`
+- Auth wrapped behind `AuthService`
+- App logic consumes `userId`, `roles`, `claims`
 
 **Exit test:**
 
@@ -2719,9 +2712,9 @@ Every major dependency **must have an exit path**, even if never used.
 
 ### 4.3 Hosting / Cloud Exit Plan
 
-* Stateless services
-* One build command
-* One start command
+- Stateless services
+- One build command
+- One start command
 
 **Exit test:**
 
@@ -2731,8 +2724,8 @@ Every major dependency **must have an exit path**, even if never used.
 
 ### 4.4 CI/CD Exit Plan
 
-* CI mirrors local commands
-* No business logic in pipelines
+- CI mirrors local commands
+- No business logic in pipelines
 
 **Exit test:**
 
@@ -2742,8 +2735,8 @@ Every major dependency **must have an exit path**, even if never used.
 
 ### 4.5 Frontend Exit Plan
 
-* UI is a consumer, not owner, of logic
-* API contracts are stable
+- UI is a consumer, not owner, of logic
+- API contracts are stable
 
 **Exit test:**
 
@@ -2774,9 +2767,9 @@ No friction → no tool.
 
 Therefore:
 
-* Prototypes **must** follow the same philosophy
-* But **must not** over-engineer operations
-* Structure matters more than tooling
+- Prototypes **must** follow the same philosophy
+- But **must not** over-engineer operations
+- Structure matters more than tooling
 
 ---
 
@@ -2784,10 +2777,10 @@ Therefore:
 
 A project is healthy if:
 
-* Removing a tool does NOT break core logic
-* Deployment target can change without refactor
-* External services are swappable
-* Infra decisions are reversible
+- Removing a tool does NOT break core logic
+- Deployment target can change without refactor
+- External services are swappable
+- Infra decisions are reversible
 
 If not → architecture debt exists.
 
@@ -2795,11 +2788,11 @@ If not → architecture debt exists.
 
 ## 8️⃣ Anti-Principles (Never Allowed)
 
-* “We are a Firebase app”
-* “We’ll clean it later”
-* “This is just a small project”
-* Business logic in UI
-* Hardcoded infrastructure
+- “We are a Firebase app”
+- “We’ll clean it later”
+- “This is just a small project”
+- Business logic in UI
+- Hardcoded infrastructure
 
 ---
 
@@ -2813,20 +2806,20 @@ If not → architecture debt exists.
 
 ### What this doctrine gives you
 
-* Freedom of tech stack choice
-* Seamless migration capability
-* Senior-level consistency across teams
-* Ability to scale without rewrites
-* Confidence deploying anywhere, anytime
+- Freedom of tech stack choice
+- Seamless migration capability
+- Senior-level consistency across teams
+- Ability to scale without rewrites
+- Confidence deploying anywhere, anytime
 
 ---
 
 If you want next, we can:
 
-* Convert this into a **1-page printable checklist**
-* Apply it to **one real project you’ve built**
-* Create a **starter project skeleton**
-* Define **review questions for code reviews**
+- Convert this into a **1-page printable checklist**
+- Apply it to **one real project you’ve built**
+- Create a **starter project skeleton**
+- Define **review questions for code reviews**
 
 Just say the next step.
 
@@ -2839,7 +2832,7 @@ This is what keeps systems clean **without slowing teams down**.
 
 # 🔍 ENGINEERING CODE REVIEW QUESTIONS
 
-*(Architecture-first, tool-agnostic)*
+_(Architecture-first, tool-agnostic)_
 
 > These questions are asked on **every PR**, regardless of project size.
 
@@ -2851,15 +2844,15 @@ This is what keeps systems clean **without slowing teams down**.
 
 Ask:
 
-* Where does the **business logic** live?
-* Does this code introduce a **direct dependency** on a vendor or provider?
-* If we remove this tool, what breaks?
+- Where does the **business logic** live?
+- Does this code introduce a **direct dependency** on a vendor or provider?
+- If we remove this tool, what breaks?
 
 ✅ Good sign
 
-* Logic depends on interfaces or services
+- Logic depends on interfaces or services
   ❌ Red flag
-* Logic imports Firebase, DB clients, cloud SDKs directly
+- Logic imports Firebase, DB clients, cloud SDKs directly
 
 ---
 
@@ -2869,15 +2862,15 @@ Ask:
 
 Ask:
 
-* Does this code rely on in-memory state?
-* Does it assume a single instance?
-* Does it write to local disk?
+- Does this code rely on in-memory state?
+- Does it assume a single instance?
+- Does it write to local disk?
 
 ✅ Good sign
 
-* State externalized
+- State externalized
   ❌ Red flag
-* Global variables, singleton state, temp files
+- Global variables, singleton state, temp files
 
 ---
 
@@ -2887,15 +2880,15 @@ Ask:
 
 Ask:
 
-* Are all values environment-driven?
-* Are there any hardcoded URLs, secrets, ports?
-* Can this run unchanged in another environment?
+- Are all values environment-driven?
+- Are there any hardcoded URLs, secrets, ports?
+- Can this run unchanged in another environment?
 
 ✅ Good sign
 
-* ENV-based config
+- ENV-based config
   ❌ Red flag
-* Inline credentials or provider URLs
+- Inline credentials or provider URLs
 
 ---
 
@@ -2905,15 +2898,15 @@ Ask:
 
 Ask:
 
-* Which dependency does this code introduce?
-* Where is the adapter/interface?
-* What file changes if we replace it?
+- Which dependency does this code introduce?
+- Where is the adapter/interface?
+- What file changes if we replace it?
 
 ✅ Good sign
 
-* One adapter changes
+- One adapter changes
   ❌ Red flag
-* Dependency scattered across codebase
+- Dependency scattered across codebase
 
 ---
 
@@ -2923,15 +2916,15 @@ Ask:
 
 Ask:
 
-* Is any decision-making happening in the UI?
-* Are rules duplicated across layers?
-* Can this logic be unit-tested without infra?
+- Is any decision-making happening in the UI?
+- Are rules duplicated across layers?
+- Can this logic be unit-tested without infra?
 
 ✅ Good sign
 
-* Logic testable in isolation
+- Logic testable in isolation
   ❌ Red flag
-* Logic buried in components or controllers
+- Logic buried in components or controllers
 
 ---
 
@@ -2941,15 +2934,15 @@ Ask:
 
 Ask:
 
-* Is this a breaking change?
-* Is the contract documented?
-* Are assumptions implicit or explicit?
+- Is this a breaking change?
+- Is the contract documented?
+- Are assumptions implicit or explicit?
 
 ✅ Good sign
 
-* Backward-compatible changes
+- Backward-compatible changes
   ❌ Red flag
-* Silent breaking changes
+- Silent breaking changes
 
 ---
 
@@ -2959,14 +2952,14 @@ Ask:
 
 Ask:
 
-* Does this code assume Docker, CI, or cloud specifics?
-* Is infra logic creeping into app logic?
+- Does this code assume Docker, CI, or cloud specifics?
+- Is infra logic creeping into app logic?
 
 ✅ Good sign
 
-* Infra isolated
+- Infra isolated
   ❌ Red flag
-* App logic knows how it’s deployed
+- App logic knows how it’s deployed
 
 ---
 
@@ -2976,15 +2969,15 @@ Ask:
 
 Ask:
 
-* What friction does this solve?
-* Is this needed **now**?
-* Is there a simpler version?
+- What friction does this solve?
+- Is this needed **now**?
+- Is there a simpler version?
 
 ✅ Good sign
 
-* Solves a real problem
+- Solves a real problem
   ❌ Red flag
-* “We might need this later”
+- “We might need this later”
 
 ---
 
@@ -2992,10 +2985,10 @@ Ask:
 
 If **any** answer is “yes”, the PR pauses:
 
-* Does this make migrations harder?
-* Does this lock us into a tool?
-* Does this mix concerns?
-* Does this remove optionality?
+- Does this make migrations harder?
+- Does this lock us into a tool?
+- Does this mix concerns?
+- Does this remove optionality?
 
 ---
 
@@ -3011,7 +3004,7 @@ Architecture debt compounds.
 
 ## One Sentence for the Team
 
-> *Every PR should make the system easier to change, not harder to escape.*
+> _Every PR should make the system easier to change, not harder to escape._
 
 If a PR doesn’t meet that bar, it’s not ready.
 
@@ -3019,18 +3012,18 @@ If a PR doesn’t meet that bar, it’s not ready.
 
 ## How to Use This Practically
 
-* Start with **3–4 questions**, not all
-* Rotate focus per sprint
-* Teach juniors *why*, not just *what*
-* Document recurring failures → architectural debt list
+- Start with **3–4 questions**, not all
+- Rotate focus per sprint
+- Teach juniors _why_, not just _what_
+- Document recurring failures → architectural debt list
 
 ---
 
 If you want next, we can:
 
-* Turn this into a **PR template**
-* Create a **junior-to-senior learning path**
-* Apply this checklist to a **real PR**
-* Design a **project scoring system (0–100 architecture health)**
+- Turn this into a **PR template**
+- Create a **junior-to-senior learning path**
+- Apply this checklist to a **real PR**
+- Design a **project scoring system (0–100 architecture health)**
 
 Just say the next step.

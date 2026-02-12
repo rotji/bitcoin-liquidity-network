@@ -1,5 +1,5 @@
 // Interface for asset registry adapter
-import { Asset } from '../value-objects/Asset';
+import { Asset } from "../value-objects/Asset";
 
 export interface AssetRegistry {
   getAssets(): Promise<Asset[]>;

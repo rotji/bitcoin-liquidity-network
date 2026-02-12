@@ -5,4 +5,4 @@ export interface DEXAdapter {
   getFee(pool: Pool): Promise<number>;
 }
 
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";

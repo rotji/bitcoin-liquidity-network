@@ -1,5 +1,5 @@
 // Use case for listing users
-import { User } from '../entities/User';
+import { User } from "../entities/User";
 
 export class ListUsers {
   constructor(private users: User[]) {}

@@ -1,6 +1,6 @@
 // Use case for retrieving liquidity snapshots
-import { DEXAdapter } from '../ports/DEXAdapter';
-import { LiquiditySnapshot } from '../entities/LiquiditySnapshot';
+import { DEXAdapter } from "../ports/DEXAdapter";
+import { LiquiditySnapshot } from "../entities/LiquiditySnapshot";
 
 export class GetLiquiditySnapshots {
   constructor(private dexAdapter: DEXAdapter) {}

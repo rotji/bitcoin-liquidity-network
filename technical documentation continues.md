@@ -2,13 +2,13 @@
 
 Key points:
 
-* Each adapter implements:
+- Each adapter implements:
+  - `fetchPools()` → raw pool data
+  - `parsePools()` → canonical PoolSnapshot objects
+  - `fetchSwaps(poolId)` → observed swaps
 
-  * `fetchPools()` → raw pool data
-  * `parsePools()` → canonical PoolSnapshot objects
-  * `fetchSwaps(poolId)` → observed swaps
-* Can plug directly into the **indexer skeleton** we built earlier
-* Placeholder functions make it easy to extend as APIs become available
+- Can plug directly into the **indexer skeleton** we built earlier
+- Placeholder functions make it easy to extend as APIs become available
 
 ---
 
@@ -26,11 +26,11 @@ Do you want to **start implementing liquidity scoring next**?
 
 Key points:
 
-* Pulls **latest pool snapshots** from the database
-* Computes a **normalized advisory score** per pool (0–100)
-* Adds a **confidence metric** and optional **risk flags**
-* Writes results back to the `liquidity_scores` table
-* Can run **periodically** (every 60s placeholder)
+- Pulls **latest pool snapshots** from the database
+- Computes a **normalized advisory score** per pool (0–100)
+- Adds a **confidence metric** and optional **risk flags**
+- Writes results back to the `liquidity_scores` table
+- Can run **periodically** (every 60s placeholder)
 
 ---
 
@@ -45,11 +45,11 @@ Do you want to **proceed with routing suggestion generator** next?
 
 Highlights:
 
-* Pulls **latest snapshots** of pools containing the input/output assets
-* Computes **estimated slippage** and **fees** per pool (placeholder logic for now)
-* **Ranks pools** by lowest slippage + fees
-* Writes suggestions to the `routing_suggestions` table
-* Can be **queried by API** and exposed to frontend
+- Pulls **latest snapshots** of pools containing the input/output assets
+- Computes **estimated slippage** and **fees** per pool (placeholder logic for now)
+- **Ranks pools** by lowest slippage + fees
+- Writes suggestions to the `routing_suggestions` table
+- Can be **queried by API** and exposed to frontend
 
 ---
 
@@ -66,8 +66,8 @@ We now have the **full backend stack wired**:
 
 The next logical move is to **start building the frontend dashboard** to visualize:
 
-* Pools
-* Liquidity scores
-* Routing suggestions
+- Pools
+- Liquidity scores
+- Routing suggestions
 
 Do you want to proceed with the **frontend dashboard skeleton** next?

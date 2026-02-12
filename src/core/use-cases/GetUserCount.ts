@@ -1,5 +1,5 @@
 // Use case for retrieving user count
-import { User } from '../entities/User';
+import { User } from "../entities/User";
 
 export class GetUserCount {
   constructor(private users: User[]) {}

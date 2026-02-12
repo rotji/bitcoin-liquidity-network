@@ -9,23 +9,22 @@ This will be **architecture-first**, not code-first.
 
 You are building a **Liquidity Coordination Layer on Stacks (Bitcoin)** that:
 
-* Does **NOT** replace DEXs (ALEX, Velar, etc.)
-* Does **NOT** custody user funds
-* **Normalizes, coordinates, and routes liquidity**
-* Acts as **shared infrastructure** for the Stacks + Bitcoin ecosystem
-* Prioritizes:
-
-  * Ecosystem-first value
-  * Composability
-  * Infrastructure over apps
-  * Bitcoin-native security assumptions
+- Does **NOT** replace DEXs (ALEX, Velar, etc.)
+- Does **NOT** custody user funds
+- **Normalizes, coordinates, and routes liquidity**
+- Acts as **shared infrastructure** for the Stacks + Bitcoin ecosystem
+- Prioritizes:
+  - Ecosystem-first value
+  - Composability
+  - Infrastructure over apps
+  - Bitcoin-native security assumptions
 
 The platform has:
 
-* Indexers (off-chain)
-* APIs
-* Frontend dashboards
-* But now needs **on-chain guarantees, coordination logic, and trust minimization**
+- Indexers (off-chain)
+- APIs
+- Frontend dashboards
+- But now needs **on-chain guarantees, coordination logic, and trust minimization**
 
 That’s where **Clarity smart contracts** come in.
 
@@ -37,11 +36,11 @@ That’s where **Clarity smart contracts** come in.
 
 Most heavy lifting happens **off-chain**, but **Clarity contracts provide**:
 
-* Canonical truth
-* Coordination guarantees
-* Registry & signaling
-* Incentive alignment
-* Slashing / reputation anchors (later)
+- Canonical truth
+- Coordination guarantees
+- Registry & signaling
+- Incentive alignment
+- Slashing / reputation anchors (later)
 
 So we design **small, auditable, composable contracts**.
 
@@ -65,20 +64,20 @@ This answers:
 
 Stores:
 
-* Protocol ID
-* Protocol name
-* Type (DEX / CEX-bridge / OTC / AMM)
-* Status (active, deprecated)
-* Metadata hash (off-chain details)
-* Governance-approved flag
+- Protocol ID
+- Protocol name
+- Type (DEX / CEX-bridge / OTC / AMM)
+- Status (active, deprecated)
+- Metadata hash (off-chain details)
+- Governance-approved flag
 
 Why on-chain:
 
-* Prevents spoofed protocols
-* Shared reference for all builders
-* Ecosystem trust anchor
+- Prevents spoofed protocols
+- Shared reference for all builders
+- Ecosystem trust anchor
 
-🧠 Think: *DNS for liquidity venues*
+🧠 Think: _DNS for liquidity venues_
 
 ---
 
@@ -88,19 +87,19 @@ Why on-chain:
 
 Stores:
 
-* Asset ID
-* Asset type (native BTC, sBTC, wrapped)
-* Decimals
-* Risk classification
-* Enabled/disabled status
+- Asset ID
+- Asset type (native BTC, sBTC, wrapped)
+- Decimals
+- Risk classification
+- Enabled/disabled status
 
 Why this matters:
 
-* Prevents mismatched asset assumptions
-* Critical for routing, slippage, normalization
-* Especially important with **sBTC**
+- Prevents mismatched asset assumptions
+- Critical for routing, slippage, normalization
+- Especially important with **sBTC**
 
-🧠 Think: *Bitcoin-native token registry*
+🧠 Think: _Bitcoin-native token registry_
 
 ---
 
@@ -110,28 +109,28 @@ Why this matters:
 
 Protocols or indexers can:
 
-* Commit hashes of:
+- Commit hashes of:
+  - Order book snapshots
+  - Liquidity depth claims
+  - Spread ranges
 
-  * Order book snapshots
-  * Liquidity depth claims
-  * Spread ranges
-* Timestamped & immutable
+- Timestamped & immutable
 
 This **does NOT store full data** (too expensive).
 It stores:
 
-* Hashes
-* Block height
-* Protocol ID
-* Asset pair
+- Hashes
+- Block height
+- Protocol ID
+- Asset pair
 
 Why this is powerful:
 
-* Prevents data manipulation
-* Enables dispute resolution
-* Creates **verifiable liquidity history**
+- Prevents data manipulation
+- Enables dispute resolution
+- Creates **verifiable liquidity history**
 
-🧠 Think: *Proof-of-liquidity existence*
+🧠 Think: _Proof-of-liquidity existence_
 
 ---
 
@@ -141,26 +140,25 @@ Why this is powerful:
 
 This contract allows:
 
-* Users / apps to publish **intent**
-
-  * “I want BTC → sBTC liquidity”
-  * “Max slippage X”
-  * “Time window Y”
+- Users / apps to publish **intent**
+  - “I want BTC → sBTC liquidity”
+  - “Max slippage X”
+  - “Time window Y”
 
 It does **NOT execute swaps**.
 It only:
 
-* Anchors intent on-chain
-* Allows off-chain routers to compete
-* Enables MEV-minimized coordination
+- Anchors intent on-chain
+- Allows off-chain routers to compete
+- Enables MEV-minimized coordination
 
 Why this is unique:
 
-* Bitcoin-native intent layer
-* No custody
-* No forced routing
+- Bitcoin-native intent layer
+- No custody
+- No forced routing
 
-🧠 Think: *Intent marketplace, not a DEX*
+🧠 Think: _Intent marketplace, not a DEX_
 
 ---
 
@@ -170,24 +168,24 @@ Why this is unique:
 
 Stores:
 
-* Reputation scores
-* Successful routing attestations
-* Penalties (future slashing hooks)
-* Reward eligibility markers
+- Reputation scores
+- Successful routing attestations
+- Penalties (future slashing hooks)
+- Reward eligibility markers
 
 Early phase:
 
-* Purely reputational
+- Purely reputational
   Later:
-* Tied to sBTC incentives
+- Tied to sBTC incentives
 
 Why this matters:
 
-* Prevents garbage data
-* Encourages uptime & accuracy
-* Makes ecosystem self-regulating
+- Prevents garbage data
+- Encourages uptime & accuracy
+- Makes ecosystem self-regulating
 
-🧠 Think: *Credibility layer for infrastructure actors*
+🧠 Think: _Credibility layer for infrastructure actors_
 
 ---
 
@@ -197,23 +195,22 @@ These come **after MVP**.
 
 ### 6️⃣ Governance Contract
 
-* Protocol inclusion/exclusion
-* Parameter tuning
-* Emergency flags
+- Protocol inclusion/exclusion
+- Parameter tuning
+- Emergency flags
 
 ### 7️⃣ sBTC Incentive Pool Contract
 
-* Rewards for:
-
-  * Liquidity discovery
-  * Accurate routing
-  * High uptime
+- Rewards for:
+  - Liquidity discovery
+  - Accurate routing
+  - High uptime
 
 ### 8️⃣ Dispute Resolution Contract
 
-* Challenge false liquidity claims
-* Slash reputation
-* Arbitration hooks
+- Challenge false liquidity claims
+- Slash reputation
+- Arbitration hooks
 
 ---
 
@@ -226,9 +223,9 @@ These come **after MVP**.
 
 This keeps:
 
-* Audit scope small
-* Bitcoin risk low
-* Grant reviewers happy 😄
+- Audit scope small
+- Bitcoin risk low
+- Grant reviewers happy 😄
 
 ---
 
@@ -236,11 +233,11 @@ This keeps:
 
 This **cannot thrive elsewhere** because:
 
-* Clarity → predictable execution
-* Bitcoin finality → trusted anchoring
-* sBTC → future incentive rail
-* PoX → Bitcoin-aligned security
-* Stacks ecosystem → fragmented liquidity problem
+- Clarity → predictable execution
+- Bitcoin finality → trusted anchoring
+- sBTC → future incentive rail
+- PoX → Bitcoin-aligned security
+- Stacks ecosystem → fragmented liquidity problem
 
 This is **exactly** what Stacks Endowment wants.
 
@@ -269,7 +266,7 @@ Think of this as the **protocol spec** that auditors, reviewers, and grant commi
 
 ---
 
-## 1️⃣ Protocol Registry Contract — *Liquidity Venue Canon*
+## 1️⃣ Protocol Registry Contract — _Liquidity Venue Canon_
 
 ### 🎯 Role
 
@@ -281,22 +278,21 @@ Defines **who is allowed to participate** as a liquidity source.
 
 **Global**
 
-* `protocol-count` → incremental protocol ID counter
-* `governance-principal` → admin / DAO controller
+- `protocol-count` → incremental protocol ID counter
+- `governance-principal` → admin / DAO controller
 
 **Maps**
 
-* `protocols`
+- `protocols`
   Key: `protocol-id (uint)`
   Value:
-
-  * `name (string)`
-  * `protocol-type (uint)` → DEX / AMM / OTC / Bridge
-  * `status (uint)` → active / paused / deprecated
-  * `metadata-hash (buff)`
-  * `added-by (principal)`
-  * `added-at (block-height)`
-  * `approved (bool)`
+  - `name (string)`
+  - `protocol-type (uint)` → DEX / AMM / OTC / Bridge
+  - `status (uint)` → active / paused / deprecated
+  - `metadata-hash (buff)`
+  - `added-by (principal)`
+  - `added-at (block-height)`
+  - `approved (bool)`
 
 ---
 
@@ -304,26 +300,26 @@ Defines **who is allowed to participate** as a liquidity source.
 
 **Write**
 
-* `register-protocol(...)`
-* `approve-protocol(protocol-id)`
-* `pause-protocol(protocol-id)`
-* `deprecate-protocol(protocol-id)`
+- `register-protocol(...)`
+- `approve-protocol(protocol-id)`
+- `pause-protocol(protocol-id)`
+- `deprecate-protocol(protocol-id)`
 
 **Read**
 
-* `get-protocol(protocol-id)`
-* `is-protocol-active(protocol-id)`
-* `list-active-protocols()`
+- `get-protocol(protocol-id)`
+- `is-protocol-active(protocol-id)`
+- `list-active-protocols()`
 
 ---
 
 ### Why minimal?
 
-This contract becomes a **shared dependency** for *every other contract*.
+This contract becomes a **shared dependency** for _every other contract_.
 
 ---
 
-## 2️⃣ Asset Registry Contract — *Bitcoin Asset Canon*
+## 2️⃣ Asset Registry Contract — _Bitcoin Asset Canon_
 
 ### 🎯 Role
 
@@ -335,20 +331,19 @@ Ensures **asset consistency across the ecosystem** (BTC ≠ sBTC ≠ wrapped BTC
 
 **Maps**
 
-* `assets`
+- `assets`
   Key: `asset-id (uint)`
   Value:
-
-  * `symbol (string)`
-  * `asset-type (uint)` → native BTC / sBTC / wrapped
-  * `decimals (uint)`
-  * `risk-tier (uint)`
-  * `enabled (bool)`
-  * `added-at (block-height)`
+  - `symbol (string)`
+  - `asset-type (uint)` → native BTC / sBTC / wrapped
+  - `decimals (uint)`
+  - `risk-tier (uint)`
+  - `enabled (bool)`
+  - `added-at (block-height)`
 
 **Indexes**
 
-* `asset-by-symbol (string → asset-id)`
+- `asset-by-symbol (string → asset-id)`
 
 ---
 
@@ -356,15 +351,15 @@ Ensures **asset consistency across the ecosystem** (BTC ≠ sBTC ≠ wrapped BTC
 
 **Write**
 
-* `register-asset(...)`
-* `disable-asset(asset-id)`
-* `update-risk-tier(asset-id, tier)`
+- `register-asset(...)`
+- `disable-asset(asset-id)`
+- `update-risk-tier(asset-id, tier)`
 
 **Read**
 
-* `get-asset(asset-id)`
-* `get-asset-by-symbol(symbol)`
-* `is-asset-enabled(asset-id)`
+- `get-asset(asset-id)`
+- `get-asset-by-symbol(symbol)`
+- `is-asset-enabled(asset-id)`
 
 ---
 
@@ -374,7 +369,7 @@ Routing **fails silently** without strict asset definitions.
 
 ---
 
-## 3️⃣ Liquidity Signal Contract — *Proof of Liquidity*
+## 3️⃣ Liquidity Signal Contract — _Proof of Liquidity_
 
 ### 🎯 Role
 
@@ -386,24 +381,22 @@ Anchors **verifiable liquidity claims** on Bitcoin time.
 
 **Maps**
 
-* `liquidity-signals`
+- `liquidity-signals`
   Key:
-
-  * `protocol-id`
-  * `base-asset-id`
-  * `quote-asset-id`
-  * `block-height`
+  - `protocol-id`
+  - `base-asset-id`
+  - `quote-asset-id`
+  - `block-height`
 
   Value:
-
-  * `liquidity-hash (buff)`
-  * `depth-range (uint)` *(bucketed)*
-  * `spread-range (uint)` *(bucketed)*
-  * `submitted-by (principal)`
+  - `liquidity-hash (buff)`
+  - `depth-range (uint)` _(bucketed)_
+  - `spread-range (uint)` _(bucketed)_
+  - `submitted-by (principal)`
 
 **Counters**
 
-* `signal-count`
+- `signal-count`
 
 ---
 
@@ -411,12 +404,12 @@ Anchors **verifiable liquidity claims** on Bitcoin time.
 
 **Write**
 
-* `commit-liquidity-signal(...)`
+- `commit-liquidity-signal(...)`
 
 **Read**
 
-* `get-latest-signal(protocol-id, pair)`
-* `get-signal-by-height(protocol-id, pair, height)`
+- `get-latest-signal(protocol-id, pair)`
+- `get-signal-by-height(protocol-id, pair, height)`
 
 ---
 
@@ -424,15 +417,15 @@ Anchors **verifiable liquidity claims** on Bitcoin time.
 
 This enables:
 
-* Auditable history
-* Dispute systems
-* Trust-minimized analytics
+- Auditable history
+- Dispute systems
+- Trust-minimized analytics
 
 Without storing raw data.
 
 ---
 
-## 4️⃣ Routing Intent Contract — *Coordination Layer*
+## 4️⃣ Routing Intent Contract — _Coordination Layer_
 
 ### 🎯 Role
 
@@ -444,21 +437,20 @@ Allows **intent publication without execution**.
 
 **Maps**
 
-* `intents`
+- `intents`
   Key: `intent-id (uint)`
   Value:
-
-  * `user (principal)`
-  * `from-asset-id`
-  * `to-asset-id`
-  * `amount (uint)`
-  * `max-slippage (uint)`
-  * `expiry-height`
-  * `status (uint)` → open / filled / expired
+  - `user (principal)`
+  - `from-asset-id`
+  - `to-asset-id`
+  - `amount (uint)`
+  - `max-slippage (uint)`
+  - `expiry-height`
+  - `status (uint)` → open / filled / expired
 
 **Counters**
 
-* `intent-count`
+- `intent-count`
 
 ---
 
@@ -466,14 +458,14 @@ Allows **intent publication without execution**.
 
 **Write**
 
-* `publish-intent(...)`
-* `mark-intent-filled(intent-id)`
-* `expire-intent(intent-id)`
+- `publish-intent(...)`
+- `mark-intent-filled(intent-id)`
+- `expire-intent(intent-id)`
 
 **Read**
 
-* `get-intent(intent-id)`
-* `list-open-intents()`
+- `get-intent(intent-id)`
+- `list-open-intents()`
 
 ---
 
@@ -483,7 +475,7 @@ This becomes a **Bitcoin-native intent market** — composable, non-custodial.
 
 ---
 
-## 5️⃣ Incentive & Reputation Contract — *Trust Engine*
+## 5️⃣ Incentive & Reputation Contract — _Trust Engine_
 
 ### 🎯 Role
 
@@ -495,19 +487,18 @@ Creates **credibility gravity** for honest actors.
 
 **Maps**
 
-* `actor-reputation`
+- `actor-reputation`
   Key: `principal`
   Value:
-
-  * `score (int)`
-  * `successful-claims (uint)`
-  * `failed-claims (uint)`
-  * `last-updated (block-height)`
+  - `score (int)`
+  - `successful-claims (uint)`
+  - `failed-claims (uint)`
+  - `last-updated (block-height)`
 
 **Parameters**
 
-* `min-score-threshold`
-* `reward-eligibility-score`
+- `min-score-threshold`
+- `reward-eligibility-score`
 
 ---
 
@@ -515,13 +506,13 @@ Creates **credibility gravity** for honest actors.
 
 **Write**
 
-* `increase-reputation(principal, delta)`
-* `decrease-reputation(principal, delta)`
+- `increase-reputation(principal, delta)`
+- `decrease-reputation(principal, delta)`
 
 **Read**
 
-* `get-reputation(principal)`
-* `is-eligible-for-rewards(principal)`
+- `get-reputation(principal)`
+- `is-eligible-for-rewards(principal)`
 
 ---
 
@@ -535,10 +526,10 @@ No slashing **yet** — reputation-only keeps MVP safe.
 
 We now have:
 
-* Clear on-chain responsibilities
-* Minimal attack surface
-* Clean separation of concerns
-* Strong Stacks-native justification
+- Clear on-chain responsibilities
+- Minimal attack surface
+- Clean separation of concerns
+- Strong Stacks-native justification
 
 ---
 
@@ -546,14 +537,14 @@ We now have:
 
 👉 **Contract Interaction Flow**
 
-* Who calls what
-* In what order
-* Which contracts depend on which
+- Who calls what
+- In what order
+- Which contracts depend on which
 
 If you want to pause, say **“pause”**
 Otherwise, I’m moving to **STEP 2️⃣ now**.
 Great — moving cleanly to **STEP 2️⃣**.
-This is where everything *clicks together*.
+This is where everything _clicks together_.
 
 ---
 
@@ -565,11 +556,11 @@ This is where everything *clicks together*.
 
 Think of this as the **system choreography** between:
 
-* Users
-* Indexers
-* Routers
-* Protocols
-* Smart contracts
+- Users
+- Indexers
+- Routers
+- Protocols
+- Smart contracts
 
 No code. Just **truthful flow**.
 
@@ -580,16 +571,15 @@ No code. Just **truthful flow**.
 There are **three planes** in this system:
 
 1. **Off-chain intelligence**
+   - Indexers
+   - Routers
+   - Analytics
 
-   * Indexers
-   * Routers
-   * Analytics
 2. **On-chain coordination**
+   - Clarity contracts (what we’re defining)
 
-   * Clarity contracts (what we’re defining)
 3. **Execution venues**
-
-   * DEXs, AMMs, OTC desks, bridges
+   - DEXs, AMMs, OTC desks, bridges
 
 Your contracts sit **only in plane 2**.
 
@@ -599,7 +589,7 @@ Your contracts sit **only in plane 2**.
 
 ### Actors
 
-* Core team / governance
+- Core team / governance
 
 ### Steps
 
@@ -621,7 +611,7 @@ At this point:
 
 ### Actor
 
-* Governance / DAO multisig
+- Governance / DAO multisig
 
 ### Flow
 
@@ -631,8 +621,8 @@ At this point:
 
 ### Result
 
-* Protocol becomes a **recognized liquidity venue**
-* Other contracts can now reference it
+- Protocol becomes a **recognized liquidity venue**
+- Other contracts can now reference it
 
 🔐 **Security property**
 Only approved protocols can submit liquidity signals.
@@ -643,7 +633,7 @@ Only approved protocols can submit liquidity signals.
 
 ### Actor
 
-* Governance
+- Governance
 
 ### Flow
 
@@ -653,13 +643,13 @@ Only approved protocols can submit liquidity signals.
 
 ### Result
 
-* Every contract now shares **exact same asset definitions**
+- Every contract now shares **exact same asset definitions**
 
 🧠 This prevents:
 
-* Symbol confusion
-* Wrapped-asset attacks
-* Routing bugs
+- Symbol confusion
+- Wrapped-asset attacks
+- Routing bugs
 
 ---
 
@@ -667,31 +657,31 @@ Only approved protocols can submit liquidity signals.
 
 ### Actors
 
-* Off-chain indexers
-* Approved protocols
+- Off-chain indexers
+- Approved protocols
 
 ### Flow
 
 1. Indexer reads:
+   - DEX order books
+   - AMM pools
+   - OTC quotes
 
-   * DEX order books
-   * AMM pools
-   * OTC quotes
 2. Indexer normalizes data **off-chain**
 3. Indexer computes:
+   - Depth buckets
+   - Spread buckets
 
-   * Depth buckets
-   * Spread buckets
 4. Indexer hashes snapshot
 5. Indexer calls `commit-liquidity-signal`
 
 ### On-chain result
 
-* Immutable liquidity proof
-* Timestamped by Bitcoin block height
+- Immutable liquidity proof
+- Timestamped by Bitcoin block height
 
 🔍 **Key insight**
-The chain never knows *what* the liquidity is —
+The chain never knows _what_ the liquidity is —
 Only that **a truthful snapshot existed at time T**.
 
 ---
@@ -700,9 +690,9 @@ Only that **a truthful snapshot existed at time T**.
 
 ### Actors
 
-* Routers
-* Analytics services
-* Governance (later automation)
+- Routers
+- Analytics services
+- Governance (later automation)
 
 ### Flow
 
@@ -713,8 +703,8 @@ Only that **a truthful snapshot existed at time T**.
 
 ### Result
 
-* Honest indexers gain reputation
-* Bad actors lose influence
+- Honest indexers gain reputation
+- Bad actors lose influence
 
 ⚖️ This becomes **soft enforcement before slashing exists**.
 
@@ -724,27 +714,27 @@ Only that **a truthful snapshot existed at time T**.
 
 ### Actor
 
-* User
-* App / wallet
-* Aggregator UI
+- User
+- App / wallet
+- Aggregator UI
 
 ### Flow
 
 1. User defines:
+   - From asset
+   - To asset
+   - Amount
+   - Slippage
+   - Expiry
 
-   * From asset
-   * To asset
-   * Amount
-   * Slippage
-   * Expiry
 2. App calls `publish-intent`
 3. Intent becomes visible to routers
 
 ### On-chain role
 
-* Neutral coordination anchor
-* Prevents hidden order manipulation
-* Enables fair competition
+- Neutral coordination anchor
+- Prevents hidden order manipulation
+- Enables fair competition
 
 🚫 No funds move
 🚫 No routing enforced
@@ -755,7 +745,7 @@ Only that **a truthful snapshot existed at time T**.
 
 ### Actors
 
-* Multiple off-chain routers
+- Multiple off-chain routers
 
 ### Flow
 
@@ -767,9 +757,9 @@ Only that **a truthful snapshot existed at time T**.
 
 ### Result
 
-* Your protocol **coordinates**, not controls
-* Zero custody risk
-* Maximum composability
+- Your protocol **coordinates**, not controls
+- Zero custody risk
+- Maximum composability
 
 ---
 
@@ -777,23 +767,22 @@ Only that **a truthful snapshot existed at time T**.
 
 ### Actors
 
-* Dashboards
-* Researchers
-* Builders
+- Dashboards
+- Researchers
+- Builders
 
 ### Flow
 
 1. Read:
+   - Liquidity signals
+   - Protocol registry
+   - Asset registry
+   - Intent history
 
-   * Liquidity signals
-   * Protocol registry
-   * Asset registry
-   * Intent history
 2. Reconstruct:
-
-   * Liquidity coverage
-   * Market health
-   * Fragmentation trends
+   - Liquidity coverage
+   - Market health
+   - Fragmentation trends
 
 This is where:
 📊 Dashboards shine
@@ -805,19 +794,19 @@ This is where:
 
 ### Scenario A: Protocol goes rogue
 
-* Governance pauses protocol
-* Liquidity signals rejected
+- Governance pauses protocol
+- Liquidity signals rejected
 
 ### Scenario B: Indexer lies
 
-* Reputation drops
-* Routers ignore them
-* Future slashing possible
+- Reputation drops
+- Routers ignore them
+- Future slashing possible
 
 ### Scenario C: Router misbehaves
 
-* Intent remains open
-* Other routers step in
+- Intent remains open
+- Other routers step in
 
 This system **fails gracefully**, not catastrophically.
 
@@ -837,9 +826,9 @@ Routing Intent
 Reputation
 ```
 
-* No circular dependencies
-* Clean upgrade paths
-* Easy audits
+- No circular dependencies
+- Clean upgrade paths
+- Easy audits
 
 ---
 
@@ -847,10 +836,10 @@ Reputation
 
 You now have:
 
-* A full system flow
-* Clear actor responsibilities
-* Bitcoin-aligned safety
-* Grant-grade architecture clarity
+- A full system flow
+- Clear actor responsibilities
+- Bitcoin-aligned safety
+- Grant-grade architecture clarity
 
 ---
 
@@ -858,9 +847,9 @@ You now have:
 
 👉 **Write the first Clarity contract skeleton**
 
-* Protocol Registry
-* Minimal, auditable
-* Production mindset
+- Protocol Registry
+- Minimal, auditable
+- Production mindset
 
 Say **“move to step 3”** and we start writing Clarity.
 Perfect.
@@ -882,19 +871,19 @@ A canonical, on-chain registry of recognized liquidity venues for the Bitcoin Li
 
 ## Design goals (before code)
 
-* ✅ Deterministic & predictable (Clarity-native)
-* ✅ Governance-controlled writes
-* ✅ Publicly readable by all other contracts
-* ✅ Small surface area (easy to audit)
-* ✅ Future-upgradable via governance, not hacks
+- ✅ Deterministic & predictable (Clarity-native)
+- ✅ Governance-controlled writes
+- ✅ Publicly readable by all other contracts
+- ✅ Small surface area (easy to audit)
+- ✅ Future-upgradable via governance, not hacks
 
 ---
 
 ## Key assumptions
 
-* This contract is deployed **first**
-* Governance = multisig or DAO principal
-* Other contracts will *read* from this one
+- This contract is deployed **first**
+- Governance = multisig or DAO principal
+- Other contracts will _read_ from this one
 
 ---
 
@@ -1075,12 +1064,12 @@ A canonical, on-chain registry of recognized liquidity venues for the Bitcoin Li
 
 ## Why this contract is **grant-grade**
 
-* ✔ Single responsibility
-* ✔ Explicit governance
-* ✔ No hidden execution paths
-* ✔ Composable read interface
-* ✔ Zero custody risk
-* ✔ Bitcoin-aligned minimalism
+- ✔ Single responsibility
+- ✔ Explicit governance
+- ✔ No hidden execution paths
+- ✔ Composable read interface
+- ✔ Zero custody risk
+- ✔ Bitcoin-aligned minimalism
 
 This is exactly what **Stacks reviewers** like to see.
 
@@ -1088,10 +1077,10 @@ This is exactly what **Stacks reviewers** like to see.
 
 ## What we intentionally did NOT add (yet)
 
-* ❌ Upgrade logic
-* ❌ DAO voting
-* ❌ Slashing
-* ❌ External calls
+- ❌ Upgrade logic
+- ❌ DAO voting
+- ❌ Slashing
+- ❌ External calls
 
 Those come **later**, if needed.
 
@@ -1121,10 +1110,10 @@ Canonical registry of all assets the Bitcoin Liquidity Coordinator can handle (B
 
 ## Design Goals
 
-* Minimal & auditable
-* Governance-controlled writes
-* Composable for all other contracts
-* No custody or financial execution
+- Minimal & auditable
+- Governance-controlled writes
+- Composable for all other contracts
+- No custody or financial execution
 
 ---
 
@@ -1286,19 +1275,19 @@ This is the **most important contract** because it provides the **canonical on-c
 
 **Purpose:**
 
-* Anchor off-chain liquidity snapshots in a **trust-minimized, immutable, timestamped way**
-* Minimal footprint: store only **hashes**, not raw data
-* Verifiable by anyone
+- Anchor off-chain liquidity snapshots in a **trust-minimized, immutable, timestamped way**
+- Minimal footprint: store only **hashes**, not raw data
+- Verifiable by anyone
 
 ---
 
 ## Design Goals
 
-* Deterministic & predictable (Clarity-native)
-* Minimal on-chain storage (hash + metadata)
-* Composable with Protocol Registry & Asset Registry
-* Support historical queries
-* Governance for safety (pause, emergency)
+- Deterministic & predictable (Clarity-native)
+- Minimal on-chain storage (hash + metadata)
+- Composable with Protocol Registry & Asset Registry
+- Support historical queries
+- Governance for safety (pause, emergency)
 
 ---
 
@@ -1433,11 +1422,11 @@ This is the **most important contract** because it provides the **canonical on-c
 
 ### ✅ Why this contract is critical
 
-* Acts as the **immutable proof-of-liquidity layer**
-* Anchors **off-chain snapshots** on-chain
-* Minimal attack surface — no funds move
-* Composable with **Routing Intent** and **Reputation Contracts**
-* Directly supports **MEV-minimized routing & analytics**
+- Acts as the **immutable proof-of-liquidity layer**
+- Anchors **off-chain snapshots** on-chain
+- Minimal attack surface — no funds move
+- Composable with **Routing Intent** and **Reputation Contracts**
+- Directly supports **MEV-minimized routing & analytics**
 
 ---
 
@@ -1448,29 +1437,28 @@ This is the **most important contract** because it provides the **canonical on-c
 ### Workflow
 
 1. Indexer pulls liquidity data from:
+   - DEXs (ALEX, Velar)
+   - AMMs
+   - OTC desks
 
-   * DEXs (ALEX, Velar)
-   * AMMs
-   * OTC desks
 2. Normalize & bucket liquidity (depth, spread)
 3. Compute hash of snapshot (off-chain)
 4. Call `commit-liquidity-signal` on-chain:
+   - `protocol-id`
+   - `base-asset-id`, `quote-asset-id`
+   - `liquidity-hash`
+   - `depth-range`, `spread-range`
 
-   * `protocol-id`
-   * `base-asset-id`, `quote-asset-id`
-   * `liquidity-hash`
-   * `depth-range`, `spread-range`
 5. On-chain storage confirms:
-
-   * Timestamped snapshot
-   * Immutability
-   * Reputation eligibility
+   - Timestamped snapshot
+   - Immutability
+   - Reputation eligibility
 
 ### Notes
 
-* Indexers **never submit raw order books** → gas-efficient
-* Reputation contract can **reward accurate indexers**
-* Routers & dashboards **read these signals** for safe routing decisions
+- Indexers **never submit raw order books** → gas-efficient
+- Reputation contract can **reward accurate indexers**
+- Routers & dashboards **read these signals** for safe routing decisions
 
 ---
 
@@ -1500,18 +1488,18 @@ This contract is the **coordination layer**, enabling users and apps to **publis
 
 **Purpose:**
 
-* Users anchor their swap intent on-chain
-* Routers read intents and compete off-chain
-* Minimal footprint, no custody, timestamped
+- Users anchor their swap intent on-chain
+- Routers read intents and compete off-chain
+- Minimal footprint, no custody, timestamped
 
 ---
 
 ## Design Goals
 
-* Deterministic & auditable
-* Off-chain execution only
-* Intent visibility for routers, dashboards, and analytics
-* Governance can pause publication if needed
+- Deterministic & auditable
+- Off-chain execution only
+- Intent visibility for routers, dashboards, and analytics
+- Governance can pause publication if needed
 
 ---
 
@@ -1631,10 +1619,10 @@ This contract is the **coordination layer**, enabling users and apps to **publis
 
 ### ✅ Why this contract matters
 
-* Anchors user intent in a **trustless, verifiable way**
-* Off-chain routers can compete to execute the best routes
-* No custody risk → minimal audit scope
-* Fully composable with **Liquidity Signal & Reputation** contracts
+- Anchors user intent in a **trustless, verifiable way**
+- Off-chain routers can compete to execute the best routes
+- No custody risk → minimal audit scope
+- Fully composable with **Liquidity Signal & Reputation** contracts
 
 ---
 
@@ -1642,9 +1630,9 @@ This contract is the **coordination layer**, enabling users and apps to **publis
 
 Next step is **building the Incentive & Reputation contract**, which:
 
-* Rewards accurate indexers
-* Tracks reputations
-* Enables later slashing / incentive logic with sBTC
+- Rewards accurate indexers
+- Tracks reputations
+- Enables later slashing / incentive logic with sBTC
 
 Do you want me to **proceed and build the Reputation contract skeleton next**?
 Perfect — moving to **STEP 8️⃣ — Incentive & Reputation Contract Skeleton**.
@@ -1657,19 +1645,19 @@ This contract **anchors ecosystem incentives**, tracks **indexer and router perf
 
 **Purpose:**
 
-* Track **reputation scores** of off-chain actors (indexers, routers)
-* Record **successful vs. failed submissions**
-* Enable **future incentive distribution**
-* Optional future hooks for **slashing / staking**
+- Track **reputation scores** of off-chain actors (indexers, routers)
+- Record **successful vs. failed submissions**
+- Enable **future incentive distribution**
+- Optional future hooks for **slashing / staking**
 
 ---
 
 ## Design Goals
 
-* Minimal on-chain footprint
-* Composable with Liquidity Signal & Routing Intent
-* Transparent, auditable, deterministic
-* Governance can adjust reputation parameters
+- Minimal on-chain footprint
+- Composable with Liquidity Signal & Routing Intent
+- Transparent, auditable, deterministic
+- Governance can adjust reputation parameters
 
 ---
 
@@ -1766,11 +1754,11 @@ This contract **anchors ecosystem incentives**, tracks **indexer and router perf
 
 ### ✅ Why this contract matters
 
-* Tracks **actor credibility** across the ecosystem
-* Encourages **accurate submissions** of liquidity signals
-* Transparent & auditable
-* Lays the foundation for **future sBTC-based rewards or penalties**
-* Fully composable with **Liquidity Signal & Routing Intent**
+- Tracks **actor credibility** across the ecosystem
+- Encourages **accurate submissions** of liquidity signals
+- Transparent & auditable
+- Lays the foundation for **future sBTC-based rewards or penalties**
+- Fully composable with **Liquidity Signal & Routing Intent**
 
 ---
 

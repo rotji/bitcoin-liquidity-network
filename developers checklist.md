@@ -555,13 +555,13 @@ This section helps track common issues and fixes related to Vite + React + TypeS
 
 - [ ] Use `<BrowserRouter>` in main App:
   ```tsx
-  import { BrowserRouter } from 'react-router-dom';
-  <BrowserRouter> ... </BrowserRouter>
+  import { BrowserRouter } from "react-router-dom";
+  <BrowserRouter> ... </BrowserRouter>;
   ```
 - [ ] Ensure routes match lowercase paths exactly (e.g. `/about` not `/About`)
 - [ ] Ensure components are imported with correct casing:
   ```tsx
-  import About from './pages/About'; // matches file name exactly
+  import About from "./pages/About"; // matches file name exactly
   ```
 - [ ] Always include a fallback route:
   ```tsx
@@ -594,8 +594,8 @@ To test if Vite HMR is causing issues, disable it temporarily in `vite.config.ts
 ```ts
 export default defineConfig({
   server: {
-    hmr: false
-  }
+    hmr: false,
+  },
 });
 ```
 
@@ -619,9 +619,7 @@ Add `vercel.json` to root:
 
 ```json
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
 ```
 
@@ -630,15 +628,19 @@ Add `vercel.json` to root:
 ### 🧩 Notes from Real Debug Scenario
 
 Issue:
-> Clicking on "About" in the nav bar returned a 404: *"Page not found – broken link."*
+
+> Clicking on "About" in the nav bar returned a 404: _"Page not found – broken link."_
 
 Surprising Fix:
+
 > Increasing the font size of a title elsewhere in the app unexpectedly fixed the issue.
 
 Likely Cause:
+
 > Vite's HMR (Hot Module Replacement) was stuck in a stale state. Updating another file triggered a rebuild that refreshed routing correctly.
 
 Lesson:
+
 > Use GitHub Issues to log even weird or unpredictable bugs — they can help explain future mysteries.
 
 ---
@@ -646,6 +648,7 @@ Lesson:
 ### ✅ Final Thoughts
 
 If something feels weird:
+
 - Restart Vite.
 - Refresh the browser.
 - Check routes and casing.
@@ -653,6 +656,7 @@ If something feels weird:
 - Don’t panic — dev tools aren't always perfect.
 
 middleware uses checklist
+
 - request validation
 - authentication
 - authorization
@@ -682,7 +686,7 @@ This checklist helps ensure your code runs efficiently and doesn't slow down you
 - [ ] Split large components into smaller, focused ones
 - [ ] Use **code splitting** to avoid loading everything at once:
   ```tsx
-  const LazyAbout = React.lazy(() => import('./About'));
+  const LazyAbout = React.lazy(() => import("./About"));
   ```
 - [ ] Only load third-party libraries when needed (avoid bundling huge unused code)
 - [ ] Avoid using large images — compress or use `.webp` format
@@ -733,7 +737,6 @@ This checklist helps ensure your code runs efficiently and doesn't slow down you
 
 > Always test real performance in a production build — the dev environment is not always accurate.  
 > Profile first, then optimize — don’t guess.
-
 
 ✨ Final Thought
 

@@ -8,6 +8,7 @@
 - **When coverage is low:** Periodically review test coverage and add tests for untested critical paths.
 
 **Tip:** Treat tests as living documentation—keep them up to date as your code and requirements evolve.
+
 # Tests Guide: What and How to Test in Stack-Agnostic Foundation Projects
 
 ## Why Testing Matters
@@ -37,25 +38,25 @@
 5. **Regression Tests**
    - Prevent previously fixed bugs from reappearing.
 
-1. **Entities & Value Objects**
+6. **Entities & Value Objects**
    - Do they enforce the rules and constraints you expect?
    - Can they be created, updated, and validated correctly?
 
-2. **Business Logic (Use Cases)**
+7. **Business Logic (Use Cases)**
    - Does each use case do what it’s supposed to do, given valid and invalid inputs?
    - Are all business rules and workflows enforced?
 
-3. **Interfaces/Ports**
+8. **Interfaces/Ports**
    - Does your core logic interact with external systems (DB, APIs) only through defined interfaces?
    - Can you swap implementations without breaking the core logic?
 
-4. **Adapters**
+9. **Adapters**
    - Do your adapters correctly translate between the core logic and external systems?
    - Are errors and edge cases handled?
 
-5. **Integration Points**
-   - Do the different parts of your system work together as expected?
-   - Are data and control flows correct from end to end?
+10. **Integration Points**
+    - Do the different parts of your system work together as expected?
+    - Are data and control flows correct from end to end?
 
 ---
 

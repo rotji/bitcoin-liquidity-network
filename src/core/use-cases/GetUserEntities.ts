@@ -1,5 +1,5 @@
 // Use case for retrieving user entities
-import { User } from '../entities/User';
+import { User } from "../entities/User";
 
 export class GetUserEntities {
   constructor(private users: User[]) {}

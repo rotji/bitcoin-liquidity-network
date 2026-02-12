@@ -1,5 +1,5 @@
 // Use case for retrieving user reputation
-import { Reputation } from '../ports/Reputation';
+import { Reputation } from "../ports/Reputation";
 
 export class GetUserReputation {
   constructor(private reputation: Reputation) {}

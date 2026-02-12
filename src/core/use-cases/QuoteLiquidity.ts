@@ -1,5 +1,5 @@
 // Use case for quoting liquidity
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";
 
 export class QuoteLiquidity {
   constructor(private pool: Pool) {}

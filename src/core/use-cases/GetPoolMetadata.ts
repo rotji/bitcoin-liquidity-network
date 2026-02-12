@@ -1,5 +1,5 @@
 // Use case for retrieving pool metadata
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";
 
 export class GetPoolMetadata {
   constructor(private pool: Pool) {}

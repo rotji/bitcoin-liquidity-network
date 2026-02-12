@@ -14,16 +14,16 @@ These tools catch problems **without executing your code**.
 
 Use:
 
-* ESLint (JS/TS logic issues)
-* TypeScript compiler (type safety)
+- ESLint (JS/TS logic issues)
+- TypeScript compiler (type safety)
 
 What to check:
 
-* Unused variables
-* Incorrect dependencies in hooks
-* Unsafe `any`
-* Shadowed variables
-* Missing returns
+- Unused variables
+- Incorrect dependencies in hooks
+- Unsafe `any`
+- Shadowed variables
+- Missing returns
 
 **Quality signal:**
 If ESLint is clean → your code is structurally sound.
@@ -36,14 +36,14 @@ If ESLint is clean → your code is structurally sound.
 
 Use:
 
-* Prettier
+- Prettier
 
 Checks:
 
-* Consistent indentation
-* Line length
-* Spacing
-* Quotes
+- Consistent indentation
+- Line length
+- Spacing
+- Quotes
 
 **Quality signal:**
 If formatting is automatic → reviewers focus on logic, not style.
@@ -58,15 +58,15 @@ If formatting is automatic → reviewers focus on logic, not style.
 
 Test:
 
-* Utility functions
-* Reducers
-* Validation logic
-* Business rules
+- Utility functions
+- Reducers
+- Validation logic
+- Business rules
 
 Example checks:
 
-* Given input X → output must be Y
-* Edge cases (empty, null, invalid)
+- Given input X → output must be Y
+- Edge cases (empty, null, invalid)
 
 **Quality signal:**
 If a small change breaks a test → your test is valuable.
@@ -81,15 +81,15 @@ If a small change breaks a test → your test is valuable.
 
 Test:
 
-* Rendering without crashing
-* Props affect output
-* Buttons trigger actions
-* Conditional rendering
+- Rendering without crashing
+- Props affect output
+- Buttons trigger actions
+- Conditional rendering
 
 Questions to ask:
 
-* Does the component render with minimal props?
-* Does it break when data is missing?
+- Does the component render with minimal props?
+- Does it break when data is missing?
 
 **Quality signal:**
 If refactoring UI doesn’t break behavior → good test coverage.
@@ -102,9 +102,9 @@ If refactoring UI doesn’t break behavior → good test coverage.
 
 Test flows like:
 
-* Form → validation → submit
-* Login → token → protected route
-* API call → state update → UI update
+- Form → validation → submit
+- Login → token → protected route
+- API call → state update → UI update
 
 **Quality signal:**
 If real user flows work in tests → system is reliable.
@@ -117,14 +117,14 @@ If real user flows work in tests → system is reliable.
 
 Check:
 
-* Try/catch around async logic
-* API failures handled gracefully
-* No silent failures
+- Try/catch around async logic
+- API failures handled gracefully
+- No silent failures
 
 Ask:
 
-* What happens if the backend is down?
-* What happens if data is malformed?
+- What happens if the backend is down?
+- What happens if data is malformed?
 
 ---
 
@@ -132,9 +132,9 @@ Ask:
 
 Good quality code:
 
-* Logs errors meaningfully
-* Avoids noisy console logs
-* Distinguishes info vs error
+- Logs errors meaningfully
+- Avoids noisy console logs
+- Distinguishes info vs error
 
 ---
 
@@ -142,11 +142,11 @@ Good quality code:
 
 Ask yourself these questions:
 
-* Can another developer understand this in 5 minutes?
-* Are functions small and focused?
-* Are names descriptive?
-* Is logic duplicated?
-* Can I delete or change code safely?
+- Can another developer understand this in 5 minutes?
+- Are functions small and focused?
+- Are names descriptive?
+- Is logic duplicated?
+- Can I delete or change code safely?
 
 **Rule of thumb:**
 If you’re afraid to touch a file → quality is low.
@@ -157,15 +157,15 @@ If you’re afraid to touch a file → quality is low.
 
 Check:
 
-* Unnecessary re-renders
-* Expensive loops in render
-* Over-fetching data
-* Large components doing too much
+- Unnecessary re-renders
+- Expensive loops in render
+- Over-fetching data
+- Large components doing too much
 
 Tools:
 
-* React DevTools Profiler
-* Simple console timing
+- React DevTools Profiler
+- Simple console timing
 
 ---
 
@@ -173,11 +173,11 @@ Tools:
 
 Coverage answers:
 
-* “Which code is never tested?”
+- “Which code is never tested?”
 
 But remember:
 
-* 60% good tests > 95% useless tests
+- 60% good tests > 95% useless tests
 
 **Quality signal:**
 Critical logic is tested, not every line.
@@ -188,14 +188,14 @@ Critical logic is tested, not every line.
 
 Do a **self-review checklist**:
 
-* Would I accept this in a production codebase?
-* Is this the simplest solution?
-* Is this consistent with the rest of the project?
+- Would I accept this in a production codebase?
+- Is this the simplest solution?
+- Is this consistent with the rest of the project?
 
 Bonus:
 
-* Read code **after 24 hours**
-* If it feels confusing → refactor
+- Read code **after 24 hours**
+- If it feels confusing → refactor
 
 ---
 
@@ -217,9 +217,9 @@ That’s already **professional-grade quality**.
 
 I can:
 
-* Design a **code quality checklist** you reuse per project
-* Suggest **exact tooling setup** for your current repo
-* Help you classify files into **simple / medium / complex testing levels**
+- Design a **code quality checklist** you reuse per project
+- Suggest **exact tooling setup** for your current repo
+- Help you classify files into **simple / medium / complex testing levels**
 
 Just tell me which one.
 
@@ -319,10 +319,10 @@ Before calling the project “stable”:
 
 After finishing a feature, score it:
 
-* Readability: /10
-* Safety (errors handled): /10
-* Testability: /10
-* Maintainability: /10
+- Readability: /10
+- Safety (errors handled): /10
+- Testability: /10
+- Maintainability: /10
 
 If total < 30 → refactor
 If ≥ 35 → ship
@@ -333,9 +333,9 @@ If ≥ 35 → ship
 
 Stop improving when:
 
-* The next change doesn’t reduce risk
-* Tests already catch likely failures
-* Code is obvious to a new developer
+- The next change doesn’t reduce risk
+- Tests already catch likely failures
+- Code is obvious to a new developer
 
 Perfection ≠ quality.
 
@@ -351,10 +351,10 @@ You now have a **mental and procedural quality gate** that works even without to
 
 In the next message, I’ll:
 
-* Give **exact tools**
-* Minimal configs
-* Where each tool fits in your workflow
-* No over-engineering
+- Give **exact tools**
+- Minimal configs
+- Where each tool fits in your workflow
+- No over-engineering
 
 I’ll start with **TypeScript + ESLint + Prettier** and move upward.
 
@@ -371,10 +371,10 @@ Goal: **professional-grade code quality** with **minimum complexity**.
 
 This setup works for:
 
-* Vite + React
-* TypeScript
-* Node / backend
-* Scales from solo → team → production
+- Vite + React
+- TypeScript
+- Node / backend
+- Scales from solo → team → production
 
 ---
 
@@ -386,15 +386,15 @@ This setup works for:
 
 In `tsconfig.json`:
 
-* strict typing enabled
-* no implicit `any`
-* unused locals flagged
-* unreachable code flagged
+- strict typing enabled
+- no implicit `any`
+- unused locals flagged
+- unreachable code flagged
 
 Quality effect:
 
-* Forces you to think clearly
-* Makes refactoring safe
+- Forces you to think clearly
+- Makes refactoring safe
 
 Rule:
 If TypeScript complains, **fix the code**, don’t silence it.
@@ -407,11 +407,11 @@ If TypeScript complains, **fix the code**, don’t silence it.
 
 It catches:
 
-* Bugs
-* Bad patterns
-* React hook mistakes
-* Unused variables
-* Unsafe async logic
+- Bugs
+- Bad patterns
+- React hook mistakes
+- Unused variables
+- Unsafe async logic
 
 Think of ESLint as your **second brain**.
 
@@ -421,20 +421,20 @@ Think of ESLint as your **second brain**.
 
 Use:
 
-* ESLint core
-* TypeScript ESLint
-* React + Hooks rules
+- ESLint core
+- TypeScript ESLint
+- React + Hooks rules
 
 Core rule philosophy:
 
-* Errors for bugs
-* Warnings for style
-* No noisy rules
+- Errors for bugs
+- Warnings for style
+- No noisy rules
 
 Quality effect:
 
-* Prevents “clever but dangerous” code
-* Enforces consistency
+- Prevents “clever but dangerous” code
+- Enforces consistency
 
 ---
 
@@ -442,9 +442,9 @@ Quality effect:
 
 Run:
 
-* On save (editor)
-* Before commit
-* Before deployment
+- On save (editor)
+- Before commit
+- Before deployment
 
 Rule:
 If lint fails → code is not done.
@@ -457,14 +457,14 @@ If lint fails → code is not done.
 
 Prettier:
 
-* Removes style debates
-* Makes diffs readable
-* Speeds up reviews
+- Removes style debates
+- Makes diffs readable
+- Speeds up reviews
 
 Never mix:
 
-* Manual formatting
-* Multiple formatters
+- Manual formatting
+- Multiple formatters
 
 Prettier is the **single source of truth** for formatting.
 
@@ -474,15 +474,15 @@ Prettier is the **single source of truth** for formatting.
 
 Let Prettier decide:
 
-* Indentation
-* Line breaks
-* Quotes
+- Indentation
+- Line breaks
+- Quotes
 
 You decide:
 
-* Naming
-* Structure
-* Architecture
+- Naming
+- Structure
+- Architecture
 
 ---
 
@@ -494,14 +494,14 @@ Choose **one** and use it everywhere.
 
 Recommended:
 
-* Frontend: fast, TypeScript-friendly
-* Backend: same runner if possible
+- Frontend: fast, TypeScript-friendly
+- Backend: same runner if possible
 
 Why:
 
-* Shared mental model
-* Shared config
-* Less friction
+- Shared mental model
+- Shared config
+- Less friction
 
 ---
 
@@ -516,9 +516,9 @@ Even before writing many tests, enable:
 
 You don’t need:
 
-* Snapshot obsession
-* Complex mocks
-* End-to-end yet
+- Snapshot obsession
+- Complex mocks
+- End-to-end yet
 
 ---
 
@@ -534,8 +534,8 @@ Before any commit:
 
 This prevents:
 
-* Broken main branch
-* “Fix later” culture
+- Broken main branch
+- “Fix later” culture
 
 ---
 
@@ -558,10 +558,10 @@ If step 3 fails → don’t move forward.
 
 Avoid for now:
 
-* Heavy static analysis tools
-* Overly strict lint rules
-* Complex CI pipelines
-* Mutation testing
+- Heavy static analysis tools
+- Overly strict lint rules
+- Complex CI pipelines
+- Mutation testing
 
 These are **stage-2 tools**, not foundations.
 
@@ -571,11 +571,11 @@ These are **stage-2 tools**, not foundations.
 
 Your tooling setup is correct if:
 
-* Type errors are rare
-* Lint errors feel meaningful
-* Formatting is automatic
-* Tests fail when logic breaks
-* You trust refactoring
+- Type errors are rare
+- Lint errors feel meaningful
+- Formatting is automatic
+- Tests fail when logic breaks
+- You trust refactoring
 
 If tooling feels annoying → simplify rules.
 
@@ -595,9 +595,9 @@ If tooling feels annoying → simplify rules.
 
 You now have:
 
-* A **clean quality tool stack**
-* A **repeatable workflow**
-* A **scalable foundation**
+- A **clean quality tool stack**
+- A **repeatable workflow**
+- A **scalable foundation**
 
 ---
 
@@ -605,9 +605,9 @@ You now have:
 
 Next, I’ll:
 
-* Classify files by complexity
-* Tell you **what to test and what not to test**
-* Show how testing evolves as the project grows
+- Classify files by complexity
+- Tell you **what to test and what not to test**
+- Show how testing evolves as the project grows
 
 Say **“continue to part 3”** when ready.
 
@@ -624,11 +624,10 @@ No code yet — just **architecture + quality alignment**.
 
 You’re now working with a **polyglot stack**:
 
-* Frontend: Vite + React + TypeScript
-* Backend(s):
-
-  * Node / Express (JavaScript / TypeScript)
-  * Python (APIs, data, automation, ML, services)
+- Frontend: Vite + React + TypeScript
+- Backend(s):
+  - Node / Express (JavaScript / TypeScript)
+  - Python (APIs, data, automation, ML, services)
 
 The goal is **one quality mindset**, not two separate worlds.
 
@@ -675,10 +674,10 @@ Before writing Python seriously, adopt these rules:
 
 ### 3.1 Type everything important
 
-* Function inputs
-* Return values
-* Public APIs
-* Data models
+- Function inputs
+- Return values
+- Public APIs
+- Data models
 
 Untyped Python = JavaScript without TypeScript.
 
@@ -688,15 +687,15 @@ Untyped Python = JavaScript without TypeScript.
 
 Avoid:
 
-* Giant `main.py`
-* Logic at import time
-* Side effects everywhere
+- Giant `main.py`
+- Logic at import time
+- Side effects everywhere
 
 Prefer:
 
-* `services/`
-* `domain/`
-* `utils/`
+- `services/`
+- `domain/`
+- `utils/`
 
 Same discipline as backend Node.
 
@@ -706,22 +705,22 @@ Same discipline as backend Node.
 
 Basic, clean structure:
 
-* app/
+- app/
+  - main.py (entry)
+  - api/
+  - services/
+  - domain/
+  - models/
+  - utils/
 
-  * main.py (entry)
-  * api/
-  * services/
-  * domain/
-  * models/
-  * utils/
-* tests/
-* pyproject.toml
+- tests/
+- pyproject.toml
 
 Quality effect:
 
-* Easy testing
-* Clear boundaries
-* Safe refactoring
+- Easy testing
+- Clear boundaries
+- Safe refactoring
 
 ---
 
@@ -729,14 +728,14 @@ Quality effect:
 
 In Python:
 
-* Raise meaningful exceptions
-* Catch them at boundaries
-* Don’t swallow errors
+- Raise meaningful exceptions
+- Catch them at boundaries
+- Don’t swallow errors
 
 Same as:
 
-* `throw` in JS
-* `try/catch` in Node
+- `throw` in JS
+- `try/catch` in Node
 
 ---
 
@@ -744,21 +743,21 @@ Same as:
 
 Same questions apply:
 
-* What breaks if this changes?
-* What logic is critical?
-* What flows must never fail?
+- What breaks if this changes?
+- What logic is critical?
+- What flows must never fail?
 
 Avoid:
 
-* Testing print statements
-* Testing private internals
-* Testing framework behavior
+- Testing print statements
+- Testing private internals
+- Testing framework behavior
 
 Test:
 
-* Business logic
-* Data transformations
-* Edge cases
+- Business logic
+- Data transformations
+- Edge cases
 
 ---
 
@@ -767,15 +766,13 @@ Test:
 If both exist in one system:
 
 1. Define **clear ownership**
-
-   * Node = real-time, sockets, auth, frontend-facing
-   * Python = data, computation, pipelines, ML, background tasks
+   - Node = real-time, sockets, auth, frontend-facing
+   - Python = data, computation, pipelines, ML, background tasks
 
 2. Communicate via:
-
-   * HTTP APIs
-   * Message queues
-   * Jobs
+   - HTTP APIs
+   - Message queues
+   - Jobs
 
 Never mix logic across languages randomly.
 
@@ -785,10 +782,10 @@ Never mix logic across languages randomly.
 
 Before merging code (any language):
 
-* Lint passes
-* Types pass
-* Tests pass
-* Formatting clean
+- Lint passes
+- Types pass
+- Tests pass
+- Formatting clean
 
 Language doesn’t matter — **rules do**.
 
@@ -816,9 +813,9 @@ Now your roadmap is:
 
 This ensures:
 
-* You don’t duplicate thinking
-* You don’t lower quality in Python
-* You scale cleanly
+- You don’t duplicate thinking
+- You don’t lower quality in Python
+- You scale cleanly
 
 ---
 
@@ -826,9 +823,9 @@ This ensures:
 
 Next, I’ll classify **testing levels** for:
 
-* Frontend (React)
-* Backend (Node)
-* Backend (Python)
+- Frontend (React)
+- Backend (Node)
+- Backend (Python)
 
 Very practical, file-by-file guidance.
 
@@ -836,13 +833,13 @@ When you’re ready, say:
 **“continue to part 3”**
 
 Excellent.
-This is the most **practical part** — once you understand this, you’ll never feel confused about *what to test* again.
+This is the most **practical part** — once you understand this, you’ll never feel confused about _what to test_ again.
 
 ---
 
 # PART 3 — SIMPLE → MEDIUM → COMPLEX TESTING LEVELS
 
-*(Unified for React + Node + Python)*
+_(Unified for React + Node + Python)_
 
 The core idea:
 
@@ -856,10 +853,10 @@ We classify **files**, not projects.
 
 ### What this level is
 
-* Pure logic
-* Deterministic
-* No I/O
-* No framework dependency
+- Pure logic
+- Deterministic
+- No I/O
+- No framework dependency
 
 These are the **cheapest tests** and should be tested first.
 
@@ -869,27 +866,27 @@ These are the **cheapest tests** and should be tested first.
 
 **Frontend (React / TS)**
 
-* `utils/`
-* `helpers/`
-* formatters
-* validators
-* constants logic
-* pure hooks without side effects
+- `utils/`
+- `helpers/`
+- formatters
+- validators
+- constants logic
+- pure hooks without side effects
 
 **Node / Express**
 
-* utility functions
-* pure services
-* data mappers
-* validation logic
+- utility functions
+- pure services
+- data mappers
+- validation logic
 
 **Python**
 
-* utility functions
-* pure services
-* data transformers
-* calculations
-* parsers
+- utility functions
+- pure services
+- data transformers
+- calculations
+- parsers
 
 ---
 
@@ -914,9 +911,9 @@ If yes → Level 1 test.
 
 ### Quality rule
 
-* High coverage
-* Fast tests
-* Run constantly
+- High coverage
+- Fast tests
+- Run constantly
 
 This is your **safety net**.
 
@@ -926,9 +923,9 @@ This is your **safety net**.
 
 ### What this level is
 
-* Multiple units working together
-* Some framework involvement
-* Still controlled
+- Multiple units working together
+- Some framework involvement
+- Still controlled
 
 This is where **real bugs usually live**.
 
@@ -938,24 +935,24 @@ This is where **real bugs usually live**.
 
 **Frontend**
 
-* React components
-* Custom hooks with effects
-* Forms
-* State management logic
+- React components
+- Custom hooks with effects
+- Forms
+- State management logic
 
 **Node**
 
-* Controllers
-* Services touching DB (mocked)
-* Auth logic
-* Middleware
+- Controllers
+- Services touching DB (mocked)
+- Auth logic
+- Middleware
 
 **Python**
 
-* API routes
-* Services calling other services
-* DB access (mocked)
-* Background jobs
+- API routes
+- Services calling other services
+- DB access (mocked)
+- Background jobs
 
 ---
 
@@ -968,13 +965,13 @@ This is where **real bugs usually live**.
 
 Mock:
 
-* Network
-* DB
-* External services
+- Network
+- DB
+- External services
 
 Don’t mock:
 
-* Your own logic
+- Your own logic
 
 ---
 
@@ -988,9 +985,9 @@ If yes → Level 2 test.
 
 ### Quality rule
 
-* Focus on behavior, not implementation
-* Fewer tests than Level 1
-* Still fast enough to run locally
+- Focus on behavior, not implementation
+- Fewer tests than Level 1
+- Still fast enough to run locally
 
 ---
 
@@ -998,9 +995,9 @@ If yes → Level 2 test.
 
 ### What this level is
 
-* End-to-end behavior
-* Real integrations
-* High cost, high value
+- End-to-end behavior
+- Real integrations
+- High cost, high value
 
 These tests protect **business survival**.
 
@@ -1010,17 +1007,17 @@ These tests protect **business survival**.
 
 **Frontend**
 
-* Login flow
-* Payment flow
-* Onboarding flow
-* Multi-step forms
+- Login flow
+- Payment flow
+- Onboarding flow
+- Multi-step forms
 
 **Backend (Node + Python)**
 
-* Auth lifecycle
-* Transaction pipelines
-* Data processing pipelines
-* Cross-service communication
+- Auth lifecycle
+- Transaction pipelines
+- Data processing pipelines
+- Cross-service communication
 
 ---
 
@@ -1046,9 +1043,9 @@ If yes → Level 3 test.
 
 ### Quality rule
 
-* Few tests
-* Run in CI
-* Stable, not flaky
+- Few tests
+- Run in CI
+- Stable, not flaky
 
 ---
 
@@ -1066,23 +1063,23 @@ LEVEL 3 — Business safety (few tests)
 
 ### Python Level 1
 
-* Data transformations
-* Calculations
-* Parsing
-* Validation
+- Data transformations
+- Calculations
+- Parsing
+- Validation
 
 ### Python Level 2
 
-* FastAPI / Flask endpoints
-* Service-to-service calls
-* Job handlers
+- FastAPI / Flask endpoints
+- Service-to-service calls
+- Job handlers
 
 ### Python Level 3
 
-* Data pipelines
-* Model inference pipelines
-* Long-running workflows
-* External API integrations
+- Data pipelines
+- Model inference pipelines
+- Long-running workflows
+- External API integrations
 
 ---
 
@@ -1108,15 +1105,15 @@ Ask 3 questions:
 
 ## YOUR IDEAL TEST DISTRIBUTION
 
-* 60–70% Level 1
-* 20–30% Level 2
-* 5–10% Level 3
+- 60–70% Level 1
+- 20–30% Level 2
+- 5–10% Level 3
 
 This gives:
 
-* Speed
-* Confidence
-* Scalability
+- Speed
+- Confidence
+- Scalability
 
 ---
 
@@ -1136,18 +1133,18 @@ This gives:
 
 You can:
 
-* Judge any file’s quality
-* Decide what to test
-* Scale across JS, TS, and Python
-* Avoid over-testing and under-testing
+- Judge any file’s quality
+- Decide what to test
+- Scale across JS, TS, and Python
+- Avoid over-testing and under-testing
 
 ---
 
 If you want next, I can:
 
-* Map **your current project files** into Level 1/2/3
-* Create a **testing checklist per level**
-* Design a **monorepo quality setup (JS + Python)**
+- Map **your current project files** into Level 1/2/3
+- Create a **testing checklist per level**
+- Design a **monorepo quality setup (JS + Python)**
 
 Just tell me which one you want next.
- check for code
+check for code

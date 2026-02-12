@@ -1,5 +1,5 @@
 // Use case for building transaction payloads
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";
 
 export class BuildTransaction {
   constructor(private pool: Pool) {}

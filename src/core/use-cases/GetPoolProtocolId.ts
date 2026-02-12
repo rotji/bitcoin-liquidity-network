@@ -1,5 +1,5 @@
 // Use case for retrieving pool protocol ID
-import { Pool } from '../entities/Pool';
+import { Pool } from "../entities/Pool";
 
 export class GetPoolProtocolId {
   constructor(private pool: Pool) {}

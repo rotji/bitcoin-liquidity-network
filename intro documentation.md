@@ -6,10 +6,10 @@ The opportunity is **activating dormant BTC** — safely.
 
 And if you're building on **Stacks**, then your edge is:
 
-* Bitcoin security (PoX)
-* Clarity’s predictability (no reentrancy chaos)
-* sBTC (trust-minimized BTC movement)
-* Native settlement anchored to Bitcoin
+- Bitcoin security (PoX)
+- Clarity’s predictability (no reentrancy chaos)
+- sBTC (trust-minimized BTC movement)
+- Native settlement anchored to Bitcoin
 
 Let’s structure this properly.
 
@@ -19,10 +19,10 @@ Let’s structure this properly.
 
 Bitcoin today is:
 
-* Store of value ✅
-* Settlement layer ✅
-* Collateral (barely) ⚠️
-* Productive asset ❌ (mostly idle)
+- Store of value ✅
+- Settlement layer ✅
+- Collateral (barely) ⚠️
+- Productive asset ❌ (mostly idle)
 
 Ethereum = programmable money
 Bitcoin = programmable settlement (if you use Stacks correctly)
@@ -36,10 +36,10 @@ Not “what copies Solana?”
 
 But what makes sense when:
 
-* Security > speed
-* Predictability > complexity
-* Trust minimization > experimentation
-* Long-term capital > yield farmers
+- Security > speed
+- Predictability > complexity
+- Trust minimization > experimentation
+- Long-term capital > yield farmers
 
 ---
 
@@ -51,11 +51,11 @@ When sBTC becomes widely adopted:
 
 You unlock:
 
-* BTC lending markets
-* BTC-denominated stable assets
-* BTC treasury products
-* BTC-backed synthetic exposure
-* Real yield (not inflationary tokens)
+- BTC lending markets
+- BTC-denominated stable assets
+- BTC treasury products
+- BTC-backed synthetic exposure
+- Real yield (not inflationary tokens)
 
 Most DeFi today is token circularity.
 
@@ -70,16 +70,16 @@ It is interpreted and decidable.
 
 This means:
 
-* You can know outcomes before execution.
-* No hidden reentrancy tricks.
-* Safer financial contracts.
+- You can know outcomes before execution.
+- No hidden reentrancy tricks.
+- Safer financial contracts.
 
 That is HUGE for:
 
-* Institutional BTC products
-* Structured finance
-* Predictable vault systems
-* DAO treasury management
+- Institutional BTC products
+- Structured finance
+- Predictable vault systems
+- DAO treasury management
 
 ---
 
@@ -90,10 +90,10 @@ Stacks = expressive but anchored
 
 This hybrid architecture allows:
 
-* High-value contracts
-* Long-term agreements
-* Escrow
-* Legal-style financial constructs
+- High-value contracts
+- Long-term agreements
+- Escrow
+- Legal-style financial constructs
 
 Not casino DeFi.
 
@@ -117,12 +117,11 @@ BTC holders don’t want to sell.
 Opportunity:
 Create a BTC-native liquidity protocol where:
 
-* BTC is deposited via sBTC
-* Earns real yield from:
-
-  * Lending
-  * Treasury financing
-  * Bitcoin-native credit
+- BTC is deposited via sBTC
+- Earns real yield from:
+  - Lending
+  - Treasury financing
+  - Bitcoin-native credit
 
 If you become:
 
@@ -140,10 +139,10 @@ Apps build on top.
 
 Imagine:
 
-* Overcollateralized BTC loans
-* BTC credit scores
-* Reputation-based BTC credit
-* Time-locked Bitcoin credit lines
+- Overcollateralized BTC loans
+- BTC credit scores
+- Reputation-based BTC credit
+- Time-locked Bitcoin credit lines
 
 Clarity's predictability makes this safer than Ethereum-style chaos.
 
@@ -158,16 +157,16 @@ Companies hold BTC.
 
 But:
 
-* They can’t easily deploy it.
-* They don’t want smart contract risk.
-* They want predictable behavior.
+- They can’t easily deploy it.
+- They don’t want smart contract risk.
+- They want predictable behavior.
 
 Stacks + Clarity can power:
 
-* BTC treasury vaults
-* Yield allocation frameworks
-* Risk-controlled vault strategies
-* Time-locked reserve mechanisms
+- BTC treasury vaults
+- Yield allocation frameworks
+- Risk-controlled vault strategies
+- Time-locked reserve mechanisms
 
 Institutional-grade tools.
 
@@ -184,9 +183,9 @@ Bitcoin.
 
 You could build:
 
-* Bitcoin-anchored invoice financing
-* BTC-backed commodity settlement
-* BTC-denominated trade contracts
+- Bitcoin-anchored invoice financing
+- BTC-backed commodity settlement
+- BTC-denominated trade contracts
 
 This aligns with:
 Security > experimentation
@@ -199,10 +198,10 @@ Because Clarity is predictable:
 
 You can build:
 
-* BTC options vaults
-* Covered call markets
-* Time-based structured yield products
-* BTC volatility markets
+- BTC options vaults
+- Covered call markets
+- Time-based structured yield products
+- BTC volatility markets
 
 But structured conservatively.
 
@@ -222,10 +221,10 @@ It is:
 
 Examples:
 
-* Liquidity router that any Stacks protocol can plug into.
-* Developer SDK that simplifies sBTC integrations.
-* Risk oracle layer for BTC-based contracts.
-* Onchain accounting infrastructure for BTC treasuries.
+- Liquidity router that any Stacks protocol can plug into.
+- Developer SDK that simplifies sBTC integrations.
+- Risk oracle layer for BTC-based contracts.
+- Onchain accounting infrastructure for BTC treasuries.
 
 You want to build:
 Infrastructure > Feature.
@@ -236,9 +235,9 @@ Infrastructure > Feature.
 
 Given how you think (systems, macro, economic structures), your advantage is NOT:
 
-* NFT platform
-* Social app
-* Meme token
+- NFT platform
+- Social app
+- Meme token
 
 Your advantage is:
 
@@ -246,10 +245,10 @@ Economic architecture.
 
 You think in:
 
-* Macro systems
-* Liquidity flows
-* Capital deployment
-* Structural advantage
+- Macro systems
+- Liquidity flows
+- Capital deployment
+- Structural advantage
 
 That aligns perfectly with:
 
@@ -265,11 +264,11 @@ I would pitch something like:
 
 A protocol that:
 
-* Accepts sBTC
-* Routes capital into structured BTC-native yield
-* Exposes APIs for other Stacks apps
-* Offers vault frameworks for DAOs and institutions
-* Creates shared liquidity pools
+- Accepts sBTC
+- Routes capital into structured BTC-native yield
+- Exposes APIs for other Stacks apps
+- Offers vault frameworks for DAOs and institutions
+- Creates shared liquidity pools
 
 It becomes:
 
@@ -282,19 +281,19 @@ But designed for long-term BTC holders.
 
 99% of Bitcoin is idle because:
 
-* Holders fear risk.
-* They distrust smart contracts.
-* They prefer cold storage.
-* They don’t want inflationary token games.
+- Holders fear risk.
+- They distrust smart contracts.
+- They prefer cold storage.
+- They don’t want inflationary token games.
 
 So the winning design must be:
 
-* Ultra conservative
-* Transparent
-* Predictable
-* BTC-denominated
-* Low complexity
-* Long-term aligned
+- Ultra conservative
+- Transparent
+- Predictable
+- BTC-denominated
+- Low complexity
+- Long-term aligned
 
 Not “yield farm.”
 
@@ -521,12 +520,12 @@ Top 10 strongest candidates:
 
 If you want next step, we can:
 
-* Narrow this to **5 strategically dominant ideas**
-* Or cluster them into **3 meta-strategies**
-* Or architect a **grant-winning narrative around one**
+- Narrow this to **5 strategically dominant ideas**
+- Or cluster them into **3 meta-strategies**
+- Or architect a **grant-winning narrative around one**
 
 Your move.
-Here’s a snapshot of **what already exists in the Stacks ecosystem today**, based on recent ecosystem activity and project launches — this helps you avoid reinventing something that already exists or is *actively being built*.
+Here’s a snapshot of **what already exists in the Stacks ecosystem today**, based on recent ecosystem activity and project launches — this helps you avoid reinventing something that already exists or is _actively being built_.
 
 I grouped them so you can easily match against the 50 ideas list.
 
@@ -538,8 +537,8 @@ I grouped them so you can easily match against the 50 ideas list.
 
 sBTC — a trust-minimized Bitcoin peg — is **already live** and actively being integrated into DeFi apps. ([stacks.org][1])
 
-* sBTC TVL is growing fast after withdrawal cap removal. ([stacks.co][2])
-* Portal DEX announced support for Stacks & sBTC (liquidity). ([stacks.org][1])
+- sBTC TVL is growing fast after withdrawal cap removal. ([stacks.co][2])
+- Portal DEX announced support for Stacks & sBTC (liquidity). ([stacks.org][1])
 
 **Matches existing ideas:**
 ✔️ sBTC liquidity base layer
@@ -553,17 +552,17 @@ Several live protocols already provide core financial infrastructure:
 
 **Zest Protocol — Bitcoin-native credit & lending**
 
-* A leading lending protocol with sBTC supply and borrowing markets. ([ChainCatcher][3])
+- A leading lending protocol with sBTC supply and borrowing markets. ([ChainCatcher][3])
   **ALEX — Liquidity, DEX & yield tooling**
-* Has DEX, liquidity pools, staking, oracle utilities. ([stacks.org][4])
+- Has DEX, liquidity pools, staking, oracle utilities. ([stacks.org][4])
   **Velar — AMM & perpetual contracts**
-* DEX + leveraged trading. ([stacks.org][4])
+- DEX + leveraged trading. ([stacks.org][4])
   **BitFlow — DEX for Bitcoin & stablecoin swaps**
-* Stable swaps on Stacks. ([stacks.org][4])
+- Stable swaps on Stacks. ([stacks.org][4])
   **Arkadiko & Hermetica — Stablecoin assets & vaults**
-* USD assets, collateralized stablecoins and derivatives. ([stacks.org][4])
+- USD assets, collateralized stablecoins and derivatives. ([stacks.org][4])
   **StackingDAO — Liquid stacking protocol**
-* Provides liquidity to stackers. ([stacks.org][4])
+- Provides liquidity to stackers. ([stacks.org][4])
 
 **Already active ecosystem building blocks:**
 ✔️ Bitcoin lending markets
@@ -580,9 +579,9 @@ Several live protocols already provide core financial infrastructure:
 
 ---
 
-## 🚫 **Many Conceptual Ideas *Do Not Yet Exist or Are Nascent***
+## 🚫 **Many Conceptual Ideas _Do Not Yet Exist or Are Nascent_**
 
-The following *do not appear as established protocols today* — meaning they’re likely still new, missing, or truly novel opportunities:
+The following _do not appear as established protocols today_ — meaning they’re likely still new, missing, or truly novel opportunities:
 
 ### **A. Advanced BTC Capital Infrastructure (Missing)**
 
@@ -645,7 +644,7 @@ The following *do not appear as established protocols today* — meaning they’
 
 ## 🧠 Where You Should Focus for Grants
 
-💡 **Infrastructure & ecosystem multipliers** — things that *other builders will use*, not just one app.
+💡 **Infrastructure & ecosystem multipliers** — things that _other builders will use_, not just one app.
 
 High-potential focuses that are **missing today**:
 
@@ -668,15 +667,16 @@ If you want next, I can map **which ideas best match typical grant evaluation cr
 [5]: https://docs.stacks.co/whats-new/latest-updates?utm_source=chatgpt.com "Latest Updates | Stacks Documentation"
 [6]: https://www.stacks.co/blog/stacks-treasury-committee-december-2025?utm_source=chatgpt.com "Stacks - Stacks Treasury Committee: December 2025 Community Update"
 [7]: https://www.reddit.com/r/stacks/comments/1ny631d?utm_source=chatgpt.com "A truly decentralized, Bitcoin-backed stablecoin (like MakerDAO, but for BTC)"
+
 Good. Now we think like grant reviewers.
 
 Stacks Endowment will prioritize:
 
-* ✅ Ecosystem impact (does it help many builders?)
-* ✅ Composability (can others plug into it?)
-* ✅ Uniqueness to Stacks/Bitcoin (not portable to Ethereum easily)
-* ✅ Long-term infrastructure (not short-term hype)
-* ✅ Unlocks dormant BTC capital
+- ✅ Ecosystem impact (does it help many builders?)
+- ✅ Composability (can others plug into it?)
+- ✅ Uniqueness to Stacks/Bitcoin (not portable to Ethereum easily)
+- ✅ Long-term infrastructure (not short-term hype)
+- ✅ Unlocks dormant BTC capital
 
 From the full landscape, here are the **strongest 3 ideas**.
 
@@ -688,10 +688,10 @@ From the full landscape, here are the **strongest 3 ideas**.
 
 A protocol-level liquidity coordination layer that:
 
-* Aggregates sBTC liquidity across DEXs, lending markets, vaults
-* Routes capital efficiently
-* Exposes a unified API/SDK
-* Acts as shared base liquidity infrastructure
+- Aggregates sBTC liquidity across DEXs, lending markets, vaults
+- Routes capital efficiently
+- Exposes a unified API/SDK
+- Acts as shared base liquidity infrastructure
 
 Think:
 
@@ -703,22 +703,22 @@ Think:
 
 **Ecosystem Impact**
 
-* Every DeFi protocol benefits.
-* Reduces fragmentation.
-* Improves capital efficiency system-wide.
+- Every DeFi protocol benefits.
+- Reduces fragmentation.
+- Improves capital efficiency system-wide.
 
 **Composability**
 
-* Lending apps plug into it.
-* Vaults plug into it.
-* DEXs route through it.
-* Risk engines can use it.
+- Lending apps plug into it.
+- Vaults plug into it.
+- DEXs route through it.
+- Risk engines can use it.
 
 **Uniqueness**
 
-* Designed specifically for sBTC.
-* Optimized around Bitcoin anchoring and PoX cycles.
-* Tailored to Stacks liquidity constraints.
+- Designed specifically for sBTC.
+- Optimized around Bitcoin anchoring and PoX cycles.
+- Tailored to Stacks liquidity constraints.
 
 **Strategic Value**
 If you become the liquidity coordination layer:
@@ -732,11 +732,11 @@ You sit at the center of all BTC capital flows.
 
 A shared infrastructure module that:
 
-* Standardizes risk parameters for sBTC collateral
-* Provides liquidation logic
-* Offers pricing modules
-* Exposes liquidation bots SDK
-* Can be plugged into multiple lending protocols
+- Standardizes risk parameters for sBTC collateral
+- Provides liquidation logic
+- Offers pricing modules
+- Exposes liquidation bots SDK
+- Can be plugged into multiple lending protocols
 
 Think:
 
@@ -748,21 +748,21 @@ Think:
 
 **Ecosystem Impact**
 
-* Prevents cascading failures.
-* Increases institutional confidence.
-* Makes lending safer.
+- Prevents cascading failures.
+- Increases institutional confidence.
+- Makes lending safer.
 
 **Composability**
 
-* Zest-like protocols could integrate.
-* New lending protocols don’t rebuild liquidation logic.
-* Vault systems can reuse risk modules.
+- Zest-like protocols could integrate.
+- New lending protocols don’t rebuild liquidation logic.
+- Vault systems can reuse risk modules.
 
 **Uniqueness**
 
-* Built around Clarity’s predictability.
-* Bitcoin-based collateral logic.
-* Designed for slower settlement environment.
+- Built around Clarity’s predictability.
+- Bitcoin-based collateral logic.
+- Designed for slower settlement environment.
 
 **Strategic Advantage**
 You become the “safety layer” of Stacks DeFi.
@@ -777,17 +777,17 @@ Grant programs love risk infrastructure.
 
 A standardized vault primitive for:
 
-* BTC yield strategies
-* Treasury management
-* Structured products
-* DAO capital allocation
+- BTC yield strategies
+- Treasury management
+- Structured products
+- DAO capital allocation
 
 Includes:
 
-* Smart contract templates
-* Accounting standard
-* SDK
-* Integration guidelines
+- Smart contract templates
+- Accounting standard
+- SDK
+- Integration guidelines
 
 ---
 
@@ -795,22 +795,22 @@ Includes:
 
 **Ecosystem Impact**
 
-* Every future vault product uses your standard.
-* Developers stop reinventing vault logic.
-* Improves interoperability.
+- Every future vault product uses your standard.
+- Developers stop reinventing vault logic.
+- Improves interoperability.
 
 **Composability**
 
-* Lending markets integrate vault shares.
-* DAOs hold vault tokens.
-* Aggregators route into vaults.
+- Lending markets integrate vault shares.
+- DAOs hold vault tokens.
+- Aggregators route into vaults.
 
 **Uniqueness**
 
-* Designed for sBTC.
-* Time-lock aware.
-* Bitcoin anchoring-aware.
-* Leverages Clarity’s deterministic guarantees.
+- Designed for sBTC.
+- Time-lock aware.
+- Bitcoin anchoring-aware.
+- Leverages Clarity’s deterministic guarantees.
 
 **Strategic Position**
 You define how Bitcoin yield products are built on Stacks.
@@ -823,10 +823,10 @@ That’s foundational.
 
 Not chosen because they are:
 
-* Already being partially built (DEXs, lending markets)
-* Too app-specific
-* Too RWA-heavy (harder for grants)
-* Too experimental for current ecosystem maturity
+- Already being partially built (DEXs, lending markets)
+- Too app-specific
+- Too RWA-heavy (harder for grants)
+- Too experimental for current ecosystem maturity
 
 Grants favor:
 Infrastructure > speculative finance.
@@ -837,9 +837,9 @@ Infrastructure > speculative finance.
 
 | Idea                         | Ecosystem Impact | Composability | Uniqueness | Grant Strength |
 | ---------------------------- | ---------------- | ------------- | ---------- | -------------- |
-| Liquidity Coordination Layer | ⭐⭐⭐⭐⭐            | ⭐⭐⭐⭐⭐         | ⭐⭐⭐⭐       | Very High      |
-| Risk & Liquidation Engine    | ⭐⭐⭐⭐             | ⭐⭐⭐⭐          | ⭐⭐⭐⭐⭐      | Very High      |
-| Vault Standard Framework     | ⭐⭐⭐⭐             | ⭐⭐⭐⭐⭐         | ⭐⭐⭐⭐       | Very High      |
+| Liquidity Coordination Layer | ⭐⭐⭐⭐⭐       | ⭐⭐⭐⭐⭐    | ⭐⭐⭐⭐   | Very High      |
+| Risk & Liquidation Engine    | ⭐⭐⭐⭐         | ⭐⭐⭐⭐      | ⭐⭐⭐⭐⭐ | Very High      |
+| Vault Standard Framework     | ⭐⭐⭐⭐         | ⭐⭐⭐⭐⭐    | ⭐⭐⭐⭐   | Very High      |
 
 ---
 
@@ -870,15 +870,15 @@ Best fit:
 
 Phase 1:
 
-* Liquidity aggregation + API
+- Liquidity aggregation + API
 
 Phase 2:
 
-* Risk parameter module
+- Risk parameter module
 
 Phase 3:
 
-* Shared liquidation system
+- Shared liquidation system
 
 That becomes:
 The capital backbone of Stacks.
@@ -887,8 +887,8 @@ The capital backbone of Stacks.
 
 If you want next step, I can:
 
-* Turn one of these into a grant-ready concept note (problem, solution, roadmap).
-* Or design MVP → Medium → Advanced build structure.
-* Or help you decide which one fits your current technical capability best.
+- Turn one of these into a grant-ready concept note (problem, solution, roadmap).
+- Or design MVP → Medium → Advanced build structure.
+- Or help you decide which one fits your current technical capability best.
 
 Which direction do you want?
