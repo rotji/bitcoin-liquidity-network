@@ -11,11 +11,11 @@ module.exports = {
   setupFilesAfterEnv: [],
   // Add global Jest types for TypeScript
   globals: {
-    'ts-jest': {
+    "ts-jest": {
       tsconfig: {
-        types: ["jest"]
-      }
-    }
+        types: ["jest"],
+      },
+    },
   },
   // Remove or relax coverage thresholds for now
   // coverageThreshold: undefined,
