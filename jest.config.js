@@ -8,5 +8,15 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  // Optionally, add more ts-jest config here
+  setupFilesAfterEnv: [],
+  // Add global Jest types for TypeScript
+  globals: {
+    'ts-jest': {
+      tsconfig: {
+        types: ["jest"]
+      }
+    }
+  },
+  // Remove or relax coverage thresholds for now
+  // coverageThreshold: undefined,
 };
