@@ -71,3 +71,30 @@ export default defineConfig([
   },
 ])
 ```
+
+---
+
+## Project Structure
+
+- `src/pages/Dashboard.tsx`: Main Dashboard page with summary cards, pool table, visualizations, and quick actions.
+- `src/styles/Dashboard.module.css`: Modular CSS for Dashboard layout and components.
+- `src/components/`: Place for reusable UI components.
+
+## UI Foundation
+
+- The app uses a Dashboard as the entry point, following UI/UX guidelines for clarity and modularity.
+- Styling is handled with CSS Modules for scoped, maintainable styles.
+
+## Getting Started
+
+1. Install dependencies in the `frontend/bitcoin liquidity network` directory.
+2. Run the app with Vite for fast HMR.
+3. Edit `src/pages/Dashboard.tsx` and `src/styles/Dashboard.module.css` to extend the UI.
+
+## Extending
+
+- Add new pages in `src/pages/`.
+- Add new components in `src/components/`.
+- Use CSS Modules for all styling.
+
+---
