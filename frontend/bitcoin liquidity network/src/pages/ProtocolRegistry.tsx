@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../styles/ProtocolRegistry.module.css';
+import { useAnalytics } from '../analytics/AnalyticsContext';
 
 // Define protocol type
 interface Protocol {
@@ -14,8 +15,10 @@ export default function ProtocolRegistry() {
   const [newProtocol, setNewProtocol] = useState<Protocol>({ name: '', status: '', pools: 0 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const analytics = useAnalytics();
 
   useEffect(() => {
+    analytics.trackEvent({ type: 'page_view', payload: { page: 'ProtocolRegistry' } });
     axios.get('/api/protocols')
       .then(res => {
         setProtocols(res.data);
@@ -34,6 +37,7 @@ export default function ProtocolRegistry() {
       .then(res => {
         setProtocols([...protocols, res.data]);
         setNewProtocol({ name: '', status: '', pools: 0 });
+        analytics.trackEvent({ type: 'add_protocol', payload: { protocol: newProtocol } });
       })
       .catch(() => setError('Failed to add protocol'));
   };
@@ -60,10 +64,10 @@ export default function ProtocolRegistry() {
           value={newProtocol.pools}
           onChange={e => setNewProtocol({ ...newProtocol, pools: Number(e.target.value) })}
         />
-        <button type="submit">Add Protocol</button>
+        <button type="submit" disabled={loading}>Add Protocol</button>
       </form>
-      {loading ? <p>Loading...</p> : null}
-      {error ? <p style={{ color: 'red' }}>{error}</p> : null}
+      {loading && <p>Loading...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <table className={styles.protocolTable}>
         <thead>
           <tr>
