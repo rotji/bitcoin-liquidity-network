@@ -10,6 +10,8 @@ export default function Navbar() {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/dashboard">Dashboard</Link>
+        <Link to="/protocol-registry">Protocol Registry</Link>
+        <Link to="/asset-registry">Asset Registry</Link>
       </div>
     </nav>
   );
