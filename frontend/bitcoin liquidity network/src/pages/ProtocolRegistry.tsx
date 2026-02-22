@@ -1,22 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from '../styles/ProtocolRegistry.module.css';
 
-// Placeholder for protocol data
-const initialProtocols = [
-  { name: 'Lightning Network', status: 'Active', pools: 12 },
-  { name: 'Liquid', status: 'Active', pools: 5 },
-  { name: 'Fedimint', status: 'Beta', pools: 2 },
-];
+// Define protocol type
+interface Protocol {
+  name: string;
+  status: string;
+  pools: number;
+}
 
 export default function ProtocolRegistry() {
-  const [protocols, setProtocols] = useState(initialProtocols);
-  const [newProtocol, setNewProtocol] = useState({ name: '', status: '', pools: 0 });
+  const [protocols, setProtocols] = useState<Protocol[]>([]);
+  const [newProtocol, setNewProtocol] = useState<Protocol>({ name: '', status: '', pools: 0 });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    axios.get('/api/protocols')
+      .then(res => {
+        setProtocols(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError('Failed to load protocols');
+        setLoading(false);
+      });
+  }, []);
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProtocol.name || !newProtocol.status) return;
-    setProtocols([...protocols, { ...newProtocol, pools: Number(newProtocol.pools) }]);
-    setNewProtocol({ name: '', status: '', pools: 0 });
+    axios.post('/api/protocols', { ...newProtocol, pools: Number(newProtocol.pools) })
+      .then(res => {
+        setProtocols([...protocols, res.data]);
+        setNewProtocol({ name: '', status: '', pools: 0 });
+      })
+      .catch(() => setError('Failed to add protocol'));
   };
 
   return (
@@ -43,6 +62,8 @@ export default function ProtocolRegistry() {
         />
         <button type="submit">Add Protocol</button>
       </form>
+      {loading ? <p>Loading...</p> : null}
+      {error ? <p style={{ color: 'red' }}>{error}</p> : null}
       <table className={styles.protocolTable}>
         <thead>
           <tr>
@@ -52,7 +73,7 @@ export default function ProtocolRegistry() {
           </tr>
         </thead>
         <tbody>
-          {protocols.map((p, idx) => (
+          {(Array.isArray(protocols) ? protocols : []).map((p, idx) => (
             <tr key={idx}>
               <td>{p.name}</td>
               <td>{p.status}</td>
