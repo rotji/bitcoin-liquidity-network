@@ -84,3 +84,26 @@
 .cta:hover {
   background: #005bb5;
 }
+
+@media (max-width: 600px) {
+  .heroContent {
+    max-width: 100%;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    border-radius: 10px;
+  }
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+  .subtitle, .heroDetails {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  .featureList {
+    max-width: 100%;
+    font-size: 0.98rem;
+  }
+  .cta {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
