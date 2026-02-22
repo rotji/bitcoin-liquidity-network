@@ -1,0 +1,36 @@
+.dashboard {
+  padding: 2rem;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.summaryCards {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.card {
+  background: #f5f5f7;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.poolTable {
+  margin-bottom: 2rem;
+}
+.poolTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.poolTable th, .poolTable td {
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem;
+  text-align: left;
+}
+.visualizations {
+  margin-bottom: 2rem;
+}
+.quickActions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
