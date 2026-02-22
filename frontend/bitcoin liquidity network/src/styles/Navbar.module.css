@@ -1,0 +1,49 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  position: relative;
+  z-index: 10;
+  min-height: 70px;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: #0070f3;
+  text-decoration: none;
+  margin-right: 2rem;
+  white-space: nowrap;
+}
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+}
+.links {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+.links button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: #333;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.links button:hover, .links .active {
+  background: #f5f5f7;
+  color: #0070f3;
+}
+.active {
+  background: #e0eaff;
+  color: #0070f3;
+}
