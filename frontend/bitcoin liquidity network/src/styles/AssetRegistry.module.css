@@ -1,0 +1,50 @@
+.registryPage {
+  max-width: 900px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  padding: 2rem 3rem;
+}
+.title {
+  font-size: 2rem;
+  color: #0070f3;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.addForm {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.addForm input {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  font-size: 1rem;
+}
+.addForm button {
+  background: #0070f3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.addForm button:hover {
+  background: #005bb5;
+}
+.assetTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+.assetTable th, .assetTable td {
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem;
+  text-align: left;
+}
+.assetTable th {
+  background: #f5f5f7;
+}
