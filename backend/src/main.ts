@@ -12,19 +12,20 @@ dbClient.connect()
 // Express setup temporarily removed until backend is ready
 // Uncomment and configure when ready to implement backend API
 import express from 'express';
+import type { Request, Response } from 'express';
 
 const app = express();
 app.use(express.json());
 
-app.get('/health', (req, res) => {
+app.get('/health', (req: Request, res: Response) => {
 	res.json({ status: 'ok' });
 });
 
-import usersRoutes from './routes/users.js';
-import assetsRoutes from './routes/assets.js';
-import protocolsRoutes from './routes/protocols.js';
-import liquiditySignalsRoutes from './routes/liquiditySignals.js';
-import routingIntentsRoutes from './routes/routingIntents.js';
+import usersRoutes from './routes/users';
+import assetsRoutes from './routes/assets';
+import protocolsRoutes from './routes/protocols';
+import liquiditySignalsRoutes from './routes/liquiditySignals';
+import routingIntentsRoutes from './routes/routingIntents';
 
 app.use('/api/users', usersRoutes);
 app.use('/api/assets', assetsRoutes);
