@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getAssets } from '../../../src/services/AssetRegistryService';
+import { getAssets, createAsset } from '../../../src/services/AssetRegistryService';
+import { getProtocols } from '../../../src/services/ProtocolRegistryService';
+import { getPools } from '../../../src/services/PoolService';
 import styles from '../styles/AssetRegistry.module.css';
 
 // Define asset type
@@ -9,13 +11,17 @@ interface Asset {
   protocols: string[];
 }
 
+
 export default function AssetRegistry() {
   const [assets, setAssets] = useState<Asset[]>([]);
-  const [newAsset, setNewAsset] = useState<{ name: string; type: string; protocols: string }>({ name: '', type: '', protocols: '' });
+  const [protocols, setProtocols] = useState<any[]>([]);
+  const [pools, setPools] = useState<any[]>([]);
+  const [newAsset, setNewAsset] = useState<{ name: string; type: string; protocols: string; protocolId: string; poolId: string }>({ name: '', type: '', protocols: '', protocolId: '', poolId: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
+    // Fetch assets
     getAssets()
       .then((data: any) => {
         setAssets(data);
@@ -25,22 +31,49 @@ export default function AssetRegistry() {
         setError('Failed to load assets');
         setLoading(false);
       });
+    // Fetch protocols for dropdown
+    getProtocols()
+      .then((data: any) => {
+        setProtocols(data);
+      })
+      .catch(() => {
+        setError('Failed to load protocols');
+      });
   }, []);
 
-  const handleAdd = (e: React.FormEvent) => {
+  // Fetch pools when protocol changes
+  useEffect(() => {
+    if (newAsset.protocolId) {
+      getPools(Number(newAsset.protocolId))
+        .then((data: any) => {
+          setPools(data);
+        })
+        .catch(() => {
+          setPools([]);
+        });
+    } else {
+      setPools([]);
+    }
+  }, [newAsset.protocolId]);
+
+  const handleAdd = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newAsset.name || !newAsset.type) return;
-    // Demo mode: simulate upload by updating local state
-    setAssets([
-      ...assets,
-      {
-        name: newAsset.name,
-        type: newAsset.type,
-        protocols: newAsset.protocols.split(',').map(p => p.trim()),
-      },
-    ]);
-    setNewAsset({ name: '', type: '', protocols: '' });
+    if (!newAsset.name || !newAsset.type || !newAsset.protocolId || !newAsset.poolId) return;
     setError('');
+    try {
+      await createAsset({
+        name: newAsset.name,
+        symbol: newAsset.name.substring(0, 3).toUpperCase(),
+        protocolId: Number(newAsset.protocolId),
+        poolId: Number(newAsset.poolId),
+      });
+      setNewAsset({ name: '', type: '', protocols: '', protocolId: '', poolId: '' });
+      // Refresh asset list from backend
+      const updatedAssets = await getAssets();
+      setAssets(updatedAssets);
+    } catch (err) {
+      setError('Failed to add asset');
+    }
   };
 
   return (
@@ -59,6 +92,27 @@ export default function AssetRegistry() {
           value={newAsset.type}
           onChange={e => setNewAsset({ ...newAsset, type: e.target.value })}
         />
+        <select
+          value={newAsset.protocolId}
+          onChange={e => setNewAsset({ ...newAsset, protocolId: e.target.value, poolId: '' })}
+          required
+        >
+          <option value="">Select Protocol</option>
+          {protocols.map((p: any) => (
+            <option key={p.id} value={p.id}>{p.name}</option>
+          ))}
+        </select>
+        <select
+          value={newAsset.poolId}
+          onChange={e => setNewAsset({ ...newAsset, poolId: e.target.value })}
+          required
+          disabled={!newAsset.protocolId || pools.length === 0}
+        >
+          <option value="">Select Pool</option>
+          {pools.map((pool: any) => (
+            <option key={pool.id} value={pool.id}>{pool.name}</option>
+          ))}
+        </select>
         <input
           type="text"
           placeholder="Protocols (comma separated)"
