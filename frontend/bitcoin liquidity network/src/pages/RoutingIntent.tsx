@@ -5,10 +5,14 @@ import {
   createRoutingIntent,
   type RoutingIntent,
 } from '../../../src/services/RoutingIntentService';
+import { getProtocols } from '../../../src/services/ProtocolRegistryService';
+import { getPools } from '../../../src/services/PoolService';
 
 export default function RoutingIntent() {
   const [intents, setIntents] = useState<RoutingIntent[]>([]);
-  const [newIntent, setNewIntent] = useState<RoutingIntent>({ user: '', protocol: '', asset: '', pool: '', intent: '', timestamp: '' });
+  const [protocols, setProtocols] = useState<any[]>([]);
+  const [pools, setPools] = useState<any[]>([]);
+  const [newIntent, setNewIntent] = useState<any>({ user: '', protocolId: '', poolId: '', asset: '', intent: '' });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -35,21 +39,37 @@ export default function RoutingIntent() {
         setError('Failed to load routing intents');
         setLoading(false);
       });
+    getProtocols()
+      .then((data: any) => setProtocols(data))
+      .catch(() => setProtocols([]));
   }, []);
+
+  useEffect(() => {
+    if (newIntent.protocolId) {
+      getPools(Number(newIntent.protocolId))
+        .then((data: any) => setPools(data))
+        .catch(() => setPools([]));
+    } else {
+      setPools([]);
+    }
+  }, [newIntent.protocolId]);
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newIntent.user || !newIntent.protocol || !newIntent.asset || !newIntent.pool || !newIntent.intent) return;
+    if (!newIntent.user || !newIntent.protocolId || !newIntent.poolId || !newIntent.asset || !newIntent.intent) return;
+    // Find protocol and pool names from IDs
+    const protocolObj = protocols.find((p: any) => String(p.id) === newIntent.protocolId);
+    const poolObj = pools.find((p: any) => String(p.id) === newIntent.poolId);
     createRoutingIntent({
       user: newIntent.user,
-      protocol: newIntent.protocol,
+      protocol: protocolObj ? protocolObj.name : '',
+      pool: poolObj ? poolObj.name : '',
       asset: newIntent.asset,
-      pool: newIntent.pool,
       intent: newIntent.intent,
     })
       .then((created) => {
         setIntents([...intents, created]);
-        setNewIntent({ user: '', protocol: '', asset: '', pool: '', intent: '', timestamp: '' });
+        setNewIntent({ user: '', protocolId: '', poolId: '', asset: '', intent: '' });
       })
       .catch(() => setError('Failed to add routing intent'));
   };
@@ -78,23 +98,32 @@ export default function RoutingIntent() {
           value={newIntent.user}
           onChange={e => setNewIntent({ ...newIntent, user: e.target.value })}
         />
-        <input
-          type="text"
-          placeholder="Protocol"
-          value={newIntent.protocol}
-          onChange={e => setNewIntent({ ...newIntent, protocol: e.target.value })}
-        />
+        <select
+          value={newIntent.protocolId}
+          onChange={e => setNewIntent({ ...newIntent, protocolId: e.target.value, poolId: '' })}
+          required
+        >
+          <option value="">Select Protocol</option>
+          {protocols.map((p: any) => (
+            <option key={p.id} value={p.id}>{p.name}</option>
+          ))}
+        </select>
+        <select
+          value={newIntent.poolId}
+          onChange={e => setNewIntent({ ...newIntent, poolId: e.target.value })}
+          required
+          disabled={!newIntent.protocolId || pools.length === 0}
+        >
+          <option value="">Select Pool</option>
+          {pools.map((pool: any) => (
+            <option key={pool.id} value={pool.id}>{pool.name}</option>
+          ))}
+        </select>
         <input
           type="text"
           placeholder="Asset"
           value={newIntent.asset}
           onChange={e => setNewIntent({ ...newIntent, asset: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Pool"
-          value={newIntent.pool}
-          onChange={e => setNewIntent({ ...newIntent, pool: e.target.value })}
         />
         <input
           type="text"
