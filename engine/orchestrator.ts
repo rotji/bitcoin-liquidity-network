@@ -78,7 +78,36 @@ history.push({
 });
 fs.writeFileSync(historyPath, JSON.stringify(history, null, 2));
 
+
+// --- AI Prompt Generation ---
+const aiPromptPath = path.join(__dirname, "ai_prompt.txt");
+
+let aiPrompt = `
+You are a senior software architect.
+
+Analyze the following full-stack project files and suggest improvements in:
+
+1. Code structure
+2. Error handling
+3. Performance
+4. Security
+5. Scalability
+
+BACKEND FILE:
+-------------
+${content}
+
+FRONTEND FILE:
+--------------
+${frontendContent}
+
+Respond with structured recommendations.
+`;
+
+fs.writeFileSync(aiPromptPath, aiPrompt);
+
 const reportPath = path.join(__dirname, "report.txt");
 fs.writeFileSync(reportPath, report);
 
 console.log("📄 Report generated at /engine/report.txt");
+console.log("📝 AI prompt generated at /engine/ai_prompt.txt");
