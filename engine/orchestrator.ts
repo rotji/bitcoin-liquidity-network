@@ -1,65 +1,29 @@
+
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { readBackendFile, readFrontendFile } from "./observer.ts";
+import { analyzeBackend, analyzeFrontend, calculateScore } from "./evaluator.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const backendFilePath = path.join(
-  __dirname,
-  "../backend/src/main.ts" // or server.ts if that's your entry file
-);
 
-console.log("🔎 Reading backend file...\n");
-
-const content = fs.readFileSync(backendFilePath, "utf-8");
+console.log("🔎 Reading backend and frontend files...\n");
+const content = readBackendFile(__dirname);
+const frontendContent = readFrontendFile(__dirname);
 
 console.log(content);
 
-
 let report = "ENGINEERING REPORT\n";
 report += "===================\n\n";
-if (!content.includes("try") || !content.includes("catch")) {
-  report += "⚠️ No error handling detected in backend routes.\n";
-  console.log("⚠️ WARNING: No error handling detected in backend routes.");
-} else {
-  report += "✅ Error handling detected in backend routes.\n";
-  console.log("✅ Error handling detected.");
-}
-
-
-// --- Frontend Analysis ---
-const frontendFilePath = path.join(__dirname, "../frontend/bitcoin liquidity network/src/App.tsx");
-let frontendContent = "";
-try {
-  frontendContent = fs.readFileSync(frontendFilePath, "utf-8");
-  report += "\nFRONTEND ANALYSIS\n";
-  report += "=================\n\n";
-  // Simple rule: check if useEffect exists
-  if (!frontendContent.includes("useEffect")) {
-    report += "⚠️ No useEffect detected in App.tsx.\n";
-    console.log("⚠️ WARNING: No useEffect detected in App.tsx.");
-  } else {
-    report += "✅ useEffect detected in App.tsx.\n";
-    console.log("✅ useEffect detected in App.tsx.");
-  }
-} catch (err) {
-  report += "\nFRONTEND ANALYSIS\n";
-  report += "=================\n\n";
-  report += "⚠️ Could not read App.tsx for analysis.\n";
-  console.log("⚠️ Could not read App.tsx for analysis.");
-}
-
+report += analyzeBackend(content) + "\n";
+report += "\nFRONTEND ANALYSIS\n";
+report += "=================\n\n";
+report += analyzeFrontend(frontendContent) + "\n";
 
 // --- Engineering Score ---
-let score = 0;
-// Backend scoring
-if (content.includes("try") && content.includes("catch")) score += 25;
-if (content.includes("async")) score += 25;
-// Frontend scoring
-if (frontendContent.includes("useEffect")) score += 25;
-if (frontendContent.includes("fetch")) score += 25;
-
+const score = calculateScore(content, frontendContent);
 report += "\nENGINEERING SCORE\n";
 report += "=================\n\n";
 report += `Score: ${score} / 100\n`;
@@ -106,8 +70,58 @@ Respond with structured recommendations.
 
 fs.writeFileSync(aiPromptPath, aiPrompt);
 
+
 const reportPath = path.join(__dirname, "report.txt");
 fs.writeFileSync(reportPath, report);
 
+// --- AI Response File Automation ---
+const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+
+const aiResponsePath = path.join(__dirname, `ai_response_${timestamp}.txt`);
+fs.writeFileSync(aiResponsePath, "# AI Response\n\nPaste the recommendations from Copilot Chat or another AI tool here after analyzing ai_prompt.txt.\n");
+
+// --- AI Recommendation Comparison Automation ---
+// Find the most recent ai_response file
+const files = fs.readdirSync(__dirname);
+const aiResponseFiles = files.filter(f => f.startsWith("ai_response_") && f.endsWith(".txt"));
+aiResponseFiles.sort(); // ISO timestamps sort chronologically
+const latestAiResponseFile = aiResponseFiles.length > 0 ? aiResponseFiles[aiResponseFiles.length - 2] : null; // -2 because we just created a new one
+
+let checklist = "# AI Recommendation Checklist\n\n";
+if (latestAiResponseFile) {
+  const aiResponseContent = fs.readFileSync(path.join(__dirname, latestAiResponseFile), "utf-8");
+  // Ignore section headers and only check actionable recommendations
+  const recommendations = aiResponseContent.split("\n").filter(line => {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) return false;
+    // Ignore lines that look like section headers (e.g., "2. Error Handling", "4. Security")
+    return !/^\d+\.?\s*\w+/i.test(trimmed) && !/^\d+\./.test(trimmed);
+  });
+  checklist += `Comparing recommendations from: ${latestAiResponseFile}\n\n`;
+  recommendations.forEach(rec => {
+    // Fuzzy keyword matching: split recommendation into keywords, check if any appear in code
+    const keywords = rec.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    let found = false;
+    for (const kw of keywords) {
+      if (kw.length > 3 && (content.toLowerCase().includes(kw) || frontendContent.toLowerCase().includes(kw))) {
+        found = true;
+        break;
+      }
+    }
+    if (found) {
+      checklist += `[x] ${rec}\n`;
+    } else {
+      checklist += `[ ] ${rec}\n`;
+    }
+  });
+} else {
+  checklist += "No previous AI response file found to compare.\n";
+}
+
+const checklistPath = path.join(__dirname, "checklist.txt");
+fs.writeFileSync(checklistPath, checklist);
+
 console.log("📄 Report generated at /engine/report.txt");
 console.log("📝 AI prompt generated at /engine/ai_prompt.txt");
+console.log(`📝 New AI response file created: ${aiResponsePath}`);
+console.log(`📋 Checklist generated at /engine/checklist.txt`);
