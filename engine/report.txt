@@ -31,8 +31,8 @@ Endpoint: [GET] http://localhost:4000/api/assets
   Message: OK
 
 Endpoint: [POST] http://localhost:4000/api/assets
-  Success: false
-  Status: 500
+  Success: true
+  Status: 201
   Message: OK
 
 Endpoint: [GET] http://localhost:4000/api/protocols
@@ -41,8 +41,8 @@ Endpoint: [GET] http://localhost:4000/api/protocols
   Message: OK
 
 Endpoint: [POST] http://localhost:4000/api/protocols
-  Success: false
-  Status: 500
+  Success: true
+  Status: 201
   Message: OK
 
 Endpoint: [GET] http://localhost:4000/api/liquidity-signals

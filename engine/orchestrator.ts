@@ -16,17 +16,18 @@ const __dirname = path.dirname(__filename);
 
 // --- Configurable list of backend API endpoints to test ---
 // These are the actual endpoints found in the backend codebase
+const uniqueUser = `alice_${Date.now()}`;
 const backendApiEndpoints = [
   { url: "http://localhost:4000/api/users", method: "GET" },
-  { url: "http://localhost:4000/api/users", method: "POST" },
+  { url: "http://localhost:4000/api/users", method: "POST", body: { username: uniqueUser, email: `${uniqueUser}@example.com` } },
   { url: "http://localhost:4000/api/assets", method: "GET" },
-  { url: "http://localhost:4000/api/assets", method: "POST" },
+  { url: "http://localhost:4000/api/assets", method: "POST", body: { name: "Bitcoin", symbol: "BTC", protocolId: 1 } },
   { url: "http://localhost:4000/api/protocols", method: "GET" },
-  { url: "http://localhost:4000/api/protocols", method: "POST" },
+  { url: "http://localhost:4000/api/protocols", method: "POST", body: { name: "Test Protocol", description: "A test protocol" } },
   { url: "http://localhost:4000/api/liquidity-signals", method: "GET" },
-  { url: "http://localhost:4000/api/liquidity-signals", method: "POST" },
+  { url: "http://localhost:4000/api/liquidity-signals", method: "POST", body: { signal: "test-signal", value: 123, protocol: 1 } },
   { url: "http://localhost:4000/api/routing-intents", method: "GET" },
-  { url: "http://localhost:4000/api/routing-intents", method: "POST" },
+  { url: "http://localhost:4000/api/routing-intents", method: "POST", body: { intent: "test-intent", value: 456, user: 1 } },
 ];
 
 // --- Load User Config ---
@@ -60,8 +61,13 @@ async function runEndpointTests() {
       if (endpoint.method === "GET") {
         result = await testEndpoint(endpoint.url);
       } else if (endpoint.method === "POST") {
-        // For POST, send a minimal valid JSON body (customize as needed)
-        result = await testEndpoint(endpoint.url, undefined, { method: 'POST', body: JSON.stringify({ test: true }), headers: { 'Content-Type': 'application/json' } });
+        // Send a valid JSON body if provided
+        const options = {
+          method: 'POST',
+          body: JSON.stringify(endpoint.body || {}),
+          headers: { 'Content-Type': 'application/json' }
+        };
+        result = await testEndpoint(endpoint.url, undefined, options);
       } else {
         result = { endpoint: endpoint.url, success: false, message: `Unsupported method: ${endpoint.method}` };
       }
