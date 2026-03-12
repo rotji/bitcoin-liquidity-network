@@ -16,6 +16,10 @@ export const getRoutingIntents = async (req: Request, res: Response) => {
 export const postRoutingIntent = async (req: Request, res: Response) => {
   try {
     console.log('postRoutingIntent request body:', req.body);
+    const { user } = req.body;
+    if (!user) {
+      return res.status(400).json({ error: 'User field is required.' });
+    }
     const intent = await createRoutingIntent(req.body);
     console.log('postRoutingIntent result:', intent);
     res.status(201).json(intent);
